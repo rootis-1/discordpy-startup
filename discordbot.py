@@ -20,15 +20,15 @@ async def ping(ctx):
 async def ウルタンは(ctx):
     rand = random.randrange(5)
 
-    if rand == 0
+    if rand == 0:
         await ctx.send('くさい')
-    elif rand == 1
+    elif rand == 1:
         await ctx.send('ばか')
-    elif rand == 2
+    elif rand == 2:
         await ctx.send('暇人')
-    elif rand == 3
+    elif rand == 3:
         await ctx.send('ひきこもり')
-    elif rand == 4
+    elif rand == 4:
         await ctx.send('かわいい')
 
 
