@@ -19,6 +19,9 @@ async def ping(ctx):
 @bot.command()
 async def ウルタンは(ctx):
     rand = random.randrange(5)
+    await ctx.send(rand)
+    
+    '''
     if rand == 0
         await ctx.send('くさい')
     if rand == 1
@@ -29,6 +32,7 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     if rand == 4
         await ctx.send('かわいい')
+    '''
 
 
 bot.run(token)
