@@ -35,12 +35,11 @@ async def ウルタンは(ctx):
 
 @client.event
 async def on_message(message):
-    str = message.content
-    if str == 'ばぶー':
+    if message.content == 'ばぶー':
         await ctx.send('{message.author.mention} ばぶー！')
-    elif str == 'うーん':
+    elif message.content == 'うーん':
         await ctx.send('{message.author.mention} うーん')
-    elif str == 'ガハハw':
+    elif message.content == 'ガハハw':
         await ctx.send('{message.author.mention} はクソ')
 
 
