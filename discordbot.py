@@ -17,7 +17,7 @@ async def ping(ctx):
     await ctx.send('pong')
 
 @bot.command()
-async def ウルタン(ctx):
+async def urutan(ctx):
     await ctx.send('くさい')
 
 
