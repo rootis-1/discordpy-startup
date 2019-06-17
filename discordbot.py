@@ -34,9 +34,14 @@ async def ウルタンは(ctx):
 
 @bot.command()
 async def on_message(message):
-    if message.content == '@ss-mbot おい':
-        reply = f'{message.author.mention} なに'
-        await message.channel.send(reply)
+    str = message.content
+    
+    if str == 'ばぶー':
+        await ctx.send('{message.author.mention} ばぶー！')
+    elif str == 'うーん':
+        await ctx.send('{message.author.mention} うーん')
+    elif str == 'ガハハw':
+        await ctx.send('{message.author.mention} はクソ')
 
 
 bot.run(token)
