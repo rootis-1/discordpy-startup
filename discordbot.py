@@ -34,10 +34,9 @@ async def ウルタンは(ctx):
 
 @bot.command()
 async def on_message(message):
-    if client.user in message.mentions: # 話しかけられたかの判定
-        if message.content == '@ss-mbot#3269 おい':
-            reply = f'{message.author.mention} なに' # 返信メッセージの作成
-            await message.channel.send(reply) # 返信メッセージを送信
+    if message.content == '@ss-mbot#3269 おい':
+        reply = f'{message.author.mention} なに'
+        await message.channel.send(reply)
 
 
 bot.run(token)
