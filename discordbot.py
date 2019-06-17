@@ -32,7 +32,7 @@ async def ウルタンは(ctx):
         await ctx.send('かわいい')
 
 
-@bot.command()
+@client.event()
 async def on_message(message):
     str = message.content
     
