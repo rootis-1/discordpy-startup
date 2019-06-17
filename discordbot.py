@@ -31,7 +31,7 @@ async def ウルタンは(ctx):
     elif rand == 4:
         await ctx.send('かわいい')
 
-
+'''
 @client.event
 async def on_message(message):
     str = message.content
@@ -42,6 +42,6 @@ async def on_message(message):
         await ctx.send('{message.author.mention} うーん')
     elif str == 'ガハハw':
         await ctx.send('{message.author.mention} はクソ')
-
+'''
 
 bot.run(token)
