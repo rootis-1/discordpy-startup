@@ -41,6 +41,6 @@ async def on_message(message):
         await ctx.send('{message.author.mention} うーん')
     elif message.content == 'ガハハw':
         await ctx.send('{message.author.mention} はクソ')
-'''
+
 
 bot.run(token)
