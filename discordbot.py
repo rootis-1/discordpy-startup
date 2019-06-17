@@ -32,5 +32,12 @@ async def ウルタンは(ctx):
         await ctx.send('かわいい')
 
 
+@bot.command()
+async def on_message(message):
+    if client.user in message.mentions: # 話しかけられたかの判定
+        if message.content == 'おい':
+            reply = f'{message.author.mention} なに' # 返信メッセージの作成
+            await message.channel.send(reply) # 返信メッセージを送信
+
 
 bot.run(token)
