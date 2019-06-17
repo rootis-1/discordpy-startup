@@ -4,6 +4,7 @@ import traceback
 import random
 
 bot = commands.Bot(command_prefix='_')
+client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
@@ -34,14 +35,13 @@ async def ウルタンは(ctx):
 
 @client.event
 async def on_message(message):
-    if message.content == 'ばぶー':
+    str = message.content
+    if str == 'ばぶー':
         await ctx.send('{message.author.mention} ばぶー！')
-    elif message.content == 'うーん':
+    elif str == 'うーん':
         await ctx.send('{message.author.mention} うーん')
-    elif message.content == 'ガハハw':
+    elif str == 'ガハハw':
         await ctx.send('{message.author.mention} はクソ')
-    else:
-        await ctx.send('???')
 
 
 bot.run(token)
