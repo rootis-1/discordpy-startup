@@ -34,7 +34,7 @@ async def ウルタンは(ctx):
 
 @bot.command()
 async def on_message(message):
-    if message.content == '@ss-mbot#3269 おい':
+    if message.content == '@ss-mbot おい':
         reply = f'{message.author.mention} なに'
         await message.channel.send(reply)
 
