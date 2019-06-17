@@ -22,13 +22,13 @@ async def ウルタンは(ctx):
     
     if rand == 0
         await ctx.send('くさい')
-    if rand == 1
+    elif rand == 1
         await ctx.send('ばか')
-    if rand == 2
+    elif rand == 2
         await ctx.send('暇人')
-    if rand == 3
+    elif rand == 3
         await ctx.send('ひきこもり')
-    if rand == 4
+    elif rand == 4
         await ctx.send('かわいい')
 
 
