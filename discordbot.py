@@ -1,3 +1,4 @@
+#coding : utf-8
 from discord.ext import commands
 import os
 import traceback
@@ -14,6 +15,10 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
+
+@bot.command()
+async def ウルタン(ctx):
+    await ctx.send('くさい')
 
 
 bot.run(token)
