@@ -54,7 +54,7 @@ async def dcurutan(ctx):
     savestr+=1
     
     if savestr%20 == 0:
-        embed_message = discord.Embed(title='ウルタンアンチレベルが '+savestr+' になりました！', description='ウルタンさんおめでとう',author.icon_url='https://cdn.discordapp.com/embed/avatars/0.png')
+        embed_message = discord.Embed(title='ウルタンアンチレベルが '+savestr+' になりました！', description='ウルタンさんおめでとう')
   
         await ctx.send(content=None, embed=embed_message)
     
