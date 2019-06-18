@@ -16,7 +16,7 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-
+'''
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -41,6 +41,6 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     elif rand == 4:
         await ctx.send('かわいい')
-        
+        '''
 
 bot.run(token)
