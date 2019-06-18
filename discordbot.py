@@ -51,3 +51,4 @@ async def on_message(message):
 
 
 bot.run(token)
+client.run(token)
