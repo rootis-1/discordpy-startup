@@ -8,6 +8,10 @@ bot = commands.Bot(command_prefix='_')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
+
+@client.event
+async def on_message(message):
+await message.channel.send(Client.get_User(446286203101249567).name)
 '''
 @bot.event
 async def on_ready():
@@ -15,7 +19,7 @@ async def on_ready():
 '''
 @bot.event
 async def on_message(message):
-    await message.channel.send(Client.get_User(446286203101249567).name)
+    
     if message.author == client.user:
         return
 
