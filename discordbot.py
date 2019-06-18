@@ -45,5 +45,15 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     elif rand == 4:
         await ctx.send('かわいい')
+  
+savestr = ''
+
+@bot.command()
+async def save(ctx):
+    savestr = message.content
+    
+@bot.command()
+async def call(ctx):
+    await ctx.send(savestr)
         
 bot.run(token)
