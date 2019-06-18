@@ -8,11 +8,11 @@ bot = commands.Bot(command_prefix='_')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
-
+'''
 @bot.event
 async def on_ready():
     await client.change_presence(activity=discord.Game(name='ウルタンアンチ'))
-
+'''
 @bot.event
 async def on_message(message):
     if message.author == client.user:
@@ -59,7 +59,7 @@ async def dcurutan(ctx):
     
     if urulv%10 == 0:
         embed_message = discord.Embed(title='ウルタンアンチレベルが '+str(urulv)+' になりました！', description='ウルタンおつ！',color=7506394)
-  
+        await ctx.send('@ウルタン#2100 ')
         await ctx.send(content=None, embed=embed_message)
     
 @bot.command()
