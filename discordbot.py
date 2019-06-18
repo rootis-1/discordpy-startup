@@ -4,7 +4,7 @@ import os
 import traceback
 import random
 
-bot = commands.Bot(command_prefix='_')
+bot = commands.Bot(command_prefix='#')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
@@ -37,13 +37,13 @@ async def ウルタンは(ctx):
 @client.event
 async def on_message(message):
     if message.content.startswith("ばぶー"):
-        await channel.send('{message.author.mention} ばぶー！')
+        await channel.send(message.author.mention+"ばぶー！")
         
     if message.content.startswith("うーん"):
-        await channel.send('{message.author.mention} うーん')
+        await channel.send(message.author.mention+"うーん")
         
     if message.content.startswith("ガハハｗ"):
-        await channel.send('{message.author.mention} はクソ')
+        await channel.send(message.author.mention+"はクソ")
 
 
 bot.run(token)
