@@ -42,5 +42,5 @@ async def ウルタンは(ctx):
         await ctx.send('かわいい')
         
 
-#bot.run(token)
+bot.run(token)
 client.run(token)
