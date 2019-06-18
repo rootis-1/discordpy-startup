@@ -54,7 +54,7 @@ async def dcurutan(ctx):
     urulv+=1
     
     if urulv%5 == 0:
-        embed_message = discord.Embed(title='ウルタンアンチレベルが '+str(urulv)+' になりました！', description='ウルタンさんおめでとう')
+        embed_message = discord.Embed(title='ウルタンアンチレベルが '+str(urulv)+' になりました！', description='ウルタンさんおめでとう',color=7506394)
   
         await ctx.send(content=None, embed=embed_message)
     
