@@ -4,7 +4,7 @@ import os
 import traceback
 import random
 
-#bot = commands.Bot(command_prefix='_')
+bot = commands.Bot(command_prefix='_')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
@@ -16,7 +16,6 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-'''
 
 @bot.event
 async def on_command_error(ctx, error):
