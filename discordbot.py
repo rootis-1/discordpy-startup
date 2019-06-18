@@ -37,18 +37,16 @@ async def ウルタンは(ctx):
 @client.event
 async def on_message(message):
     print('message')
-    if message.content=='baboo':
+    if message.content=='':
         m = message.author.mention+"ばぶー！"
-        await channel.send(m)
-        
-    if message.content=='うーん':
+        await channel.send(m) 
+    elif message.content=='うーん':
         m = message.author.mention+"うーん"
         await channel.send(m)
         
-    if message.content=='ガハハｗ':
+    elif message.content=='ガハハｗ':
         m = message.author.mention+"はクソ"
         await channel.send(m)
 
 
 bot.run(token)
-client.run(token)
