@@ -32,21 +32,14 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     elif rand == 4:
         await ctx.send('かわいい')
-
-
+        
 @client.event
 async def on_message(message):
-    print('message')
-    if message.content=='':
-        m = message.author.mention+"ばぶー！"
-        await channel.send(m) 
-    elif message.content=='うーん':
-        m = message.author.mention+"うーん"
-        await channel.send(m)
-        
-    elif message.content=='ガハハｗ':
-        m = message.author.mention+"はクソ"
-        await channel.send(m)
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('hello'):
+        await message.channel.send('Hello!')
 
 
 bot.run(token)
