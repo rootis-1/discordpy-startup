@@ -11,7 +11,7 @@ urulv = 0
 
 @bot.event
 async def on_message(message):
-    await message.channel.send(client.get_User(446286203101249567).name)
+    await message.channel.send(member.id)
 '''
 @bot.event
 async def on_ready():
