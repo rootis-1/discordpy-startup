@@ -7,6 +7,7 @@ import random
 bot = commands.Bot(command_prefix='_')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
+urulv = 0
 
 @bot.event
 async def on_message(message):
@@ -31,6 +32,7 @@ async def on_command_error(ctx, error):
 async def ping(ctx):
     await ctx.send('pong')
 
+    
 @bot.command()
 async def ウルタンは(ctx):
     rand = random.randrange(5)
@@ -45,13 +47,16 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     elif rand == 4:
         await ctx.send('かわいい')
-  
-savestr = 0
 
 @bot.command()
-async def save(ctx):
+async def dcurutan(ctx):
     global savestr
     savestr+=1
+    
+    if savestr%20 == 0:
+        embed_message = discord.Embed(title='ウルタンアンチレベルが '+savestr+' になりました！', description='ウルタンさんおめでとう' author.icon_url='https://cdn.discordapp.com/embed/avatars/0.png')
+  
+        await ctx.send(content=None, embed=embed_message)
     
 @bot.command()
 async def call(ctx):
