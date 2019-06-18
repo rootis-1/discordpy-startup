@@ -50,17 +50,17 @@ async def ウルタンは(ctx):
 
 @bot.command()
 async def dcurutan(ctx):
-    global savestr
-    savestr+=1
+    global urulv
+    urulv+=1
     
-    if savestr%20 == 0:
-        embed_message = discord.Embed(title='ウルタンアンチレベルが '+savestr+' になりました！', description='ウルタンさんおめでとう')
+    if urulv%20 == 0:
+        embed_message = discord.Embed(title='ウルタンアンチレベルが '+urulv+' になりました！', description='ウルタンさんおめでとう')
   
         await ctx.send(content=None, embed=embed_message)
     
 @bot.command()
 async def call(ctx):
-    global savestr
-    await ctx.send(savestr)
+    global urulv
+    await ctx.send(urulv)
         
 bot.run(token)
