@@ -15,6 +15,8 @@ async def on_message(message):
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
+        
+    await bot.process_commands(message)
 
 
 @bot.event
