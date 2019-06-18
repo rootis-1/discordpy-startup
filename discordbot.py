@@ -8,6 +8,15 @@ bot = commands.Bot(command_prefix='_')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -33,13 +42,5 @@ async def ウルタンは(ctx):
     elif rand == 4:
         await ctx.send('かわいい')
         
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
-
 
 bot.run(token)
