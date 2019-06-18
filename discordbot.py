@@ -16,6 +16,8 @@ async def on_message(message):
     if message.content.startswith('ばぶ'):
         str = random.choice(("ばぶ","ばぶー","ばぶー！","ばぶ？","ばぶばぶー"))
         await message.channel.send(message.author.mention+' '+str)
+    elif message.content.startswith('ガハハ'):
+        await message.channel.send(message.author.mention+' はクソ')
         
     await bot.process_commands(message)
 
