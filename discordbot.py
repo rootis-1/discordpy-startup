@@ -50,12 +50,12 @@ savestr = 0
 
 @bot.command()
 async def save(ctx):
-    gloval savestr
+    global savestr
     savestr++;
     
 @bot.command()
 async def call(ctx):
-    gloval savestr
+    global savestr
     await ctx.send(savestr)
         
 bot.run(token)
