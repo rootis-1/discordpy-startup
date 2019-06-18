@@ -8,7 +8,7 @@ bot = commands.Bot(command_prefix='_')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 
-@client.event
+@bot.event
 async def on_message(message):
     if message.author == client.user:
         return
