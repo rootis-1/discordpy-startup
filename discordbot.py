@@ -13,8 +13,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith('ばぶ'):
+        await message.channel.send(message.author.mention+' ばぶー！')
         
     await bot.process_commands(message)
 
