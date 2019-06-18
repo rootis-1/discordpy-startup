@@ -37,7 +37,7 @@ async def ウルタンは(ctx):
 @client.event
 async def on_message(message):
     print('message')
-    if message.content=='ばぶー':
+    if message.content=='baboo':
         m = message.author.mention+"ばぶー！"
         await channel.send(m)
         
