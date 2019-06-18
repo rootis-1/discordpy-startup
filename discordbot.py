@@ -15,6 +15,7 @@ async def on_ready():
 '''
 @bot.event
 async def on_message(message):
+    await message.channel.send(str(446286203101249567))
     if message.author == client.user:
         return
 
