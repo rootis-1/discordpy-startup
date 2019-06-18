@@ -51,7 +51,7 @@ savestr = 0
 @bot.command()
 async def save(ctx):
     global savestr
-    savestr++;
+    savestr+=1
     
 @bot.command()
 async def call(ctx):
