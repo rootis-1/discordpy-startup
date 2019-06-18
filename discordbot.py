@@ -46,14 +46,16 @@ async def ウルタンは(ctx):
     elif rand == 4:
         await ctx.send('かわいい')
   
-savestr = ''
+savestr = 0
 
 @bot.command()
 async def save(ctx):
-    savestr = message.content
+    gloval savestr
+    savestr++;
     
 @bot.command()
 async def call(ctx):
+    gloval savestr
     await ctx.send(savestr)
         
 bot.run(token)
