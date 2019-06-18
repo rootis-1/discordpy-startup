@@ -40,7 +40,7 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     elif rand == 4:
         await ctx.send('かわいい')
-        '''
+        
 
 #bot.run(token)
 client.run(token)
