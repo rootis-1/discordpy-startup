@@ -10,6 +10,10 @@ token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 
 @bot.event
+async def on_ready():
+    await client.change_presence(activity=discord.Game(name='ウルタンアンチ'))
+
+@bot.event
 async def on_message(message):
     if message.author == client.user:
         return
@@ -53,8 +57,8 @@ async def dcurutan(ctx):
     global urulv
     urulv+=1
     
-    if urulv%5 == 0:
-        embed_message = discord.Embed(title='ウルタンアンチレベルが '+str(urulv)+' になりました！', description='ウルタンさんおめでとう',color=7506394)
+    if urulv%10 == 0:
+        embed_message = discord.Embed(title='ウルタンアンチレベルが '+str(urulv)+' になりました！', description='ウルタンおつ！',color=7506394)
   
         await ctx.send(content=None, embed=embed_message)
     
