@@ -45,4 +45,3 @@ async def ウルタンは(ctx):
         
 
 bot.run(token)
-client.run(token)
