@@ -15,7 +15,7 @@ async def on_ready():
 '''
 @bot.event
 async def on_message(message):
-    await message.channel.send(discord.User.name(446286203101249567))
+    await message.channel.send(Client.get_User(446286203101249567).name)
     if message.author == client.user:
         return
 
