@@ -9,9 +9,6 @@ client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 
-@bot.event
-async def on_message(message):
-    await message.channel.send(member.id)
 '''
 @bot.event
 async def on_ready():
@@ -22,6 +19,9 @@ async def on_message(message):
     
     if message.author == client.user:
         return
+   
+    member = message.guild.get_member(446286203101249567)
+    await message.channel.send(member.mention+' おはよう')
 
     if message.content.startswith('ばぶ'):
         str = random.choice(("ばぶ","ばぶー","ばぶー！","ばぶ？","ばぶばぶー"))
