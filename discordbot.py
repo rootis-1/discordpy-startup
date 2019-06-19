@@ -30,6 +30,11 @@ async def on_message(message):
     elif message.content.startswith('ガハハ'):
         await message.channel.send(message.author.mention+' はクソ')
         
+    if message.content.startswith('urutest'):
+        member = message.guild.get_member(446286203101249567)
+        await message.channel.send(member.mention+' '+member.author.name+'「おはよう」')
+
+        
     await bot.process_commands(message)
 
 
