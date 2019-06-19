@@ -20,8 +20,9 @@ async def on_message(message):
     if message.author == client.user:
         return
    
-    member = message.guild.get_member(446286203101249567)
-    await message.channel.send(member.mention+' おはよう')
+    if message.content.startswith('_hellouru'):
+        member = message.guild.get_member(446286203101249567)
+        await message.channel.send(member.mention+' おはよう')
 
     if message.content.startswith('ばぶ'):
         str = random.choice(("ばぶ","ばぶー","ばぶー！","ばぶ？","ばぶばぶー"))
