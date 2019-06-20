@@ -40,7 +40,7 @@ async def on_message(message):
         str = random.choice(("ばかだ","無能だ","ハゲだ","ごみだ","くさい","頭悪い","気持ち悪い","かわいい"))
         await message.channel.send(message.author.mention+' ウルタン'+str+'ね')
     if message.content=='かわいくないよ':
-        if message.Guild.id==586914633441607696:
+        if Guild.id==586914633441607696:
             await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいい'))
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
         
@@ -103,7 +103,7 @@ async def call(ctx):
       
 @bot.event
 async def on_menber_join(menber):
-      if bot.Guild.id==586914633441607696:
+      if Guild.id==586914633441607696:
         role = discord.utils.get(ctx.guild.roles, name='かわいい')
         await ctx.author.add_roles(role)
         
