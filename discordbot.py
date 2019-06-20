@@ -66,7 +66,7 @@ async def ウルタンは(ctx):
         await ctx.send('かわいい')
         
 @bot.command()
-async def frc(ctx):
+async def frlist(ctx):
     for i in frdic:
         await ctx.send(i+'\t| '+frdic[i])
         
