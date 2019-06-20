@@ -9,7 +9,10 @@ client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 
-frdic={"uru":12345,"noringar":67890}
+frdic={"ウルpu":"7274-0692-4516","デコピン【R】":"0857-0883-1787","鮪":"5987-3991-4481","千秋":"1153-1958-7503","リアル":"2707-5632-2995",
+      "流星(Light)":"4668-6953-1391","闇":"2996-3936-5864","ゆっくりはやくタロウ":"1396-6888-2293","あげパン":"1792-7753-6891",
+      "ログ":"8566-2988-4961","ちゅんちゅん":"6001-3499-3328","goa":"2589-2017-2410","taki":"2321-8536-1233","りある","3518-6462-4899",
+      "カービィ":"5558-7760-9399","さいつお","6222-8498-7799"}
 
 '''
 @bot.event
@@ -69,12 +72,12 @@ async def urutalk(ctx,string:str):
         
 @bot.command()
 async def frlist(ctx):
-    await ctx.send('--------------------------------------------\n')
+    await ctx.send('```--------------------------------------------\n')
     await ctx.send('|Friend cords list for '+ctx.author.mention+'!|')
     for i in frdic:
         await ctx.send('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
       
-    await ctx.send('--------------------------------------------\n')
+    await ctx.send('--------------------------------------------```')
         
 @bot.command()
 async def frc(ctx,cord:str):
