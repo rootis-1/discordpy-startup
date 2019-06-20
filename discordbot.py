@@ -31,8 +31,6 @@ async def on_message(message):
         await message.channel.send(message.author.mention+' '+str)
     elif message.content.startswith('ガハハ'):
         await message.channel.send(message.author.mention+' はクソ')
-    
-    if message.content.startswith('urutest'):
             
         
     await bot.process_commands(message)
