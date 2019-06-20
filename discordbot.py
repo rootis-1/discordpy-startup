@@ -17,7 +17,7 @@ frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","�
 @bot.event
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
-    await message.channel.send(discord.Guild.id)
+    await bot.channel.send(discord.Guild.id)
 
 @bot.event #startswith反応単語
 async def on_message(message):
