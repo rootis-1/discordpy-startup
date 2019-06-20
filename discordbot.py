@@ -9,7 +9,7 @@ client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 
-frdic={"ウルpu":"7274-0692-4516","デコピン【R】":"0857-0883-1787","鮪":"5987-3991-4481","千秋":"1153-1958-7503","リアル":"2707-5632-2995",
+frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","鮪":"5987-3991-4481","千秋":"1153-1958-7503","リアル":"2707-5632-2995",
       "流星(Light)":"4668-6953-1391","闇":"2996-3936-5864","ゆっくりはやくタロウ":"1396-6888-2293","あげパン":"1792-7753-6891",
       "ログ":"8566-2988-4961","ちゅんちゅん":"6001-3499-3328","goa":"2589-2017-2410","taki":"2321-8536-1233","りある":"3518-6462-4899",
       "カービィ":"5558-7760-9399","さいつお":"6222-8498-7799"}
@@ -23,30 +23,30 @@ async def on_ready():
 async def on_ready():
     await client.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 '''
-@bot.event
+@bot.event #startswith反応単語
 async def on_message(message):
     
     if message.author == client.user:
         return
-   
     if message.content.startswith('hellouru'):
         member = message.guild.get_member(446286203101249567)
         await message.channel.send(member.mention+' おはよう')
-
     if message.content.startswith('ばぶ'):
         str = random.choice(("ばぶ","ばぶー","ばぶー！","ばぶ？","ばぶばぶー"))
         await message.channel.send(message.author.mention+' '+str)
-    elif message.content.startswith('ガハハ'):
+    if message.content.startswith('ガハハ'):
         await message.channel.send(message.author.mention+' はクソ')
-    elif message.content.startswith('おやす'):
+    if message.content.startswith('おやす'):
         await message.channel.send(message.author.mention+' おやすみー！')
-    elif message.content.startswith('おは'):
-        await message.channel.send(message.author.mention+' おはよう！起きて！朝だよ！カンカンカンカンカンカンカンカンカン')
-            
+    if message.content.startswith('おは'):
+        await message.channel.send(message.author.mention+' おはよう！起きて！朝だよ！カンカンカンカンカンカンカンカンカン')   
+    if message.content.startswith("ウルタン"):
+        str = random.choice(("ばかだ","無能だ","ハゲだ","ごみだ","くさい","頭悪い","気持ち悪い","かわいい"))
+        await message.channel.send(message.author.mention+' ウルタン'+str+'ね')
         
     await bot.process_commands(message)
 
-@bot.command()
+@bot.command() #プレイ中の表示を変更
 async def play(ctx):
       str = random.choice(("ウルタンくさい","ウルタン受験落ちました","ウルタン天気予報","ウルタンラジオ","ウルタンドットコム","ウルタンハム太郎",
                           "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
@@ -57,33 +57,18 @@ async def on_command_error(ctx, error):
     await ctx.send(str(error))
 
 
-@bot.command()
+@bot.command() #ピンポンテスト
 async def ping(ctx):
     await ctx.send('pong')
 
-    
-@bot.command()
-async def ウルタンは(ctx):
-    rand = random.randrange(5)
 
-    if rand == 0:
-        await ctx.send('くさい')
-    elif rand == 1:
-        await ctx.send('ばか')
-    elif rand == 2:
-        await ctx.send('暇人')
-    elif rand == 3:
-        await ctx.send('ひきこもり')
-    elif rand == 4:
-        await ctx.send('かわいい')
-
-@bot.command()
+@bot.command() #ウルタントーク
 async def urutalk(ctx,string:str):
     member = ctx.guild.get_member(446286203101249567)
     await ctx.send(member.mention+' '+ctx.author.name+'「'+string+'」')
 
         
-@bot.command()
+@bot.command() #フレンドコード一覧
 async def frlist(ctx):
     await ctx.send('--------------------------------------------')
     await ctx.send('|Friend cords list for '+ctx.author.mention+'!|')
@@ -92,21 +77,20 @@ async def frlist(ctx):
       
     await ctx.send('--------------------------------------------')
         
-@bot.command()
+@bot.command() #フレンドコード検索
 async def frc(ctx,cord:str):
     await ctx.send(ctx.author.mention)
     await ctx.send(frdic.get(cord,cord+' は見つかりませんでした'))
 
-@bot.command()
+@bot.command() #ウルタンアンチレベリング
 async def dcurutan(ctx):
     global urulv
     urulv+=1
-    
     if urulv%10 == 0:
         embed_message = discord.Embed(title='ウルタンアンチレベルが '+str(urulv)+' になりました！', description='ウルタンおつ！',color=7506394)
         await ctx.send(content=None, embed=embed_message)
     
-@bot.command()
+@bot.command() #デバッグ用ウルタンアンチ確認コマンド
 async def call(ctx):
     global urulv
     await ctx.send('現在のアンチレベル ： '+str(urulv))
