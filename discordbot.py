@@ -16,7 +16,7 @@ frdic={"ウルpu":"7274-0692-4516","デコピン【R】":"0857-0883-1787","鮪":
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name='urutan anti'))
+    await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 
 '''
 @bot.event
@@ -42,6 +42,11 @@ async def on_message(message):
         
     await bot.process_commands(message)
 
+@bot.command()
+async def play(ctx):
+      str = random.choice(("ウルタンくさい","ウルタン受験落ちました","ウルタン天気予報","ウルタンラジオ","ウルタンドットコム","ウルタンハム太郎",
+                          "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
+      await bot.change_presence(activity=discord.Game(name=))
 
 @bot.event
 async def on_command_error(ctx, error):
