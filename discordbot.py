@@ -67,11 +67,12 @@ async def ウルタンは(ctx):
         
 @bot.command()
 async def frlist(ctx):
-    await ctx.send('-----------------------------------\n')
+    await ctx.send('--------------------------------------------\n')
+    await ctx.send('|Friend cords list to '+ctx.author.mention|)
     for i in frdic:
         await ctx.send('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
       
-    await ctx.send('-----------------------------------\n')
+    await ctx.send('--------------------------------------------\n')
         
 @bot.command()
 async def frc(ctx,cord:str):
