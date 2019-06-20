@@ -66,6 +66,11 @@ async def ウルタンは(ctx):
         await ctx.send('かわいい')
         
 @bot.command()
+async def frc(ctx):
+    for i in frdic:
+        await ctx.send(i\t| frdic[i])
+        
+@bot.command()
 async def frc(ctx,cord:str):
     await ctx.send(frdic.get(cord,cord+' は見つかりませんでした'))
 
