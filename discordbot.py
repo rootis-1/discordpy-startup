@@ -69,7 +69,7 @@ async def ウルタンは(ctx):
 async def frlist(ctx):
     await ctx.send('----------------------------------------')
     for i in frdic:
-        await ctx.send('|\t'+i+'\t'+str(frdic[i]).ljust(12)+'\t|')
+        await ctx.send('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
         await ctx.send('----------------------------------------\n')
         
 @bot.command()
