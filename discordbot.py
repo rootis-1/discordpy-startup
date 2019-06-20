@@ -24,7 +24,6 @@ async def on_message(message):
     
     if message.author == client.user:
         return
-    await message.channel.send(discord.Guild.id)
     if message.content.startswith('hellouru'):
         member = message.guild.get_member(446286203101249567)
         await message.channel.send(member.mention+' おはよう')
