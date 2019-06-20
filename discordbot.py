@@ -58,7 +58,7 @@ async def on_command_error(ctx, error):
     await ctx.send(str(error))
 
 @bot.command()
-async def Bosyu(ctx,str:rule,str:open):
+async def Bosyu(ctx,rule:str,open:str):
       if rule == "n":rule="ナワバリバトル"
       elif rule == "r2":rule="リーグマッチ（2）"
       elif rule == "r4":rule="リーグマッチ（4）"
