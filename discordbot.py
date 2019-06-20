@@ -80,11 +80,11 @@ async def frlist(ctx):
 @bot.command() #フレンドコード検索
 async def frc(ctx,cord:str):
     await ctx.send(ctx.author.mention)
-        if cord.startswith("ウル"):cord="ウルタン"
-        elif cord=="zeppurun":cord="ウルタン"
-        elif cord=="リアルくん":cord="リアル"
-        elif cord=="ちんちん":cord="ちゅんちゅん"
-        elif cord=="ち〇んち〇ん":cord="ちゅんちゅん"
+    if cord.startswith("ウル"):cord="ウルタン"
+    elif cord=="zeppurun":cord="ウルタン"
+    elif cord=="リアルくん":cord="リアル"
+    elif cord=="ちんちん":cord="ちゅんちゅん"
+    elif cord=="ち〇んち〇ん":cord="ちゅんちゅん"
     await ctx.send(frdic.get(cord,cord+' は見つかりませんでした'))
 
 @bot.command() #ウルタンアンチレベリング
