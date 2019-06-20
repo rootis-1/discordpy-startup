@@ -18,11 +18,6 @@ frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","�
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 
-'''
-@bot.event
-async def on_ready():
-    await client.change_presence(activity=discord.Game(name='ウルタンアンチ'))
-'''
 @bot.event #startswith反応単語
 async def on_message(message):
     
@@ -44,8 +39,10 @@ async def on_message(message):
         str = random.choice(("ばかだ","無能だ","ハゲだ","ごみだ","くさい","頭悪い","気持ち悪い","かわいい"))
         await message.channel.send(message.author.mention+' ウルタン'+str+'ね')
     if message.content=='かわいくないよ':
-        await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいい'))
-        await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
+        if discord.Guild.id!=586914633441607696:return;
+        else:
+            await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいい'))
+            await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
         
         
     await bot.process_commands(message)
@@ -106,6 +103,7 @@ async def call(ctx):
       
 @bot.event
 async def on_menber_join(menber):
+      if discord.Guild.id==586914633441607696:
         role = discord.utils.get(ctx.guild.roles, name='かわいい')
         await ctx.author.add_roles(role)
         
