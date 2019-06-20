@@ -75,6 +75,7 @@ async def frlist(ctx):
         
 @bot.command()
 async def frc(ctx,cord:str):
+    await ctx.send(ctx.author.mention)
     await ctx.send(frdic.get(cord,cord+' は見つかりませんでした'))
 
 @bot.command()
