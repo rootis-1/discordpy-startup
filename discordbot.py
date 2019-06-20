@@ -46,7 +46,7 @@ async def on_message(message):
 async def play(ctx):
       str = random.choice(("ウルタンくさい","ウルタン受験落ちました","ウルタン天気予報","ウルタンラジオ","ウルタンドットコム","ウルタンハム太郎",
                           "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
-      await bot.change_presence(activity=discord.Game(name=))
+      await bot.change_presence(activity=discord.Game(name=str))
 
 @bot.event
 async def on_command_error(ctx, error):
