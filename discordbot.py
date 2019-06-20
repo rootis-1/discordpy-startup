@@ -72,12 +72,12 @@ async def urutalk(ctx,string:str):
         
 @bot.command()
 async def frlist(ctx):
-    await ctx.send(f'<```>--------------------------------------------')
+    await ctx.send('--------------------------------------------')
     await ctx.send('|Friend cords list for '+ctx.author.mention+'!|')
     for i in frdic:
         await ctx.send('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
       
-    await ctx.send(f'--------------------------------------------<```>')
+    await ctx.send('--------------------------------------------')
         
 @bot.command()
 async def frc(ctx,cord:str):
