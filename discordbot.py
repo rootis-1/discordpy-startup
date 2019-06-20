@@ -67,10 +67,7 @@ async def ウルタンは(ctx):
         
 @bot.command()
 async def frc(ctx,cord:str):
-    if (cord in frdic) == True:
-        await ctx.send(frdic["cord"])
-    else:
-        await ctx.send(cord+' は見つかりませんでした')
+    await ctx.send(frdic.get(cord,cord+' は見つかりませんでした'))
 
 @bot.command()
 async def dcurutan(ctx):
