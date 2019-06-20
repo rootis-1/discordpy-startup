@@ -13,7 +13,10 @@ frdic={"ウルpu":"7274-0692-4516","デコピン【R】":"0857-0883-1787","鮪":
       "流星(Light)":"4668-6953-1391","闇":"2996-3936-5864","ゆっくりはやくタロウ":"1396-6888-2293","あげパン":"1792-7753-6891",
       "ログ":"8566-2988-4961","ちゅんちゅん":"6001-3499-3328","goa":"2589-2017-2410","taki":"2321-8536-1233","りある":"3518-6462-4899",
       "カービィ":"5558-7760-9399","さいつお":"6222-8498-7799"}
-await bot.change_presence(activity=discord.Game(name='urutan anti'))
+
+@bot.event
+async def on_ready():
+    await bot.change_presence(activity=discord.Game(name='urutan anti'))
 
 '''
 @bot.event
