@@ -68,7 +68,7 @@ async def ウルタンは(ctx):
 @bot.command()
 async def frlist(ctx):
     for i in frdic:
-        await ctx.send(i+'\t| '+frdic[i])
+        await ctx.send(i+'\t| '+str(frdic[i]))
         
 @bot.command()
 async def frc(ctx,cord:str):
