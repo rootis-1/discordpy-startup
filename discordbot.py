@@ -38,6 +38,10 @@ async def on_message(message):
         await message.channel.send(message.author.mention+' '+str)
     elif message.content.startswith('ガハハ'):
         await message.channel.send(message.author.mention+' はクソ')
+    elif message.content.startswith('おやす'):
+        await message.channel.send(message.author.mention+' おやすみー！')
+    elif message.content.startswith('おは'):
+        await message.channel.send(message.author.mention+' おはよう！起きて！朝だよ！カンカンカンカンカンカンカンカンカン')
             
         
     await bot.process_commands(message)
