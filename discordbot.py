@@ -57,6 +57,17 @@ async def play(ctx):
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
 
+@bot.command()
+async def Bosyu(ctx,str:rule,str:open):
+      if rule == "n":rule="ナワバリバトル"
+      elif rule == "r2":rule="リーグマッチ（2）"
+      elif rule == "r4":rule="リーグマッチ（4）"
+      elif rule == "s":rule="サーモンラン"
+      elif rule == "f":rule="フェスマッチ（フレンド）"
+      else : return;
+      embed_message = discord.Embed(title=ctx.author.mention+' が'+open+'から'+rule+'を開催！',color=7506394)
+      await ctx.send(content=None, embed=embed_message)
+
 
 @bot.command() #ピンポンテスト
 async def ping(ctx):
