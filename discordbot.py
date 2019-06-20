@@ -34,7 +34,7 @@ async def on_message(message):
     
     if message.content.startswith('urutest'):
         member = message.guild.get_member(446286203101249567)
-        await message.channel.send(member.mention+' '+str(message.author.nick)+'「おはよう」')
+        await message.channel.send(member.mention+' '+message.author+'「おはよう」')
     
         
     await bot.process_commands(message)
