@@ -9,6 +9,8 @@ client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 
+frdic={"uru"=12345,"noringar"=67890}
+
 '''
 @bot.event
 async def on_ready():
@@ -62,6 +64,12 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     elif rand == 4:
         await ctx.send('かわいい')
+        
+@bot.command()
+async def frc(ctx,cord:str):
+    if (cord in frdic) == True:
+        await ctx.send(frdic["cord"])
+    else await ctx.send(cord+' は見つかりませんでした')
 
 @bot.command()
 async def dcurutan(ctx):
@@ -75,6 +83,6 @@ async def dcurutan(ctx):
 @bot.command()
 async def call(ctx):
     global urulv
-    await ctx.send('現在のアンチレベル ： '+urulv)
+    await ctx.send('現在のアンチレベル ： '+str(urulv))
         
 bot.run(token)
