@@ -33,9 +33,7 @@ async def on_message(message):
         await message.channel.send(message.author.mention+' はクソ')
     
     if message.content.startswith('urutest'):
-        member = message.guild.get_member(446286203101249567)
-        await message.channel.send(member.mention+' '+message.author.name+'「おはよう」')
-    
+            
         
     await bot.process_commands(message)
 
@@ -64,6 +62,12 @@ async def ウルタンは(ctx):
         await ctx.send('ひきこもり')
     elif rand == 4:
         await ctx.send('かわいい')
+
+@bot.command()
+async def urutalk(ctx,string:str):
+    member = ctx.guild.get_member(446286203101249567)
+    await ctx.send(member.mention+' '+ctx.author.name+'「'+string+'」')
+
         
 @bot.command()
 async def frlist(ctx):
