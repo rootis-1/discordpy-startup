@@ -123,12 +123,10 @@ async def urutalk(ctx,string:str):
 @bot.command() #フレンドコード一覧
 async def frlist(ctx):
     temp=[]
-    await ctx.send('--------------------------------------------')
-    await ctx.send('|Friend cords list for '+ctx.author.mention+'!|')
     for i in frdic:
-        temp.append= ('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
+        temp.append('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
     string = "\n".join(temp)
-    await ctx.send('--------------------------------------------')
+    await ctx.send('--------------------------------------------\n'+'|Friend cords list for '+ctx.author.mention+'!|\n'+string+'\n--------------------------------------------')
         
 @bot.command() #フレンドコード検索
 async def frc(ctx,cord:str):
