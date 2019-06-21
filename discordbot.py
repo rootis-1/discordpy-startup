@@ -65,7 +65,8 @@ async def Bosyu(ctx,rule:str,open:str):
       elif rule == "s":rule="サーモンラン"
       elif rule == "f":rule="フェスマッチ（フレンド）"
       else : return;
-      embed_message = discord.Embed(title=ctx.author.name+' が'+open+'から'+rule+'を開催！',color=7506394,thumbnail.url="https://www.sankei.com/images/news/180503/plt1805030018-p1.jpg")
+      embed_message = discord.Embed(title=ctx.author.name+' が'+open+'から'+rule+'を開催！',color=7506394)
+      embed_message.set_image(url="https://www.sankei.com/images/news/180503/plt1805030018-p1.jpg")
       await ctx.send(content=None, embed=embed_message)
 
 
