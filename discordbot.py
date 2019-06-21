@@ -131,7 +131,6 @@ async def frlist(ctx):
         
 @bot.command() #フレンドコード検索
 async def frc(ctx,cord:str):
-    await ctx.send(ctx.author.mention)
     if cord.startswith("ウル"):cord="ウルタン"
     elif cord=="zeppurun":cord="ウルタン"
     elif cord=="リアルくん":cord="リアル"
@@ -139,7 +138,7 @@ async def frc(ctx,cord:str):
     elif cord=="ち〇んち〇ん":cord="ちゅんちゅん"
     elif cord=="かろーらたまて":cord="かろーら"
     elif cord=="バナナ":cord="taki"
-    await ctx.send(frdic.get(cord,cord+' は見つかりませんでした'))
+    await ctx.send(ctx.author.mention+"\n"+frdic.get(cord,cord+' は見つかりませんでした'))
 
 @bot.command() #ウルタンアンチレベリング
 async def dcurutan(ctx):
@@ -159,5 +158,25 @@ async def on_menber_join(menber):
       if menber.guild.id==586914633441607696:
         role = discord.utils.get(ctx.guild.roles, name='かわいい')
         await ctx.author.add_roles(role)
+            
+@bot.command()
+async def help(ctx):
+      embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
+      embed.add_field(name=_dcurutan, value="ウルタンアンチレベルを1上げます。（ネタ要素）", inline=False)
+      embed.add_field(name=_call, value="ウルタンアンチレベルを表示します。（ネタ要素）", inline=False)
+      embed.add_field(name=_frlist, value="登録されているメンバーのフレンドコードリスト。", inline=False)
+      embed.add_field(name=_frc メンバー名, value="特定のメンバーのフレンドコード。", inline=False)
+      embed.add_field(name=_Bosyu ルール 時間, value="ルールは、n（ナワバリ）r2（2リグ）r4（4リグ）s（サーモン）f（フェス）を指定し募集します。", inline=False)
+      embed.add_field(name=_team 人数, value="与えられた人数に対してランダムに2チームを生成。", inline=False)
+      embed.add_field(name=_ping, value="返信テストコマンド", inline=False)
+      embed.add_field(name=_help, value="このDMを送信します。", inline=False)
+      embed.add_field(name=おは, value="返信「おはよう！・・・」", inline=False)
+      embed.add_field(name=おやす, value="返信「おやすみー！」", inline=True)
+      embed.add_field(name=ばぶ, value="返信「（ランダム）」", inline=True)
+      embed.add_field(name=ガハハ, value="返信「はクソ」", inline=True)
+      embed.add_field(name=ウルタン, value="返信「ウルタン（ランダム）ね」", inline=True)
+      embed.add_field(name=hellouru, value="@ウルタン おはよう", inline=True)
+      embed.set_footer(text="何か不明な点があれば、わたくし @カッシー/にゅげ#5706 までご連絡くださーい！ｗ")
+      await ctx.author.create_dm().send(embed_message)
         
 bot.run(token)
