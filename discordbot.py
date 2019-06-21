@@ -90,8 +90,8 @@ async def team(ctx,num:int):
       
       for i in range(num):
             if sead[i]==0:
-                  temp[i]='参加者['+i+']\tチームA'
-            else: temp[i]='参加者['+i+']\tチームB'
+                  temp[i]='参加者['+str(i)+']\tチームA'
+            else: temp[i]='参加者['+str(i)+']\tチームB'
             string = "\n".join(temp)
       await ctx.send(ctx.author.mention+'\n'+string)
 
