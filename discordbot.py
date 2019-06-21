@@ -160,7 +160,7 @@ async def on_menber_join(menber):
         await ctx.author.add_roles(role)
             
 @bot.command()
-async def help(ctx):
+async def helpbot(ctx):
       embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
       embed.add_field(name="_dcurutan", value="ウルタンアンチレベルを1上げます。（ネタ要素）", inline=False)
       embed.add_field(name="_call", value="ウルタンアンチレベルを表示します。（ネタ要素）", inline=False)
