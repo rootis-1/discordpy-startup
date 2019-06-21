@@ -63,7 +63,6 @@ async def on_command_error(ctx, error):
 async def team(ctx,num:int):
       import random
       import math
-      num = 2
       sead = [0] * num
       test = 0
       red = math.floor(num/2)
