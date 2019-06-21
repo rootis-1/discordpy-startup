@@ -87,7 +87,7 @@ async def team(ctx,num:int):
             if start+record==red:
                   record =0
                   start =0
-      
+      temp = []
       for i in range(num):
             if sead[i]==0:
                   temp[i]='参加者['+str(i)+']\tチームA'
