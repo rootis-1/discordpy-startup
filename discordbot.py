@@ -61,28 +61,36 @@ async def on_command_error(ctx, error):
 
 @bot.command()
 async def team(ctx,num:int):
-      if num==2:return;
-      
+      import random
+      import math
+      num = 2
       sead = [0] * num
       test = 0
+      red = math.floor(num/2)
       for i in range(num):
             #初期配列を生成
             sead[i] = random.randrange(2)
-
-      for i in range(math.floor(num/2)):
+      i=0
+      for i in range(red):
             test += sead[i]
             #赤チームの現人数はtest=青チームの残り人数（test）、青チームの現人数=赤チームの残り人数（4-test）
     
-      start = random.randrange(4)
-
-      for i in range(math.floor(num/2)):
-            sead[i+math.floor(num/2)]=0
-
-      for i in range(math.floor(num/2)-test):
-            sead[i+math.floor(num/2)+start] = 1
-            
+      start = random.randrange(red)
+      i=0
+      for i in range(red):
+            sead[i+red]=0
+      record = 0
+      i=0
+      while i<red-test:
+            sead[red+record+start] = 1
+            i+=1
+            record += 1
+            if start+record==red:
+                  record =0
+                  start =0
+                  
       for i in range(num):
-            string = '\n'.join([str(n) for n in sead])
+                  string = '\n'+'\n'.join([str(n) for n in sead])
       await ctx.send(ctx.author.mention+string)
 
 
