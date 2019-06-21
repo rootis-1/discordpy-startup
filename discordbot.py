@@ -57,6 +57,31 @@ async def play(ctx):
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
 
+
+@bot.command()
+async def team(ctx,num:int):
+      if num==2:return;
+      
+      sead = [0] * num
+      test = 0
+      for i in range(num):
+            #初期配列を生成
+            sead[i] = random.randrange(2)
+
+      for i in range(math.floor(num/2)):
+            test += sead[i]
+            #赤チームの現人数はtest=青チームの残り人数（test）、青チームの現人数=赤チームの残り人数（4-test）
+    
+      start = random.randrange(4)
+
+      for i in range(math.floor(num/2)):
+            sead[i+math.floor(num/2)]=0
+
+      for i in range(math.floor(num/2)-test):
+            sead[i+math.floor(num/2)+start] = 1
+      await ctx.send(ctx.author.mention+sead)
+
+
 @bot.command()
 async def Bosyu(ctx,rule:str,open:str):
       if rule == "n":rule="ナワバリバトル"
