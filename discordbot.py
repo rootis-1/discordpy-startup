@@ -80,7 +80,10 @@ async def team(ctx,num:int):
 
       for i in range(math.floor(num/2)-test):
             sead[i+math.floor(num/2)+start] = 1
-      await ctx.send(ctx.author.mention+sead)
+            
+      for i in range(num):
+            string = '\n'.join([str(n) for n in sead])
+      await ctx.send(ctx.author.mention+string)
 
 
 @bot.command()
