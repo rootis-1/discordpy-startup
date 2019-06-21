@@ -87,10 +87,13 @@ async def team(ctx,num:int):
             if start+record==red:
                   record =0
                   start =0
-                  
+      
       for i in range(num):
-                  string = '\n'+'\n'.join([str(n) for n in sead])
-      await ctx.send(ctx.author.mention+string)
+            if sead[i]==0:
+                  temp[i]='参加者['+i+']\tチームA'
+            else: temp[i]='参加者['+i+']\tチームB'
+            string = "\n".join(temp)
+      await ctx.send(ctx.author.mention+'\n'+string)
 
 
 @bot.command()
