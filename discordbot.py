@@ -167,7 +167,7 @@ async def help(ctx):
       embed.add_field(name="_frlist", value="登録されているメンバーのフレンドコードリスト。", inline=False)
       embed.add_field(name="_frc メンバー名", value="特定のメンバーのフレンドコード。", inline=False)
       embed.add_field(name="_Bosyu ルール 時間", value="ルールは、n（ナワバリ）r2（2リグ）r4（4リグ）s（サーモン）f（フェス）を指定し募集します。", inline=False)
-      embed.add_field(name="_team" 人数, value="与えられた人数に対してランダムに2チームを生成。", inline=False)
+      embed.add_field(name="_team 人数", value="与えられた人数に対してランダムに2チームを生成。", inline=False)
       embed.add_field(name="_ping", value="返信テストコマンド", inline=False)
       embed.add_field(name="_help", value="このDMを送信します。", inline=False)
       embed.add_field(name="おは", value="返信「おはよう！・・・」", inline=False)
