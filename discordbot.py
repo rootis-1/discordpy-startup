@@ -62,7 +62,7 @@ async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
       elif switch=="OFF":switch="ON"
-      await ctx.send(switch)
+      await bot.display_name = switch
       
 @bot.event
 async def on_command_error(ctx, error):
