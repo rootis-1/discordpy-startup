@@ -162,8 +162,10 @@ async def dcurutan(ctx):
     
 @bot.command() #デバッグ用ウルタンアンチ確認コマンド
 async def call(ctx):
+    global switch
     global urulv
     await ctx.send('現在のアンチレベル ： '+str(urulv))
+    await ctx.send('現在のswitch状態：'+switch)
       
 @bot.event
 async def on_menber_join(menber):
