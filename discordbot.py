@@ -9,6 +9,7 @@ bot = commands.Bot(command_prefix='_')
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
+switch = "ON"
 
 frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","鮪":"5987-3991-4481","千秋":"1153-1958-7503","リアル":"2707-5632-2995",
       "流星(Light)":"4668-6953-1391","闇":"2996-3936-5864","ゆっくりはやくタロウ":"1396-6888-2293","あげパン":"1792-7753-6891",
@@ -19,11 +20,19 @@ frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","�
 @bot.event
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
-    
+
+@bot.command
+async def botsw(ctx):
+      if switch == "ON":
+            await bot.nick = "SSーM bot <OFF>"
+            switch="OFF"
+      elif switch == "OFF":
+            await bot.nick = "SSーM bot <ON>"
+            switch="ON"
 
 @bot.event #startswith反応単語
 async def on_message(message):
-    
+    if switch == "OFF":return
     if message.author == client.user:
         return
     if message.content.startswith('hellouru'):
