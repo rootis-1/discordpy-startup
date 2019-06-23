@@ -62,7 +62,7 @@ async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
       elif switch=="OFF":switch="ON"
-      await bot.change_nick("SSーM bot <"+switch+">")
+      await bot.change_nickname("SSーM bot <"+switch+">")
 
       
 @bot.event
