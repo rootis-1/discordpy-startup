@@ -162,6 +162,8 @@ async def frc(ctx,cord:str):
     elif cord=="バナナ":cord="taki"
     elif cord=="ぬらねこ":cord="ぬらねこX"
     elif cord=="ぬら":cord="ぬらねこX"
+    elif cord=="ぬぅ？":cord="ぬらねこX"
+    elif cord=="ぬぅ?":cord="ぬらねこX"
     await ctx.send(ctx.author.mention+"\n"+frdic.get(cord,cord+' は見つかりませんでした'))
 
 @bot.command() #ウルタンアンチレベリング
