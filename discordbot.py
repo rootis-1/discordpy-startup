@@ -67,8 +67,7 @@ async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
       elif switch=="OFF":switch="ON"
-      str = random.choice(("ウルタンくさい","ウルタン受験落ちました","ウルタン天気予報","ウルタンラジオ","ウルタンドットコム","ウルタンハム太郎",
-                          "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
+      str = random.choice(("妖怪ウォッチ4","スプラトゥーン2","ウルタンくさい","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","健康ミネラルウル茶","ウルタン語彙力ない"))
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
 
      
