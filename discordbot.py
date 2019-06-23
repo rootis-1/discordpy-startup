@@ -59,10 +59,10 @@ async def play(ctx):
 async def botsw(ctx):
       if switch == "ON":
             switch="OFF"
-            await bot.nick = "SSーM bot <OFF>"
+            #await bot.nick = "SSーM bot <OFF>"
       elif switch == "OFF":
             switch="ON"
-            await bot.nick = "SSーM bot <ON>"
+            #await bot.nick = "SSーM bot <ON>"
       
 @bot.event
 async def on_command_error(ctx, error):
