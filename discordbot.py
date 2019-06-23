@@ -76,7 +76,7 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_command_error(ctx, exception):
     if isinstance(exception, commands.BadArgument):
-        ctx.send("不正な入力です")
+        await ctx.send("不正な入力です")
 
 
 @bot.command()
