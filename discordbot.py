@@ -24,11 +24,11 @@ async def on_ready():
 @bot.command
 async def botsw(ctx):
       if switch == "ON":
-            await bot.nick = "SSーM bot <OFF>"
             switch="OFF"
+            await bot.nick = "SSーM bot <OFF>"
       elif switch == "OFF":
-            await bot.nick = "SSーM bot <ON>"
             switch="ON"
+            await bot.nick = "SSーM bot <ON>"
 
 @bot.event #startswith反応単語
 async def on_message(message):
