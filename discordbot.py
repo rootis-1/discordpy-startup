@@ -24,6 +24,7 @@ async def on_ready():
 @bot.event #startswith反応単語
 async def on_message(message):
     global switch
+    await message.guild.get_member(590138519650041876).display_name = "SSーM bot <"+switch+">"
     if not message.content.startswith('_') and switch == "OFF":
         return
     if message.author == client.user:
@@ -62,7 +63,7 @@ async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
       elif switch=="OFF":switch="ON"
-      await ctx.guild.get_member(590138519650041876).display_name = "SSーM bot <"+switch+">"
+      
       
 @bot.event
 async def on_command_error(ctx, error):
