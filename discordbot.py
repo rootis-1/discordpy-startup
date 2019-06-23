@@ -19,7 +19,7 @@ frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","�
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
+    await bot.change_presence(activity=discord.Game(name=switch+'-ウルタンアンチ'))
 
 @bot.event #startswith反応単語
 async def on_message(message):
@@ -56,7 +56,7 @@ async def play(ctx):
       global switch
       str = random.choice(("ウルタンくさい","ウルタン受験落ちました","ウルタン天気予報","ウルタンラジオ","ウルタンドットコム","ウルタンハム太郎",
                           "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
-      await bot.change_presence(activity=discord.Game(name=switch+'-'str))
+      await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
 
 @bot.command()
 async def botsw(ctx):
