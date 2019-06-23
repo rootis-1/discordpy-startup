@@ -62,7 +62,7 @@ async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
       elif switch=="OFF":switch="ON"
-      await bot.display_name = switch
+      await ctx.guild.get_member(590138519650041876).display_name = "SSーM bot <"+switch+">"
       
 @bot.event
 async def on_command_error(ctx, error):
