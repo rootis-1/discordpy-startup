@@ -67,10 +67,16 @@ async def botsw(ctx):
                           "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
 
-      
+'''      
 @bot.event
 async def on_command_error(ctx, error):
     await ctx.send('エラーが発生しました\n'+str(error))
+'''
+
+@bot.event
+async def on_command_error(ctx, exception):
+    if isinstance(exception, commands.BadArgument):
+        ctx.send("不正な入力です")
 
 
 @bot.command()
