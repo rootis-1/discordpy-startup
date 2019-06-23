@@ -53,16 +53,16 @@ async def on_message(message):
 
 @bot.command() #プレイ中の表示を変更
 async def play(ctx):
+      global switch
       str = random.choice(("ウルタンくさい","ウルタン受験落ちました","ウルタン天気予報","ウルタンラジオ","ウルタンドットコム","ウルタンハム太郎",
                           "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
-      await bot.change_presence(activity=discord.Game(name=str))
+      await bot.change_presence(activity=discord.Game(name=switch+'-'str))
 
 @bot.command()
 async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
       elif switch=="OFF":switch="ON"
-      await bot.change_nickname("SSーM bot <"+switch+">")
 
       
 @bot.event
