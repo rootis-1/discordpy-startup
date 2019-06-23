@@ -47,6 +47,11 @@ async def on_message(message):
         if message.guild.id==586914633441607696:
             await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいい'))
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
+    if message.content=='やっぱりかわいいよ':
+        if message.guild.id==586914633441607696:
+            await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
+            await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいい'))
+    
         
         
     await bot.process_commands(message)
@@ -155,6 +160,8 @@ async def frc(ctx,cord:str):
     elif cord=="ち〇んち〇ん":cord="ちゅんちゅん"
     elif cord=="かろーらたまて":cord="かろーら"
     elif cord=="バナナ":cord="taki"
+    elif cord=="ぬらねこ":cord="ぬらねこX"
+    elif cord=="ぬら":cord="ぬらねこX"
     await ctx.send(ctx.author.mention+"\n"+frdic.get(cord,cord+' は見つかりませんでした'))
 
 @bot.command() #ウルタンアンチレベリング
