@@ -21,19 +21,6 @@ frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","�
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 
-@bot.command
-async def botsw(ctx):
-      if switch == "ON":
-            switch="OFF"
-            '''
-            await bot.nick = "SSーM bot <OFF>"
-            '''
-      elif switch == "OFF":
-            switch="ON"
-            '''
-            await bot.nick = "SSーM bot <ON>"
-            '''
-
 @bot.event #startswith反応単語
 async def on_message(message):
     if switch == "OFF":return
@@ -68,6 +55,15 @@ async def play(ctx):
                           "ウルタンばぶー","ウルタン不審者","ウルタン健康ミネラルむぎ茶","ウルタンは語彙力ないよ"))
       await bot.change_presence(activity=discord.Game(name=str))
 
+@bot.command()
+async def botsw(ctx):
+      if switch == "ON":
+            switch="OFF"
+            await bot.nick = "SSーM bot <OFF>"
+      elif switch == "OFF":
+            switch="ON"
+            await bot.nick = "SSーM bot <ON>"
+      
 @bot.event
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
