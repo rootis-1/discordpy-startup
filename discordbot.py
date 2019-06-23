@@ -70,7 +70,7 @@ async def botsw(ctx):
       
 @bot.event
 async def on_command_error(ctx, error):
-    await ctx.send(str(error))
+    await ctx.send('エラーが発生しました\n'+str(error))
 
 
 @bot.command()
