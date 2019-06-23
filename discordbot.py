@@ -24,7 +24,8 @@ async def on_ready():
 @bot.event #startswith反応単語
 async def on_message(message):
       global switch
-    if switch == "OFF":return
+    if switch == "OFF":
+        return
     if message.author == client.user:
         return
     if message.content.startswith('hellouru'):
