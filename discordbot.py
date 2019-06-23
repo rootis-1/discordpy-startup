@@ -23,6 +23,7 @@ async def on_ready():
 
 @bot.event #startswith反応単語
 async def on_message(message):
+      global switch
     if switch == "OFF":return
     if message.author == client.user:
         return
@@ -57,6 +58,7 @@ async def play(ctx):
 
 @bot.command()
 async def botsw(ctx):
+      global switch
       if switch == "ON":
             switch="OFF"
             #await bot.nick = "SSーM bot <OFF>"
