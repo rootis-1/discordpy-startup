@@ -137,7 +137,7 @@ async def ping(ctx):
 
 @bot.command()
 async def role(ctx,string:str):
-      if str=="testrole":
+      if string=="testrole":
             if "testrole" in ctx.author.roles:
                   await ctx.author.remove_roles(discord.utils.get(ctx.guild.roles, name='testrole'))
             else:
