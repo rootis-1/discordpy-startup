@@ -137,14 +137,12 @@ async def ping(ctx):
 
 @bot.command()
 async def role(ctx,string:str):
-      '''
       if string=="testrole":
-            if "testrole" in ctx.author.roles:
-                  await ctx.author.remove_roles(discord.utils.get(ctx.guild.roles, name='testrole'))
+            target = discord.utils.get(ctx.guild.roles, name=string) in ctx.author.roles
+            if target:
+                  await ctx.author.remove_roles(discord.utils.get(ctx.guild.roles, name=string))
             else:
-                  await ctx.author.add_roles(discord.utils.get(ctx.guild.roles,name='testrole'))
-      '''
-      await ctx.send(discord.utils.get(ctx.guild.roles, name='testrole') in ctx.author.roles)
+                  await ctx.author.add_roles(discord.utils.get(ctx.guild.roles,name=string))
 
 @bot.command() #ウルタントーク
 async def urutalk(ctx,string:str):
