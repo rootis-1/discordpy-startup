@@ -135,6 +135,13 @@ async def Bosyu(ctx,rule:str,open:str):
 async def ping(ctx):
     await ctx.send('pong')
 
+@bot.command()
+async def role(ctx,string:str):
+      if str=="testrole":
+            if "testrole" in ctx.author.roles:
+                  await ctx.author.remove_roles(discord.utils.get(ctx.guild.roles, name='testrole'))
+            else:
+                  await ctx.author.add_roles(discord.utils.get(ctx.guild.roles,name='testrole'))
 
 @bot.command() #ウルタントーク
 async def urutalk(ctx,string:str):
@@ -182,7 +189,7 @@ async def call(ctx):
       
 @bot.event
 async def on_menber_join(member):
-      if member.channel==586914633441607696:
+      if member.guild.id==586914633441607696:
         role = discord.utils.get(ctx.guild.roles, name='かわいい')
         await member.add_roles(role)
             
