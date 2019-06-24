@@ -144,7 +144,7 @@ async def role(ctx,string:str):
             else:
                   await ctx.author.add_roles(discord.utils.get(ctx.guild.roles,name='testrole'))
       '''
-      await ctx.send('testrole' in ctx.author.roles)
+      await ctx.send(discord.utils.get(ctx.guild.roles, name='testrole') in message.author.roles)
 
 @bot.command() #ウルタントーク
 async def urutalk(ctx,string:str):
@@ -214,6 +214,6 @@ async def helpbot(ctx):
       embed.add_field(name="ウルタン", value="返信「ウルタン（ランダム）ね」", inline=True)
       embed.add_field(name="hellouru", value="@ウルタン おはよう", inline=True)
       embed.set_footer(text="何か不明な点があれば、わたくし @カッシー/にゅげ#5706 までご連絡くださーい！ｗ")
-      await ctx.author.create_dm().send(context=None,embed=embed_message)
+      await ctx.author.send_message(message.author,embed_message)
         
 bot.run(token)
