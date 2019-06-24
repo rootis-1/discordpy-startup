@@ -144,7 +144,7 @@ async def role(ctx,string:str):
             else:
                   await ctx.author.add_roles(discord.utils.get(ctx.guild.roles,name='testrole'))
       '''
-      await ctx.send('testrole' in ctx.author.Member.roles)
+      await ctx.send('testrole' in ctx.author.roles)
 
 @bot.command() #ウルタントーク
 async def urutalk(ctx,string:str):
