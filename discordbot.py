@@ -144,7 +144,7 @@ async def role(ctx,string:str):
             else:
                   await ctx.author.add_roles(discord.utils.get(ctx.guild.roles,name='testrole'))
       '''
-      await ctx.send(discord.utils.get(ctx.guild.roles, name='testrole') in message.author.roles)
+      await ctx.send(discord.utils.get(ctx.guild.roles, name='testrole') in ctx.author.roles)
 
 @bot.command() #ウルタントーク
 async def urutalk(ctx,string:str):
@@ -198,7 +198,7 @@ async def on_menber_join(member):
             
 @bot.command()
 async def helpbot(ctx):
-      embed_message=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
+      embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
       embed.add_field(name="_dcurutan", value="ウルタンアンチレベルを1上げます。（ネタ要素）", inline=False)
       embed.add_field(name="_call", value="ウルタンアンチレベルを表示します。（ネタ要素）", inline=False)
       embed.add_field(name="_frlist", value="登録されているメンバーのフレンドコードリスト。", inline=False)
@@ -214,6 +214,6 @@ async def helpbot(ctx):
       embed.add_field(name="ウルタン", value="返信「ウルタン（ランダム）ね」", inline=True)
       embed.add_field(name="hellouru", value="@ウルタン おはよう", inline=True)
       embed.set_footer(text="何か不明な点があれば、わたくし @カッシー/にゅげ#5706 までご連絡くださーい！ｗ")
-      await ctx.author.send_message(message.author,embed_message)
+      await ctx.author.send_message(message.author,embed)
         
 bot.run(token)
