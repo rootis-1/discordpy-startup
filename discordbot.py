@@ -93,7 +93,7 @@ async def spla(ctx,string:str):
       temp = frdic.get(string,string+' は見つかりませんでした')
       if temp is not None:
             embed = discord.Embed(title=string+'の画像', description='https://pbs.twing.com/media/'+temp+'.jpg', color=0x80ffff)
-            await ctx.send(context=None,embed=embed)
+            await ctx.send(content=None,embed=embed)
 
 
 @bot.command()
