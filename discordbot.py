@@ -29,6 +29,11 @@ async def dc(ctx):
 @bot.command()
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
+    
+@bot.event
+async def on_message(message):
+    if message.content.starswith('まいにち過疎'):
+        await message.send('わかる')
 
 
 bot.run(token)
