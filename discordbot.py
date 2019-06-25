@@ -91,7 +91,9 @@ async def on_command_error(ctx, error):
 async def spla(ctx,string:str):
       temp = ""
       temp = imdic.get(string,string+' は見つかりませんでした')
-      await ctx.send('https://pbs.twing.com/media/'+temp+'.jpg')
+      if temp is not None:
+            embed = discord.Embed(title=string+'の画像', description='https://pbs.twimg.com/media/'+temp+'.jpg', color=0x80ffff)
+            await ctx.send(content=None,embed=embed)
 
 
 @bot.command()
