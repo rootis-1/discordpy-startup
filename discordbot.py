@@ -218,6 +218,6 @@ async def helpbot(ctx):
       embed.add_field(name="hellouru", value="@ウルタン おはよう", inline=True)
       embed.set_footer(text="何か不明な点があれば、わたくし @カッシー/にゅげ#5706 までご連絡くださーい！ｗ")
       dm_channel = await ctx.author.create_dm()
-      await dm_channel.send(embed=embed_message)
+      await dm_channel.send(embed=embed)
         
 bot.run(token)
