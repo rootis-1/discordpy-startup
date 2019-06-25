@@ -10,9 +10,6 @@ token = os.environ['DISCORD_BOT_TOKEN']
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
     
-    
-    
-await client.change_presence(activity=discord.Game(name='電波人間のRPG Free'))
 
  
 @bot.command()
