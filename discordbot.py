@@ -20,6 +20,9 @@ async def on_ready():
 async def m(ctx):
     await ctx.send('まいにち過疎')
     
+@bot.event
+async def "#まいにち過疎"(message):
+   if message.content.startswith('わかる'):
 
  
 @bot.command()
