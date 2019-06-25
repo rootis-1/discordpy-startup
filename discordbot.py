@@ -196,7 +196,7 @@ async def call(ctx):
 @bot.event
 async def on_menber_join(member):
       if member.guild.id==586914633441607696:
-        role = discord.utils.get(ctx.guild.roles, name='かわいい')
+        role = discord.utils.get(member.guild.roles, name='かわいい')
         await member.add_roles(role)
             
 @bot.command()
