@@ -4,6 +4,7 @@ import os
 import traceback
 import random
 import math
+import base64
 
 bot = commands.Bot(command_prefix='_')
 client = discord.Client()
@@ -11,11 +12,11 @@ token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 switch = "ON"
 
-frdic={"ウルタン":"7274-0692-4516","デコピン【R】":"0857-0883-1787","鮪":"5987-3991-4481","千秋":"1153-1958-7503","リアル":"2707-5632-2995",
-      "流星(Light)":"4668-6953-1391","闇":"2996-3936-5864","ゆっくりはやくタロウ":"1396-6888-2293","あげパン":"1792-7753-6891",
-      "ログ":"8566-2988-4961","ちゅんちゅん":"6001-3499-3328","goa":"2589-2017-2410","taki":"2321-8536-1233","りある":"3518-6462-4899",
-      "カービィ":"5558-7760-9399","カッシー":"5542-3638-4894","さいつお":"6222-8498-7799","root-1":"2917-4595-2298","かろーら":"1193-9378-7413",
-      "taki":"2321-8536-1233","まさば":"5933-1748-1005","ぬらねこX":"1502-7328-6127"}
+frdic={"ウルタン":b'NzI3NC0wNjkyLTQ1MTY=',"デコピン【R】":b'MDg1Ny0wODgzLTE3ODc=',"鮪":b'NTk4Ny0zOTkxLTQ0ODE=',"千秋":b'MTE1My0xOTU4LTc1MDM=',"リアル":b'MjcwNy01NjMyLTI5OTU=',
+      "流星(Light)":b'NDY2OC02OTUzLTEzOTE=',"闇":b'Mjk5Ni0zOTM2LTU4NjQ=',"ゆっくりはやくタロウ":b'MTM5Ni02ODg4LTIyOTM=',"あげパン":b'MTc5Mi03NzUzLTY4OTE=',
+      "ログ":b'ODU2Ni0yOTg4LTQ5NjE=',"ちゅんちゅん":b'NjAwMS0zNDk5LTMzMjg=',"goa":b'MjU4OS0yMDE3LTI0MTA=',"taki":b'MjMyMS04NTM2LTEyMzM=',"りある":b'MzUxOC02NDYyLTQ4OTk=',
+      "カービィ":b'NTU1OC03NzYwLTkzOTk=',"カッシー":b'NTU0Mi0zNjM4LTQ4OTQ=',"さいつお":b'NjIyMi04NDk4LTc3OTk=',"root-1":b'MjkxNy00NTk1LTIyOTg=',"かろーら":b'MTE5My05Mzc4LTc0MTM=',
+      "まさば":b'NTkzMy0xNzQ4LTEwMDU=',"ぬらねこX":b'MTUwMi03MzI4LTYxMjc='}
 
 @bot.event
 async def on_ready():
@@ -152,6 +153,8 @@ async def urutalk(ctx,string:str):
         
 @bot.command() #フレンドコード一覧
 async def frlist(ctx):
+    for i in frdic:
+        frdic[i]=base64.b64decode(frdic[i]).decode("utf-8")
     temp=[]
     for i in frdic:
         temp.append('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
