@@ -19,7 +19,7 @@ async def ping(ctx):
     
 @bot.command()
 async def いちごおばけ(ctx):
-    await ctx.send('さいつお')
+    await ctx.send('さいつお！')
 
 
 bot.run(token)
