@@ -21,8 +21,8 @@ async def m(ctx):
     await ctx.send('まいにち過疎')
     
 @bot.event
-async def "#まいにち過疎"(message):
-   if message.content.startswith('わかる'):
+async def わかる(message):
+   if message.content.startswith('まいにち過疎'):
 
  
 @bot.command()
