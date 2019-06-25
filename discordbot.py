@@ -12,12 +12,7 @@ async def on_command_error(ctx, error):
     
     
     
-client.on('ready', message =>
-{
-  client.user.setPresence({ game: { name: '電波人間のRPG Free！' } });  
-  console.log('bot is ready!');
-});
-
+await client.change_presence(activity=discord.Game(name='電波人間のRPG Free'))
 
  
 @bot.command()
