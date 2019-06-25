@@ -11,7 +11,7 @@ async def on_command_error(ctx, error):
     await ctx.send(str(error))
  
 
-    
+@bot.command()
 async def m(ctx):
     await ctx.send('まいにち過疎')
     
