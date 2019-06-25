@@ -22,11 +22,6 @@ async def m(ctx):
     await ctx.send('まいにち過疎')
     
     
-@bot.event
-async def わかる(message):
-   if message.content.startswith('まいにち過疎'):
-    
-    
 @bot.command()
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
