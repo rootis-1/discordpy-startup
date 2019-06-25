@@ -9,7 +9,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 
 @bot.event
 async def on_command_error(ctx, error):
-    await ctx.send(str(error))
+    await ctx.send('そんなコマンドないよ？出直してきな？')
  
 
 @bot.event
@@ -21,6 +21,10 @@ async def on_ready():
 async def m(ctx):
     await ctx.send('まいにち過疎')
     
+ 
+@bot.command()
+async def dc(ctx):
+    await ctx.send('fuck')
     
 @bot.command()
 async def いちごおばけ(ctx):
