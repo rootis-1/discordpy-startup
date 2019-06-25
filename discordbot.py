@@ -18,6 +18,10 @@ frdic={"ウルタン":b'NzI3NC0wNjkyLTQ1MTY=',"デコピン【R】":b'MDg1Ny0wOD
       "カービィ":b'NTU1OC03NzYwLTkzOTk=',"カッシー":b'NTU0Mi0zNjM4LTQ4OTQ=',"さいつお":b'NjIyMi04NDk4LTc3OTk=',"root-1":b'MjkxNy00NTk1LTIyOTg=',"かろーら":b'MTE5My05Mzc4LTc0MTM=',
       "まさば":b'NTkzMy0xNzQ4LTEwMDU=',"ぬらねこX":b'MTUwMi03MzI4LTYxMjc='}
 
+for i in frdic:
+        frdic[i]=base64.b64decode(frdic[i]).decode("utf-8")
+    
+
 @bot.event
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name=switch+'-ウルタンアンチ'))
@@ -153,8 +157,6 @@ async def urutalk(ctx,string:str):
         
 @bot.command() #フレンドコード一覧
 async def frlist(ctx):
-    for i in frdic:
-        frdic[i]=base64.b64decode(frdic[i]).decode("utf-8")
     temp=[]
     for i in frdic:
         temp.append('|      '+i+'     '+str(frdic[i]).ljust(12)+'    |')
