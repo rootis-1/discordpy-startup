@@ -9,9 +9,11 @@ token = os.environ['DISCORD_BOT_TOKEN']
 @bot.event
 async def on_command_error(ctx, error):
     await ctx.send(str(error))
+ 
+
     
-    
-await client.change_presence(activity=discord.Game(name='電波人間のRPG Free'))
+async def m(ctx):
+    await ctx.send('まいにち過疎')
     
 
  
