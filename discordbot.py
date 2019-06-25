@@ -202,6 +202,7 @@ async def on_menber_join(member):
 @bot.command()
 async def helpbot(ctx):
       embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
+      embed.add_field(name="_botsw", value="botの反応を抑制するかを切り替えます（ONOFFはプレイ中の欄に表示されます）", inline=False)
       embed.add_field(name="_dcurutan", value="ウルタンアンチレベルを1上げます。（ネタ要素）", inline=False)
       embed.add_field(name="_call", value="ウルタンアンチレベルを表示します。（ネタ要素）", inline=False)
       embed.add_field(name="_frlist", value="登録されているメンバーのフレンドコードリスト。", inline=False)
