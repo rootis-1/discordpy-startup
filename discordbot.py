@@ -20,7 +20,10 @@ frdic={"ウルタン":b'NzI3NC0wNjkyLTQ1MTY=',"デコピン【R】":b'MDg1Ny0wOD
 
 for i in frdic:
         frdic[i]=base64.b64decode(frdic[i]).decode("utf-8")
-    
+
+imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコラボ":"DEr1IYZUMAEL5ti","スプラシューターベッチュー":"DnAkWdSV4AAJWlR",
+       "パブロ":"DFUzvT2UAAAiHAd","パブロ・ヒュー":"DOQmbrpVAAA7u9d","パーマネント・パブロ":"D28vURdUcAQ4uc9",
+       "ショッツル鉱山":"DZbK2EDVAAAuvbI","フジツボスポーツクラブ":"C3K5Ou1VcAAG-2z","マンタマリア号","DIEFuh-UIAAAz_w"}
 
 @bot.event
 async def on_ready():
@@ -84,6 +87,13 @@ async def on_command_error(ctx, exception):
 async def on_command_error(ctx, error):
     await ctx.send('エラーが発生しました\n'+str(error))
 
+@bot.command()
+async def spla(ctx,string:str):
+      temp = ""
+      temp = frdic.get(string,string+' は見つかりませんでした')
+      if temp is not None:
+            embed = discord.Embed(title=string+'の画像', description='https://pbs.twing.com/media/'+temp+'.jpg', color=0x80ffff)
+            await ctx.send(context=None,embed=embed)
 
 
 @bot.command()
