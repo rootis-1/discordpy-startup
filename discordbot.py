@@ -34,6 +34,6 @@ async def いちごおばけ(ctx):
 async def on_message(message):
     if message.content.startswith('まいにち過疎'):
         await message.channel.send('わかる')
-
+    await bot.process_commands(message)
 
 bot.run(token)
