@@ -204,10 +204,10 @@ async def call(ctx):
 async def on_member_join(member):
       if member.guild.id==586914633441607696: #総合ゲーム鯖用設定
         role = discord.utils.get(member.guild.roles, name='かわいい')
-        await member.add_roles(role)
       elif member.guild.id==593372280969756682: #作業用鯖用設定
         role = discord.utils.get(member.guild.roles, name='DJ')
-        await member.add_roles(role)
+      else:return;
+      await member.add_roles(role)
             
 @bot.command()
 async def helpbot(ctx):
