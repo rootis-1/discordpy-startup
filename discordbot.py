@@ -63,6 +63,8 @@ async def on_message(message):
         if message.guild.id==586914633441607696:
             await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいい'))
+    if message.content=='np':
+        await message.channel.send('!np')
     
         
         
