@@ -29,6 +29,10 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name=switch+'-ウルタンアンチ'))
 
+class MyHelpCommand(commands.MinimalHelpCommand):
+    def get_command_signature(self, command):
+        return '{0.clean_prefix}{1.qualified_name} {1.signature}'.format(self, command)
+
 @bot.event #startswith反応単語
 async def on_message(message):
     global switch
