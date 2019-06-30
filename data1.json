@@ -1,14 +1,14 @@
 {
-  "test1":{
-    "string":"あああ",
+  "ウルタン":{
+    "twid":"noringar_"
     "num":10
   },
-  "test2":{
-    "string":"いいい",
+  "root":{
+    "twid":"root_mgi",
     "num":20
   },
-  "test3":{
-    "string":"ううう",
+  "自分":{
+    "twid":"tororo_shidoro",
     "num":30
   }
 }
