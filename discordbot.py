@@ -35,7 +35,7 @@ async def on_message(message):
     if message.content.startswith('口が悪いね、残念だがここでお別れだ'):
         await message.channel.send('もちろんy')
     if message.content.startswith('おはよう'):
-        await message.channel.send('おはよう！れ！')
+        await message.channel.send('おは')
     if message.author.bot==True:return;
     if message.content.startswith('まいにち過疎'):
         await message.channel.send('わかる')
