@@ -5,6 +5,7 @@ import traceback
 import random
 import math
 import base64
+import json
 
 bot = commands.Bot(command_prefix='_')
 client = discord.Client()
@@ -83,6 +84,12 @@ async def botsw(ctx):
       elif switch=="OFF":switch="ON"
       str = random.choice(("妖怪ウォッチ4","スプラトゥーン2","ウルタンくさい","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","健康ミネラルウル茶","ウルタン語彙力ない"))
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
+      
+@bot.command()
+async def jsontest(ctx):
+      f = open('../data1.json','r')
+      fdic = json.load(f)
+      await ctx.send(fdic['test1']['string'])
 
      
 @bot.event
@@ -96,8 +103,11 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def spla(ctx,string:str):
       temp = ""
-      temp = imdic.get(string,string+' は見つかりませんでした')
-      await ctx.send('https://pbs.twimg.com/media/'+temp+'.jpg')
+      temp = imdic.get(string)
+      if temp != None:
+            await ctx.send('https://pbs.twimg.com/media/'+temp+'.jpg')
+      else:
+            await ctx.send(string+'は見つかりませんでした')
 
 @bot.command()
 async def team(ctx,num:int):
