@@ -87,7 +87,7 @@ async def botsw(ctx):
       
 @bot.command()
 async def jsontest(ctx):
-      f = open('https://github.com/coolwind0202/discordpy-startup/blob/master/data1.json','r')
+      f = open('data1.json','r')
       fdic = json.load(f)
       await ctx.send(fdic['test1']['string'])
 
