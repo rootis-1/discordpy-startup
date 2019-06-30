@@ -86,10 +86,10 @@ async def botsw(ctx):
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
       
 @bot.command()
-async def jsontest(ctx):
+async def jsontest(ctx,name:str):
       f = open('data1.json','r')
       fdic = json.load(f)
-      await ctx.send(fdic['test1']['string'])
+      await ctx.send(fdic[name]['twid'])
 
      
 @bot.event
