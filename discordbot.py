@@ -7,7 +7,7 @@ import math
 import base64
 import json
 
-bot = commands.Bot(command_prefix='_' help_command=None)
+bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
