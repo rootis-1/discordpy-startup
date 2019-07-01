@@ -93,7 +93,7 @@ async def decore(ctx,target:str,cont:str):
 async def umekomi(ctx,string1:str,string2:str):
       embed = discord.Embed(title=string1, description=string2,color=0x80ff00)
       embed.set_author(name="作者",icon_url=ctx.author.avatar_url)
-      await ctx.send(context=None,embed=embed)
+      await ctx.send(content=None,embed=embed)
 
 @bot.command() #botの状態を設定
 async def botsw(ctx):
