@@ -35,7 +35,7 @@ async def on_message(message):
     if message.content.startswith('口が悪いね、残念だがここでお別れだ'):
         await message.channel.send('もちろんy')
     if message.content.startswith('おはよう'):
-        await message.channel.send('おは')
+        await message.channel.send('言動には注意すべきだ。発言者本人は発せられたその言葉の意味や意図をよく考えないで使っているかもしれないが、あらゆる行動に意味を持つように、その言葉を発した意味も当然存在する筈だ。言葉の意味を失わない為に、また、今後は反射的な発言をしないように、今一度、その発言の意味を深く考えてみてはどうだろうか。')
     if message.author.bot==True:return;
     if message.content.startswith('まいにち過疎'):
         await message.channel.send('わかる')
