@@ -7,7 +7,7 @@ import math
 import base64
 import json
 
-bot = commands.Bot(command_prefix='_')
+bot = commands.Bot(command_prefix='_' help_command=None)
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
@@ -80,7 +80,7 @@ async def play(ctx):
 @bot.command()
 async def decore(ctx,target:str):
       string=""
-      if str=="b" or str=="bold" or str=="strong" =or str=="太字":string="**"
+      if str=="b" or str=="bold" or str=="strong" or str=="太字":string="**"
       await ctx.send(string+ctx.content+string)
 
 @bot.command() #botの状態を設定
@@ -232,7 +232,7 @@ async def on_member_join(member):
       await member.add_roles(role)
             
 @bot.command() #ヘルプ
-async def helpbot(ctx):
+async def help(ctx):
       embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
       embed.add_field(name="_botsw", value="botの反応を抑制するかを切り替えます（ONOFFはプレイ中の欄に表示されます）", inline=False)
       embed.add_field(name="_dcurutan", value="ウルタンアンチレベルを1上げます。（ネタ要素）", inline=False)
