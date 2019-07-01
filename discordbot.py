@@ -88,6 +88,12 @@ async def decore(ctx,target:str,cont:str):
       elif target=="コード" or target=="code":string="```"
       elif target=="隠す" or target=="マスク" or target=="mask":string="||"
       await ctx.send(string+cont+string)
+      
+@bot.command()
+async def umekomi(ctx,string1:str,string2:str):
+      embed = discord.Embed(title=string1, description=string2,color=0x80ff00)
+      embed.set_author(name="作者",, icon_url=ctx.author.avatar_url)
+      await ctx.send(context=None,embed=embed)
 
 @bot.command() #botの状態を設定
 async def botsw(ctx):
@@ -245,6 +251,7 @@ async def help(ctx):
       embed.add_field(name="_call", value="ウルタンアンチレベルを表示します。（ネタ要素）", inline=False)
       embed.add_field(name="_frlist", value="登録されているメンバーのフレンドコードリスト。", inline=False)
       embed.add_field(name="_frc メンバー名", value="特定のメンバーのフレンドコード。", inline=False)
+      embed.add_field(name="_decore 装飾の種類 文字列",value="文字列を指定の方法で装飾。太字、斜体、取り消し線、マスクなどが可能。",inline="False")
       embed.add_field(name="_Bosyu ルール 時間", value="ルールは、n（ナワバリ）r2（2リグ）r4（4リグ）s（サーモン）f（フェス）を指定し募集します。", inline=False)
       embed.add_field(name="_team 人数", value="与えられた人数に対してランダムに2チームを生成。", inline=False)
       embed.add_field(name="_ping", value="返信テストコマンド", inline=False)
