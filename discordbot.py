@@ -76,8 +76,14 @@ async def play(ctx):
       global switch
       str = random.choice(("妖怪ウォッチ4","スプラトゥーン2","ウルタンくさい","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","健康ミネラルウル茶","ウルタン語彙力ない"))
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
-
+      
 @bot.command()
+async def decore(ctx,target:str):
+      string=""
+      if str=="b" or str=="bold" or str=="strong" =or str=="太字":string="**"
+      await ctx.send(string+ctx.content+string)
+
+@bot.command() #botの状態を設定
 async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
@@ -85,7 +91,7 @@ async def botsw(ctx):
       str = random.choice(("妖怪ウォッチ4","スプラトゥーン2","ウルタンくさい","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","健康ミネラルウル茶","ウルタン語彙力ない"))
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
       
-@bot.command()
+@bot.command() #jsonファイルの読み書きテスト
 async def jsontest(ctx,name:str):
       f = open('data1.json','r')
       fdic = json.load(f)
@@ -100,7 +106,7 @@ async def on_command_error(ctx, exception):
 async def on_command_error(ctx, error):
     await ctx.send('エラーが発生しました\n'+str(error))
 
-@bot.command()
+@bot.command() #画像表示 URL一覧は上記辞書
 async def spla(ctx,string:str):
       temp = ""
       temp = imdic.get(string)
@@ -109,7 +115,7 @@ async def spla(ctx,string:str):
       else:
             await ctx.send(string+'は見つかりませんでした')
 
-@bot.command()
+@bot.command() #チーム生成
 async def team(ctx,num:int):
       import random
       import math
@@ -146,7 +152,7 @@ async def team(ctx,num:int):
       await ctx.send(ctx.author.mention+'\n'+string)
 
 
-@bot.command()
+@bot.command() #いらない
 async def Bosyu(ctx,rule:str,open:str):
       if rule == "n":rule="ナワバリバトル"
       elif rule == "r2":rule="リーグマッチ（2）"
@@ -163,7 +169,7 @@ async def Bosyu(ctx,rule:str,open:str):
 async def ping(ctx):
     await ctx.send('pong')
 
-@bot.command()
+@bot.command() #役職配布
 async def role(ctx,string:str):
       if string=="testrole":
             target = discord.utils.get(ctx.guild.roles, name=string) in ctx.author.roles
@@ -216,7 +222,7 @@ async def call(ctx):
     await ctx.send('現在のアンチレベル ： '+str(urulv))
     await ctx.send('現在のswitch状態：'+switch)
       
-@bot.event
+@bot.event #メンバーに自動で役職付与
 async def on_member_join(member):
       if member.guild.id==586914633441607696: #総合ゲーム鯖用設定
         role = discord.utils.get(member.guild.roles, name='かわいい')
@@ -225,7 +231,7 @@ async def on_member_join(member):
       else:return;
       await member.add_roles(role)
             
-@bot.command()
+@bot.command() #ヘルプ
 async def helpbot(ctx):
       embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
       embed.add_field(name="_botsw", value="botの反応を抑制するかを切り替えます（ONOFFはプレイ中の欄に表示されます）", inline=False)
