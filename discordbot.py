@@ -78,10 +78,10 @@ async def play(ctx):
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
       
 @bot.command()
-async def decore(ctx,target:str):
+async def decore(ctx,target:str,cont:str):
       string=""
-      if str=="b" or str=="bold" or str=="strong" or str=="太字":string="**"
-      await ctx.send(string+ctx.content+string)
+      if target=="b" or target=="bold" or target=="strong" or target=="太字":string="**"
+      await ctx.send(string+cont+string)
 
 @bot.command() #botの状態を設定
 async def botsw(ctx):
