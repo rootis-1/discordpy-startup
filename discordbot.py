@@ -85,7 +85,7 @@ async def decore(ctx,target:str,cont:str):
       elif target=="s" or target=="strike" or target =="deleted" or target=="取り消し線":string="~~"
       elif target.startswith('取り消'):string="~~"
       elif target=="u" or target=="アンダーライン" or target=="アンダーバー" or target=="下線" or target=="underline":string="__"
-      elif target=="コード" or target=="code":string=="```"
+      elif target=="コード" or target=="code":string="
       elif target=="隠す" or target=="マスク" or target=="mask":string="||"
       await ctx.send(string+cont+string)
 
