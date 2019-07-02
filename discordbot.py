@@ -21,6 +21,10 @@ async def on_ready():
 async def m(ctx):
     await ctx.send('まいにち過疎')
     
+@bot.command()
+async def 右(ctx):
+        str = random.choice(("はずれー！！懲りずに、また挑戦してみてね！","当たり！次の穴を選んでね！"))
+    await ctx.send(+str+)
  
 @bot.command()
 async def dc(ctx):
