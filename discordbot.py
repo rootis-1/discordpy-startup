@@ -24,7 +24,7 @@ async def m(ctx):
 @bot.command()
 async def 右(ctx):
         str = random.choice(("はずれー！！懲りずに、また挑戦してみてね！","当たり！次の穴を選んでね！"))
-    await ctx.send(+str+)
+    await ctx.send(+str)
  
 @bot.command()
 async def dc(ctx):
