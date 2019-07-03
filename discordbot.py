@@ -34,8 +34,13 @@ async def いちごおばけ(ctx):
 async def on_message(message):
     if message.content.startswith('口が悪いね、残念だがここでお別れだ'):
         await message.channel.send('もちろんy')
+    if message.content.startswith('ダブルアップ'):
+        await message.channel.send('どちらの穴に入るか、「右」か「左」で決めよう！')
     if message.content.startswith('右'):
         str = random.choice(("はずれー！！懲りずに、また挑戦してみてね！","当たり！次の穴を選んでね！"))
+        await message.channel.send(str)
+    if message.content.startswith('左'):
+        str = random.choice(("残念、そっちはハズレの穴なんだ","当たり！次の穴を選んでね！"))
         await message.channel.send(str)
     if message.content.startswith('おやすみ'):
         await message.channel.send(message.author.name+' Gute Nacht, gute Träume')
