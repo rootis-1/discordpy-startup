@@ -36,7 +36,7 @@ async def on_message(message):
         await message.channel.send('もちろんy')
     if message.content.startswith('右'):
         str = random.choice(("はずれー！！懲りずに、また挑戦してみてね！","当たり！次の穴を選んでね！"))
-        await message.channel.send(message.author.name+' '+str)
+        await message.channel.send(str)
     if message.content.startswith('おやすみ'):
         await message.channel.send(message.author.name+' Gute Nacht, gute Träume')
     if message.content.startswith('おはよう'):
