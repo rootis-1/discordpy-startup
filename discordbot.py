@@ -8,7 +8,7 @@ bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
-@bot.event
+@bot.event #FalseCommand
 async def on_command_error(ctx, error):
     await ctx.send('そんなコマンドないよ？出直してきな？')
  
