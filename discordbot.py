@@ -59,7 +59,7 @@ async def on_message(message):
             ducount = 0
             return;
         if rand==1:
-            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+ducount+"回目）",description="\n\t●\t●\n",color=0x80ff00)
+            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）",description="\n\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
             
     if (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
