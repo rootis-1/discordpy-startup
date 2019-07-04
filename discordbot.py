@@ -62,9 +62,13 @@ async def on_message(message):
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
             return;
-        if rand==1:
+        if rand==1 and ducount!=4: #4回目以外
             ducount += 1
             embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）",description="\n\t●\t●\n",color=0x80ff00)
+            await message.channel.send(content=None,embed=embed)
+        elif rand==1 and ducount==4: #4回目のみ（穴数変更）
+            ducount += 1
+            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）",description="\n\t●\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
             
     if (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
@@ -76,6 +80,8 @@ async def on_message(message):
             return;
         if rand==2:
             await message.channel.send(message.author.mention+" おめでとう")
+            ducount = 0
+            return;
             
             
     if message.content.startswith('おやすみ'):
