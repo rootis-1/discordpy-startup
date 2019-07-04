@@ -43,7 +43,6 @@ async def on_message(message):
      5→5個目の穴の答えを受け取／おめでとう
     '''
     global ducount
-    mescount += 1
     if message.content.startswith('口が悪いね、残念だがここでお別れだ'): 
         await message.channel.send('もちろんy')
         
