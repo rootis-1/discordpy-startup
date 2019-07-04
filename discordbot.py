@@ -57,7 +57,7 @@ async def on_message(message):
         
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
         #rand = random.randrange(2)
-        rand = 0
+        rand = 1
         if rand==0:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
@@ -69,7 +69,7 @@ async def on_message(message):
             
     if (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
         #rand = random.randrange(3)
-        rand = 0
+        rand = 1
         if rand==0 or rand==1:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
