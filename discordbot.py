@@ -81,7 +81,9 @@ async def on_message(message):
             ducount = 0
             return;
         
-    if message.content=='リセット':ducount = 0
+    if message.content=='リセット':
+        ducount = 0
+        await message.channel.send("リセットされました")
             
             
     if message.content.startswith('おやすみ'):
