@@ -47,13 +47,17 @@ async def on_message(message):
         await message.channel.send('もちろんy')
         
     if message.content.startswith('ダブルアップ'): #初回
+        if ducount>0:
+            await message.channel.send("もう始まってるよ")
+            return;
         ducount = 0 #リスタート
         embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）", description="\n\t●\t●\n",color=0x80ff00)
         await message.channel.send(content=None,embed=embed)
         ducount = 1
         
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
-        rand = random.randrange(2)
+        #rand = random.randrange(2)
+        rand = 0
         if rand==0:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
@@ -64,7 +68,8 @@ async def on_message(message):
             await message.channel.send(content=None,embed=embed)
             
     if (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
-        rand = random.randrange(3)
+        #rand = random.randrange(3)
+        rand = 0
         if rand==0 or rand==1:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
