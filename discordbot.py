@@ -80,6 +80,8 @@ async def on_message(message):
             await message.channel.send(message.author.mention+" おめでとう")
             ducount = 0
             return;
+        
+    if message.content=='リセット':ducount = 0
             
             
     if message.content.startswith('おやすみ'):
