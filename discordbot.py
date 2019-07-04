@@ -6,6 +6,7 @@ import random
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
+ducount = 0
 
 
 @bot.event #FalseCommand
@@ -32,16 +33,46 @@ async def いちごおばけ(ctx):
        
 @bot.event
 async def on_message(message):
-    if message.content.startswith('口が悪いね、残念だがここでお別れだ'):
+    '''
+    <ducountが>
+     0→スタート（１個目の穴を聞く）countを1に
+     1→1個目の穴の答えを受け取／２個目の穴を聞く countを2に
+     2→2個目の穴の答えを受け取／３個目の穴を聞く countを3に
+     3→3個目の穴の答えを受け取／４個目の穴を聞く countを4に
+     4→4個目の穴の答えを受け取／５個目の穴を聞く（！ここだけ三択！） countを5に
+     5→5個目の穴の答えを受け取／おめでとう
+    '''
+    global ducount
+    mescount += 1
+    if message.content.startswith('口が悪いね、残念だがここでお別れだ'): 
         await message.channel.send('もちろんy')
-    if message.content.startswith('ダブルアップ'):
-        await message.channel.send('どちらの穴に入るか、「右」か「左」で決めよう！')
-    if message.content.startswith('右'):
-        str = random.choice(("はずれー！！懲りずに、また挑戦してみてね！","当たり！次の穴を選んでね！"))
-        await message.channel.send(str)
-    if message.content.startswith('左'):
-        str = random.choice(("残念、そっちはハズレの穴なんだ","当たり！次の穴を選んでね！"))
-        await message.channel.send(str)
+        
+    if message.content.startswith('ダブルアップ'): #初回
+        ducount = 0 #リスタート
+        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）", description="\n\t●\t●\n",color=0x80ff00)
+        await message.channel.send(content=None,embed=embed)
+        ducount = 1
+        
+    if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
+        rand = random.randrange(2)
+        if rand==0:
+            await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
+            ducount = 0
+            return;
+        if rand==1:
+            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+ducount+"回目）",description="\n\t●\t●\n",color=0x80ff00)
+            await message.channel.send(content=None,embed=embed)
+            
+    if (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
+        rand = random.randrange(3)
+        if rand==0 or rand==1:
+            await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
+            ducount = 0
+            return;
+        if rand==2:
+            await message.channel.send(message.author.mention+" おめでとう")
+            
+            
     if message.content.startswith('おやすみ'):
         await message.channel.send(message.author.name+' Gute Nacht, gute Träume')
     if message.content.startswith('おはよう'):
