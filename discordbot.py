@@ -67,7 +67,7 @@ async def on_message(message):
             await message.channel.send(content=None,embed=embed)
         elif rand==1 and ducount==4: #4回目のみ（穴数変更）
             ducount += 1
-            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）",description="\n\t●\t●\t●\n",color=0x80ff00)
+            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）",description="\n\t●\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
             
     elif (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
@@ -96,5 +96,15 @@ async def on_message(message):
     if 564709839859744769 in message.raw_channel_mentions:
         await message.channel.send('まいにち過疎')
     await bot.process_commands(message)
+    
+    @bot.command() #ヘルプ
+async def help(ctx):
+      embed=discord.Embed(title="ヘルプ", description="いちごおばけbotの反応単語一覧です。", color=0x80ffff)
+      embed.add_field(name="/help", value="この文章を送信します。まあこの文章を読めてる時点で/helpって打ってるんだよね君", inline=False)
+      embed.add_field(name="/m　/dc　/いちごおばけ　おはよう　おやすみ　まいにち過疎", value="特定の単語を返します", inline=False)
+      embed.add_field(name="ダブルアップ", value="ダブルアップチャンスを開始します。続いて表示される指示に従ってください", inline=False)
+      embed.add_field(name="リセット", value="ダブルアップチャンスの状態をリセットします", inline=False)
+      dm_channel = await ctx.author.create_dm()
+      await dm_channel.send(embed=embed)
 
 bot.run(token)
