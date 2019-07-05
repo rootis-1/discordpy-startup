@@ -97,7 +97,7 @@ async def on_message(message):
         await message.channel.send('まいにち過疎')
     await bot.process_commands(message)
     
-    @bot.command() #ヘルプ
+@bot.command() #ヘルプ
 async def help(ctx):
       embed=discord.Embed(title="ヘルプ", description="いちごおばけbotの反応単語一覧です。", color=0x80ffff)
       embed.add_field(name="/help", value="この文章を送信します。まあこの文章を読めてる時点で/helpって打ってるんだよね君", inline=False)
