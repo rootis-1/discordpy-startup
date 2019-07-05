@@ -4,6 +4,8 @@ import os
 import traceback
 import random
 import json
+import math
+import base64
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
