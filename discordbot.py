@@ -89,6 +89,8 @@ async def on_message(message):
         await message.channel.send("リセットされました")
             
             
+    if (message.content.startswith('右')or message.content.startswith('左'))and ducount=0:
+            await message.channel.send('君は相当急いでるみたいだね。もしくは手順を知らない阿呆なのかな？「ダブルアップ」くらい言おうか。')
     if message.content.startswith('おやすみ'):
         await message.channel.send(message.author.name+' Gute Nacht, gute Träume')
     if message.content.startswith('おはよう'):
