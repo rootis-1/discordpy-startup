@@ -58,6 +58,9 @@ async def on_message(message):
         await message.channel.send(content=None,embed=embed)
         ducount = 1
         
+    if (message.content.startswith('右')or message.content.startswith('左'))and ducount=0:
+            await message.channel.send('君は相当急いでるみたいだね。もしくは手順を知らない阿呆なのかな？「ダブルアップ」くらい言おうか。')
+        
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
         rand = random.randrange(2)
         if rand==0:
