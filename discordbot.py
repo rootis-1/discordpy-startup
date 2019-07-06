@@ -42,8 +42,11 @@ async def on_message(message):
     if message.author == client.user:
         return
     if "tw:@" in message.content:
-        str = message.content.replace('tw:@', 'https://twitter.com/')
-        await message.channel.send(str)
+        s = message.content
+        s = s+" "
+        m = re.search('\@+[a-zA-Z0-9_]+[\a-zA-Z0-9_]', s)
+        string = m.group(0).replace("@","https://twitter.com/")
+        await message.channel.send(string)
     if message.content.startswith('hellouru'):
         member = message.guild.get_member(446286203101249567)
         await message.channel.send(member.mention+' おはよう')
