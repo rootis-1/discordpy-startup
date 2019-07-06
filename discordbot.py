@@ -6,6 +6,7 @@ import random
 import math
 import base64
 import json
+import re
 
 bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
