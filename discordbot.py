@@ -274,11 +274,13 @@ async def on_member_join(member):
       
 @bot.event #メンバーが退出したとき
 async def on_member_remove(member):
+      guild = member.guild
       target = guild.system_channel
       await target.send(member.name+" さんがサーバーを脱退しました。ありがとうございました。")
       
 @bot.event #メンバーがBANされたとき
 async def on_member_ban(guild,member):
+      guild = member.guild
       target = guild.system_channel
       await target.send(member.name+" さんがサーバーからBANされました。")
             
