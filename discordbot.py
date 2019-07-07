@@ -58,7 +58,7 @@ async def on_message(message):
             await message.channel.send("もう始まってるよ")
             return;
         starter = message.author.id
-        startname = message.author.nick
+        startname = message.author.name
         ducount = 0 #リスタート
         embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）", description="\n\t●\t●\n",color=0x80ff00)
         await message.channel.send(content=None,embed=embed)
