@@ -115,6 +115,13 @@ async def jsontest(ctx,name:str):
       f = open('data1.json','r')
       fdic = json.load(f)
       await ctx.send(fdic[name]['twid'])
+      f.close()
+      
+@bot.command()
+async def idwrite(ctx):
+      f = open('data2.ssm','a')
+      f.write(ctx.author.id+" ")
+      f.close()
 
      
 @bot.event
