@@ -253,6 +253,7 @@ async def on_member_join(member):
 @bot.command() #ヘルプ
 async def help(ctx):
       embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
+      embed.add_field(name="**コマンド**", value="_コマンド文字列 と送信すると反応します。", inline=False)
       embed.add_field(name="_botsw", value="botの反応を抑制するかを切り替えます（ONOFFはプレイ中の欄に表示されます）", inline=False)
       embed.add_field(name="_dcurutan", value="ウルタンアンチレベルを1上げます。（ネタ要素）", inline=False)
       embed.add_field(name="_call", value="ウルタンアンチレベルを表示します。（ネタ要素）", inline=False)
@@ -264,12 +265,15 @@ async def help(ctx):
       embed.add_field(name="_ping", value="返信テストコマンド", inline=False)
       embed.add_field(name="_role", value="役職半自動配布(試運転)。", inline=False)
       embed.add_field(name="_helpbot", value="このDMを送信します。", inline=False)
+      embed.add_field(name="**先頭反応語句**", value="単語がメッセージの先頭にあった場合に反応します。", inline=False)
       embed.add_field(name="おは", value="返信「おはよう！・・・」", inline=False)
       embed.add_field(name="おやす", value="返信「おやすみー！」", inline=True)
       embed.add_field(name="ばぶ", value="返信「（ランダム）」", inline=True)
       embed.add_field(name="ガハハ", value="返信「はクソ」", inline=True)
       embed.add_field(name="ウルタン", value="返信「ウルタン（ランダム）ね」", inline=True)
       embed.add_field(name="hellouru", value="@ウルタン おはよう", inline=True)
+      embed.add_field(name="その他", value="自動変換機能など。メッセージの先頭でなくても反応。", inline=False)
+      embed.add_field(name="tw:@ID", value="IDをツイッターのURLに変換します。存在しないIDでも変換しちゃいます…", inline=True)
       embed.set_footer(text="何か不明な点があれば、わたくし @カッシー/にゅげ#5706 までご連絡くださーい！ｗ")
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
