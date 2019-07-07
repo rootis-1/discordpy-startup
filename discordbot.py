@@ -66,7 +66,7 @@ async def on_message(message):
         
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
         if starter != message.author.id:
-            await message.channel.send("現在"+startname+"さんがプレイ中です。")
+            await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
             return;
         rand = random.randrange(2)
         if rand==0:
@@ -85,7 +85,7 @@ async def on_message(message):
             
     elif (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
         if starter != message.author.id:
-            await message.channel.send("現在"+startname+"さんがプレイ中です。")
+            await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
             return;
         rand = random.randrange(3)
         if rand==0 or rand==1:
