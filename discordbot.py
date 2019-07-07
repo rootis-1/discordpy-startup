@@ -249,9 +249,21 @@ async def call(ctx):
     await ctx.send('現在のアンチレベル ： '+str(urulv))
     await ctx.send('現在のswitch状態：'+switch)
       
-@bot.event #メンバーに自動で役職付与
+@bot.event #メンバーが入ったとき
 async def on_member_join(member):
-      if member.guild.id==586914633441607696: #総合ゲーム鯖用設定
+      if member.guild.id==568427057076371457:
+        string = "**このサーバーについて**\n"\
+                     "SSーM 本鯖は、ゲームクランSSーMのサーバーです。\n"\
+                     "毎週金曜・土曜にスプラトゥーンでプライベートマッチを行うのが活動内容です。"
+                     "役職「スプラ2」「フォトナ」「妖怪ウォッチ4」「マリメ2」「SZ」を持っているメンバーは、専用チャンネルに書き込めます。\n"\
+                     "管理者からの通知は「 #お知らせ-重要な事 」で告知されます。\n"\
+                     "雑談は、「 #総合雑談 」を使ってください。\n"\
+                     "「rythm（音楽bot）」や「SSーMbot（鯖支援bot）」は「 #bot操作 」を使ってください。\n"\
+                     "これからよろしくお願いします。"
+        dm_channel = await member.create_dm()
+        await dm_channel.send(string)
+        return;
+      elif member.guild.id==586914633441607696: #総合ゲーム鯖用設定
         role = discord.utils.get(member.guild.roles, name='かわいい')
       elif member.guild.id==593372280969756682: #作業用鯖用設定
         role = discord.utils.get(member.guild.roles, name='Gewöhnliche')
@@ -285,5 +297,6 @@ async def help(ctx):
       embed.set_footer(text="何か不明な点があれば、わたくし @カッシー/にゅげ#5706 までご連絡くださーい！ｗ")
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
+      
         
 bot.run(token)
