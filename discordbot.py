@@ -125,7 +125,7 @@ async def jsontest(ctx,name:str):
 @bot.command()
 async def idwrite(ctx):
       print("あなたのIDは"+str(ctx.author.id)+"です。")
-      with open('data2.ssm','a') as f:
+      with open('data2.txt','a') as f:
             f.write(str(ctx.author.id)+"\n")
       print("書き込みました。")
      
