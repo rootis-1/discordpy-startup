@@ -125,10 +125,8 @@ async def jsontest(ctx,name:str):
 @bot.command()
 async def idwrite(ctx):
       await ctx.send("あなたのIDは"+str(ctx.author.id)+"です。")
-      f = open('data2.ssm','a')
-      f.write(str(ctx.author.id)+"\n")
-      f.close()
-
+      with open('data2.ssm','a') as f:
+      print(str(ctx.author.id)+"\n",file=f)
      
 @bot.event
 async def on_command_error(ctx, exception):
