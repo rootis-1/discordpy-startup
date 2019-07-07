@@ -10,6 +10,8 @@ import base64
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 ducount = 0
+starter = 0
+startname = ""
 
 
 @bot.event #FalseCommand
@@ -46,6 +48,8 @@ async def on_message(message):
      5→5個目の穴の答えを受け取／おめでとう
     '''
     global ducount
+    global starter
+    global startname
     if message.content.startswith('口が悪いね、残念だがここでお別れだ'): 
         await message.channel.send('もちろんy')
         
@@ -97,6 +101,8 @@ async def on_message(message):
         
     if message.content=='リセット':
         ducount = 0
+        starter = 0
+        startname = ""
         await message.channel.send("リセットされました")
             
     if message.content.startswith('おやすみ'):
