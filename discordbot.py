@@ -103,7 +103,7 @@ async def on_message(message):
         ducount = 0
         starter = 0
         startname = ""
-        await message.channel.send("リセットされました")
+        await message.channel.send("お前らリセットリセットうるせぇ！botか！？")
             
     if message.content.startswith('!dc'):
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
