@@ -74,6 +74,8 @@ async def on_message(message):
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいい'))
     if message.content=='np':
         await message.channel.send('!np')
+    if message.content.startswith('!dc'):
+        await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
     
         
         
