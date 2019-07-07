@@ -29,6 +29,7 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
 
 @bot.event
 async def on_ready():
+    print("動作を開始しました。")
     await bot.change_presence(activity=discord.Game(name=switch+'-ウルタンアンチ'))
 
 class MyHelpCommand(commands.MinimalHelpCommand):
@@ -77,6 +78,7 @@ async def on_message(message):
         
         
     await bot.process_commands(message)
+
 
 @bot.command() #プレイ中の表示を変更
 async def play(ctx):
@@ -269,6 +271,16 @@ async def on_member_join(member):
         role = discord.utils.get(member.guild.roles, name='Gewöhnliche')
       else:return;
       await member.add_roles(role)
+      
+@bot.event() #メンバーが退出したとき
+async def on_member_remove(member):
+      target = guild.system_channel
+      await target.send(member.name+" さんがサーバーを脱退しました。ありがとうございました。")
+      
+@bot.event()
+async def on_member_ban(guild,member):
+      target = guild.system_channel
+      await target.send(member.name+" さんがサーバーからBANされました。")
             
 @bot.command() #ヘルプ
 async def help(ctx):
