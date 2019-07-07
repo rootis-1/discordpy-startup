@@ -93,7 +93,7 @@ async def on_message(message):
             ducount = 0
             return;
         if rand==2:
-            await message.channel.send(message.author.mention+" おめでとう")
+            await message.channel.send(message.author.mention+"おめでとう 達成できたのは今回で……何回目だったっけ")
             ducount = 0
             return;
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount==0:	
