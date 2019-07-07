@@ -312,5 +312,10 @@ async def help(ctx):
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
       
+@bot.command()
+async def test(ctx,opt:str):
+      if opt=="members":
+            await ctx.send(bot.users)
+      
         
 bot.run(token)
