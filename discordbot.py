@@ -120,7 +120,7 @@ async def jsontest(ctx,name:str):
 @bot.command()
 async def idwrite(ctx):
       f = open('data2.ssm','a')
-      f.write(ctx.author.id+" ")
+      f.write(str(ctx.author.id)+"\n")
       f.close()
 
      
