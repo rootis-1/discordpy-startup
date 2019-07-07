@@ -317,7 +317,7 @@ async def test(ctx,opt:str):
       if opt=="members":
             i=0
             for i in range(len(bot.users)):
-                  await ctx.send(str(i) +"番は" + bot.users[i]+"です")
+                  await ctx.send(bot.users[i])
       
         
 bot.run(token)
