@@ -121,7 +121,7 @@ async def jsontest(ctx,name:str):
 async def idwrite(ctx):
       await ctx.send("あなたのIDは"+str(ctx.author.id)+"です。")
       f = open('data2.ssm','a')
-      await f.write(str(ctx.author.id)+"\n")
+      f.write(str(ctx.author.id)+"\n")
       f.close()
 
      
