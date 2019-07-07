@@ -315,7 +315,7 @@ async def help(ctx):
 @bot.command()
 async def test(ctx,opt:str):
       if opt=="members":
-            await ctx.send(bot.users)
+            await ctx.send(len(bot.users))
       
         
 bot.run(token)
