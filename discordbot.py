@@ -39,6 +39,7 @@ class MyHelpCommand(commands.MinimalHelpCommand):
 @bot.event #startswith反応単語
 async def on_message(message):
     global switch
+    cont = message.content
     if not message.content.startswith('_') and switch == "OFF":
         return
     if message.author == client.user:
@@ -74,7 +75,7 @@ async def on_message(message):
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいい'))
     if message.content=='np':
         await message.channel.send('!np')
-    if message.content.startswith('!dc'):
+    if cont.lower()=="!dc" or cont.lower()=="!disconnect" or cont.lower()=="!leave" or cont.lower()=="!dis" or cont.lower()=="fuckoff":
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
     
         
