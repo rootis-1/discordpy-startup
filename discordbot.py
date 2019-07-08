@@ -7,6 +7,7 @@ import math
 import base64
 import json
 import re
+import os
 
 bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
@@ -316,10 +317,15 @@ async def help(ctx):
       
 @bot.command()
 async def test(ctx,opt:str):
-      if opt=="members":
+      str=""
+      if opt=="ユーザー":
             i=0
             for i in range(len(bot.users)):
-                  await ctx.send(bot.users[i])
+                  str[i] = str(bot.users[i])
+            await ctx.send('\n'.join(str))
+      if opt=="作業ディレクトリ":
+            await ctx.send(os.getcwd())
+
       
         
 bot.run(token)
