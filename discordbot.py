@@ -324,7 +324,8 @@ async def test(ctx,opt:str):
             i=0
             for i in range(len(bot.users)):
                   string.append(str(bot.users[i]))
-            await ctx.send('\n'.join(string))
+            mes = '\n'.join(string)
+            await ctx.send(mes)
       if opt=="作業ディレクトリ":
             await ctx.send(os.getcwd())
 
