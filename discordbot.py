@@ -318,7 +318,6 @@ async def help(ctx):
       
 @bot.command()
 async def test(ctx,opt:str):
-      str=""
       if opt=="ユーザー":
             string=[]
             i=0
