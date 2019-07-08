@@ -27,6 +27,10 @@ async def on_ready():
 @bot.command()
 async def m(ctx):
     await ctx.send('まいにち過疎')
+    
+@bot.command()
+async def root(ctx):
+    await ctx.send('誰が漏斗じゃい')
  
 @bot.command()
 async def dc(ctx):
