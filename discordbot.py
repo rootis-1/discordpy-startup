@@ -58,7 +58,7 @@ async def on_message(message):
     if "漏斗" in cont:
         if routcount == 4:
             await message.channel.send(message.author.mention+"誰が漏斗じゃい！")
-            routcount == 0
+            routcount = 0
         else:
             routcount+=1
     if cont.startswith('hellouru'):
