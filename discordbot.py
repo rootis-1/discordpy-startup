@@ -155,20 +155,34 @@ async def emo5000(ctx,string:str):
                      .replace("お","<:oo:596981372346695690>").replace("か","<:ka:596981589150400522>")\
                      .replace("き","<:ki:596981681173561344>").replace("く","<:ku:596981731085647872>")\
                      .replace("け","<:ke:596981779626328065>").replace("こ","<:ko:596981856939802625>")\
-                     .replace("さ",":sa: ").replace("し",":si: ").replace("す",":su: ").replace("せ",":se: ").replace("そ",":so: ")\
-                     .replace("た",":ta: ").replace("ち",":ti: ").replace("つ",":tu: ").replace("て",":te: ").replace("と",":to: ")\
-                     .replace("な",":na: ").replace("に",":ni: ").replace("ぬ",":nu: ").replace("ね",":ne: ").replace("の",":no: ")\
-                     .replace("は",":ha: ").replace("ひ",":hi: ").replace("ふ",":hu: ").replace("へ",":he: ").replace("ほ",":ho: ")\
-                     .replace("ま",":ma: ").replace("み",":mi: ").replace("む",":mu: ").replace("め",":me: ").replace("も",":mo: ")\
-                     .replace("や",":ya: ").replace("ゆ",":yu: ").replace("よ",":yo: ").replace("わ",":wa: ").replace("を",":wo: ")\
-                     .replace("ん",":nn: ").replace("ぁ",":aa: ").replace("ぃ",":ii:").replace("ぅ",":uu:").replace("ぇ",":ee:")\
+                     .replace("さ","<:sa:596982045368909834>").replace("し","<:si:596982100305903616>")\
+                     .replace("す","<:su:596982151052918794>").replace("せ","<:se:596982205872472074>")\
+                     .replace("そ","<:so:596982251233738752>").replace("た","<:ta:596982409292152852>")\
+                     .replace("ち","<:ti:596982453088944128>").replace("つ","<:tu:596982489420136448>")\
+                     .replace("て","<:te:596982540187860993>").replace("と","::to:596982584240766978>")\
+                     .replace("な","<:na:596982896921673728>").replace("に","<:ni:596982967935565843>")\
+                     .replace("ぬ","<:ni:596982967935565843>").replace("ね","<:ne:596983059065208853>")\
+                     .replace("の","<:no:596983092925956107>").replace("は","<:ha:596983261503160359>")\
+                     .replace("ひ","<:hi:596983308391415809>").replace("ふ","<:hu:596983343195750400>")\
+                     .replace("へ","<:he:596983385893634049>").replace("ほ","<:ho:596983424808648704>")\
+                     .replace("ま","<:ma:596983793609342976>").replace("み","<:mi:596983834428309504>")\
+                     .replace("む","<:mu:596983873317896192>").replace("め","<:me:596983908331946004>")\
+                     .replace("も","<:mo:596983953064198144>").replace("や","<:ya:596985071479554049>")\
+                     .replace("ゆ","<:yu:596985118737039370>").replace("よ","<:yo:596985157756387358>")\
+                     .replace("ら","<:ra:596985291710005248>").replace("り","<:ri:596985334680649730>")\
+                     .replace("る","<:ru:596985373293543429>").replace("れ","<:re:596985411704979468>")\
+                     .replace("ろ","<:ro:596985455111700489>").replace("わ","<:wa:596985495129423884>")\
+                     .replace("を","<:wo:596985533977067525>").replace("ん","<:nn:596985577568731147>")\
+                     .replace("ぁ",":aa: ").replace("ぃ",":ii:").replace("ぅ",":uu:").replace("ぇ",":ee:")\
                      .replace("ぉ",":oo: ").replace("ゃ",":ya: ").replace("ゅ",":yu: ").replace("ょ",":yo: ").replace("ゎ",":wa: ")\
                      .replace("が",":ka: ").replace("ぎ",":ki: ").replace("ぐ",":ku: ").replace("げ",":ke: ").replace("ご",":ko: ")\
                      .replace("ざ",":sa: ").replace("じ",":si: ").replace("ず",":su: ").replace("ぜ",":se: ").replace("ぞ",":so: ")\
                      .replace("だ",":ta: ").replace("ぢ",":ti: ").replace("づ",":tu: ").replace("で",":te: ").replace("ど",":to: ")\
                      .replace("ば",":ha: ").replace("び",":hi: ").replace("ぶ",":hu: ").replace("べ",":he: ").replace("ぼ",":ho: ")\
                      .replace("ぱ",":ha: ").replace("ぴ",":hi: ").replace("ぷ",":hu: ").replace("ぺ",":he: ").replace("ぽ",":ho: ")\
-                     .replace("ー",":__: ").replace("R",":ReTweet: ").replace("F",":favorite: ").replace("s",":Splat_masaback: ")
+                     .replace("ー","<:__:596969408799309826>")
+      
+      #.replace("R",":ReTweet: ").replace("F",":favorite: ").replace("s",":Splat_masaback: ")
       
       await ctx.send(string)
 
