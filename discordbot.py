@@ -67,7 +67,7 @@ async def on_message(message):
         await message.channel.send(message.author.mention+' '+str)
     if cont.startswith('ガハハ'):
         await message.channel.send(message.author.mention+' はクソ')
-    if cont.content.startswith('おやす'):
+    if cont.startswith('おやす'):
         await message.channel.send(message.author.mention+' おやすみー！')
     if cont.startswith('おは'):
         await message.channel.send(message.author.mention+' おはよう！起きて！朝だよ！カンカンカンカンカンカンカンカンカン')   
