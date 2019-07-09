@@ -54,6 +54,7 @@ async def on_message(message):
         m = re.search('\@+[a-zA-Z0-9_]+[\a-zA-Z0-9_]', s)
         string = m.group(0).replace("@","https://twitter.com/")
         await message.channel.send(string)
+    if message.author.bot:return
     if "漏斗" in cont:
         if routcount == 4:
             await message.channel.send(message.author.mention+"誰が漏斗じゃい！")
