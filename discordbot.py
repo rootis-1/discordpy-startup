@@ -27,6 +27,15 @@ async def on_ready():
 @bot.command()
 async def m(ctx):
     await ctx.send('まいにち過疎')
+
+@bot.command()
+async def nox(ctx):
+    await ctx.send('世界は残酷だ。ありふれたジャンク情報に魅了され、
+それらに没頭した者から、淘汰されてしまう。
+常に取捨選択をしなければならない。
+ないがしろにされた取捨選択は積み重なり、
+やがてその量によって、その人の人生の価値が決まる。
+”塵も積もれば山となる”とはまさにこのことだ。')
     
 @bot.command()
 async def root(ctx):
