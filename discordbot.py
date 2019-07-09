@@ -150,8 +150,11 @@ async def spla(ctx,string:str):
             
 @bot.command()
 async def emo5000(ctx,string:str):
-      string = string.replace("あ","<:aa:596981155056582666>").replace("い",":ii: ").replace("う",":uu: ").replace("え",":ee: ").replace("お",":o: ")\
-                     .replace("か",":ka: ").replace("き",":ki: ").replace("く",":ku: ").replace("け",":ke: ").replace("こ",":ko: ")\
+      string = string.replace("あ","<:aa:596981155056582666>").replace("い","<:ii:596981205103017994>")\
+                     .replace("う","<:uu:596981262451998730>").replace("え","<:ee:596981328575201281>")\
+                     .replace("お","<:oo:596981372346695690>").replace("か","<:ka:596981589150400522>")\
+                     .replace("き","<:ki:596981681173561344>").replace("く","<:ku:596981731085647872>")\
+                     .replace("け","<:ke:596981779626328065>").replace("こ","<:ko:596981856939802625>")\
                      .replace("さ",":sa: ").replace("し",":si: ").replace("す",":su: ").replace("せ",":se: ").replace("そ",":so: ")\
                      .replace("た",":ta: ").replace("ち",":ti: ").replace("つ",":tu: ").replace("て",":te: ").replace("と",":to: ")\
                      .replace("な",":na: ").replace("に",":ni: ").replace("ぬ",":nu: ").replace("ね",":ne: ").replace("の",":no: ")\
