@@ -149,7 +149,7 @@ async def spla(ctx,string:str):
             await ctx.send(string+'は見つかりませんでした')
             
 @bot.command()
-async def 5000emo(ctx,string:str):
+async def emo5000(ctx,string:str):
       string = string.replace("あ",":a_: ").replace("い",":i_: ").replace("う",":u_: ").replace("え",":e_: ").replace("お",":o_: ")\
                      .replace("か",":ka: ").replace("き",":ki: ").replace("く",":ku: ").replace("け",":ke: ").replace("こ",":ko: ")\
                      .replace("さ",":sa: ").replace("し",":si: ").replace("す",":su: ").replace("せ",":se: ").replace("そ",":so: ")\
