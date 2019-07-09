@@ -147,9 +147,45 @@ async def spla(ctx,string:str):
             await ctx.send('https://pbs.twimg.com/media/'+temp+'.jpg')
       else:
             await ctx.send(string+'は見つかりませんでした')
+            
+@bot.command()
+async def 5000emo(ctx,string:str):
+      string = string.replace("あ",":a_: ").replace("い",":i_: ").replace("う",":u_: ").replace("え",":e_: ").replace("お",":o_: ")\
+                     .replace("か",":ka: ").replace("き",":ki: ").replace("く",":ku: ").replace("け",":ke: ").replace("こ",":ko: ")\
+                     .replace("さ",":sa: ").replace("し",":si: ").replace("す",":su: ").replace("せ",":se: ").replace("そ",":so: ")\
+                     .replace("た",":ta: ").replace("ち",":ti: ").replace("つ",":tu: ").replace("て",":te: ").replace("と",":to: ")\
+                     .replace("な",":na: ").replace("に",":ni: ").replace("ぬ",":nu: ").replace("ね",":ne: ").replace("の",":no: ")\
+                     .replace("は",":ha: ").replace("ひ",":hi: ").replace("ふ",":hu: ").replace("へ",":he: ").replace("ほ",":ho: ")\
+                     .replace("ま",":ma: ").replace("み",":mi: ").replace("む",":mu: ").replace("め",":me: ").replace("も",":mo: ")\
+                     .replace("や",":ya: ").replace("ゆ",":yu: ").replace("よ",":yo: ").replace("わ",":wa: ").replace("を",":wo: ")\
+                     .replace("ん",":n_: ").replace("ぁ",":a_: ").replace("ぃ",":i_:").replace("ぅ",":u_:").replace("ぇ",":e_:")\
+                     .replace("ぉ",":o_: ").replace("ゃ",":ya: ").replace("ゅ",":yu: ").replace("ょ",":yo: ").replace("ゎ",":wa: ")\
+                     .replace("が",":ka: ").replace("ぎ",":ki: ").replace("ぐ",":ku: ").replace("げ",":ke: ").replace("ご",":ko: ")\
+                     .replace("ざ",":sa: ").replace("じ",":si: ").replace("ず",":su: ").replace("ぜ",":se: ").replace("ぞ",":so: ")\
+                     .replace("だ",":ta: ").replace("ぢ",":ti: ").replace("づ",":tu: ").replace("で",":te: ").replace("ど",":to: ")\
+                     .replace("ば",":ha: ").replace("び",":hi: ").replace("ぶ",":hu: ").replace("べ",":he: ").replace("ぼ",":ho: ")\
+                     .replace("ぱ",":ha: ").replace("ぴ",":hi: ").replace("ぷ",":hu: ").replace("ぺ",":he: ").replace("ぽ",":ho: ")\
+                     .replace("ー",":__: ").replace("R",":ReTweet: ").replace("F",":favorite: ").replace("s",":Splat_masaback: ")
+      await ctx.send(string)
+
+      '''
+      string = string.replace("あ","a").replace("い","i").replace("う","u").replace("え","e").replace("お","o")\
+                     .replace("か","ka").replace("き","ki").replace("く","ku").replace("け","ke").replace("こ","ko")\
+                     .replace("さ","sa").replace("し","si").replace("す","su").replace("せ","se").replace("そ","so")\
+                     .replace("た","ta").replace("ち","ti").replace("つ","tu").replace("て","te").replace("と","to")\
+                     .replace("な","na").replace("に","ni").replace("ぬ","nu").replace("ね","ne").replace("の","no")\
+                     .replace("は","ha").replace("ひ","hi").replace("ふ","hu").replace("へ","he").replace("ほ","ho")\
+                     .replace("ま","ma").replace("み","mi").replace("む","mu").replace("め","me").replace("も","mo")\
+                     .replace("や","ya").replace("ゆ","yu").replace("よ","yo").replace("わ","wa").replace("を","wo")\
+                     .replace("ん","n").replace("ぁ","xa").replace("ぃ","xi").replace("ぅ","xu").replace("ぇ","xe")\
+                     .replace("ぉ","xo").replace("い","i").replace("う","u").replace("え","e").replace("お","o")
+       '''
+      
+      
 
 @bot.command() #チーム生成
 async def team(ctx,num:int):
+      
       import random
       import math
       sead = [0] * num
@@ -183,6 +219,7 @@ async def team(ctx,num:int):
             else: temp[i]='参加者['+str(i)+']\tチームB'
             string = "\n".join(temp)
       await ctx.send(ctx.author.mention+'\n'+string)
+      
 
 
 @bot.command() #いらない
