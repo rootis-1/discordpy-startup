@@ -86,7 +86,7 @@ async def on_message(message):
         await message.channel.send('!np')
     if cont.lower()=="!dc" or cont.lower()=="!disconnect" or cont.lower()=="!leave" or cont.lower()=="!dis" or cont.lower()=="!fuckoff":
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
-    if cont
+    
     
         
         
