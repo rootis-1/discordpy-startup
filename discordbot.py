@@ -150,7 +150,7 @@ async def spla(ctx,string:str):
             
 @bot.command()
 async def emo5000(ctx,string:str):
-      string = string.replace("あ",":a_: ").replace("い",":i_: ").replace("う",":u_: ").replace("え",":e_: ").replace("お",":o_: ")\
+      string = string.replace("あ",":aa: ").replace("い",":ii: ").replace("う",":uu: ").replace("え",":ee: ").replace("お",":o: ")\
                      .replace("か",":ka: ").replace("き",":ki: ").replace("く",":ku: ").replace("け",":ke: ").replace("こ",":ko: ")\
                      .replace("さ",":sa: ").replace("し",":si: ").replace("す",":su: ").replace("せ",":se: ").replace("そ",":so: ")\
                      .replace("た",":ta: ").replace("ち",":ti: ").replace("つ",":tu: ").replace("て",":te: ").replace("と",":to: ")\
@@ -158,15 +158,15 @@ async def emo5000(ctx,string:str):
                      .replace("は",":ha: ").replace("ひ",":hi: ").replace("ふ",":hu: ").replace("へ",":he: ").replace("ほ",":ho: ")\
                      .replace("ま",":ma: ").replace("み",":mi: ").replace("む",":mu: ").replace("め",":me: ").replace("も",":mo: ")\
                      .replace("や",":ya: ").replace("ゆ",":yu: ").replace("よ",":yo: ").replace("わ",":wa: ").replace("を",":wo: ")\
-                     .replace("ん",":n_: ").replace("ぁ",":a_: ").replace("ぃ",":i_:").replace("ぅ",":u_:").replace("ぇ",":e_:")\
-                     .replace("ぉ",":o_: ").replace("ゃ",":ya: ").replace("ゅ",":yu: ").replace("ょ",":yo: ").replace("ゎ",":wa: ")\
+                     .replace("ん",":nn: ").replace("ぁ",":aa: ").replace("ぃ",":ii:").replace("ぅ",":uu:").replace("ぇ",":ee:")\
+                     .replace("ぉ",":oo: ").replace("ゃ",":ya: ").replace("ゅ",":yu: ").replace("ょ",":yo: ").replace("ゎ",":wa: ")\
                      .replace("が",":ka: ").replace("ぎ",":ki: ").replace("ぐ",":ku: ").replace("げ",":ke: ").replace("ご",":ko: ")\
                      .replace("ざ",":sa: ").replace("じ",":si: ").replace("ず",":su: ").replace("ぜ",":se: ").replace("ぞ",":so: ")\
                      .replace("だ",":ta: ").replace("ぢ",":ti: ").replace("づ",":tu: ").replace("で",":te: ").replace("ど",":to: ")\
                      .replace("ば",":ha: ").replace("び",":hi: ").replace("ぶ",":hu: ").replace("べ",":he: ").replace("ぼ",":ho: ")\
                      .replace("ぱ",":ha: ").replace("ぴ",":hi: ").replace("ぷ",":hu: ").replace("ぺ",":he: ").replace("ぽ",":ho: ")\
                      .replace("ー",":__: ").replace("R",":ReTweet: ").replace("F",":favorite: ").replace("s",":Splat_masaback: ")
-      await ctx.send(string)
+      await ctx.send("\"+string)
 
       '''
       string = string.replace("あ","a").replace("い","i").replace("う","u").replace("え","e").replace("お","o")\
