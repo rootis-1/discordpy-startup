@@ -402,7 +402,7 @@ async def test(ctx,opt:str):
             await ctx.send(mes)
       if opt=="作業ディレクトリ":
             await ctx.send(os.getcwd())
-      if opt="rout":
+      if opt=="rout":
             await ctx.send("カウント状況："+str(routcount))
 
       
