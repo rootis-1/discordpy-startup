@@ -14,6 +14,7 @@ client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 switch = "ON"
+routcount = 0
 
 frdic={"ウルタン":b'NzI3NC0wNjkyLTQ1MTY=',"デコピン【R】":b'MDg1Ny0wODgzLTE3ODc=',"鮪":b'NTk4Ny0zOTkxLTQ0ODE=',"千秋":b'MTE1My0xOTU4LTc1MDM=',"リアル":b'MjcwNy01NjMyLTI5OTU=',
       "流星(Light)":b'NDY2OC02OTUzLTEzOTE=',"闇":b'Mjk5Ni0zOTM2LTU4NjQ=',"ゆっくりはやくタロウ":b'MTM5Ni02ODg4LTIyOTM=',"あげパン":b'MTc5Mi03NzUzLTY4OTE=',
@@ -42,7 +43,7 @@ class MyHelpCommand(commands.MinimalHelpCommand):
 async def on_message(message):
     global switch
     cont = message.content
-    routcount = 0
+    global routcount 
     if not cont.startswith('_') and switch == "OFF":
         return
     if message.author == client.user:
@@ -391,6 +392,7 @@ async def help(ctx):
       
 @bot.command()
 async def test(ctx,opt:str):
+      global routcount
       if opt=="ユーザー":
             string=[]
             i=0
@@ -400,6 +402,8 @@ async def test(ctx,opt:str):
             await ctx.send(mes)
       if opt=="作業ディレクトリ":
             await ctx.send(os.getcwd())
+      if opt="rout":
+            await ctx.send("カウント状況："+str(routcount))
 
       
         
