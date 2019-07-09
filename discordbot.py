@@ -190,7 +190,7 @@ async def emo5000(ctx,string:str):
                      .replace("ぼ","<:ho:596983424808648704>").replace("ぱ","<:ha:596983261503160359>")\
                      .replace("ぴ","<:hi:596983308391415809>").replace("ぷ","<:hu:596983343195750400>")\
                      .replace("ぺ","<:he:596983385893634049>").replace("ぽ","<:ho:596983424808648704>")\
-                     .replace("ー","<:__:596969408799309826>")
+                     .replace("ー","<:__:596969408799309826>").replace("っ","<:tu:596982489420136448>")
       
       #.replace("R",":ReTweet: ").replace("F",":favorite: ").replace("s",":Splat_masaback: ")
       
