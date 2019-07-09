@@ -42,43 +42,51 @@ class MyHelpCommand(commands.MinimalHelpCommand):
 async def on_message(message):
     global switch
     cont = message.content
-    if not message.content.startswith('_') and switch == "OFF":
+    routcount = 0
+    if not cont.startswith('_') and switch == "OFF":
         return
     if message.author == client.user:
         return
-    if "tw:@" in message.content:
+    if "tw:@" in cont:
         s = message.content
         s = s+" "
         m = re.search('\@+[a-zA-Z0-9_]+[\a-zA-Z0-9_]', s)
         string = m.group(0).replace("@","https://twitter.com/")
         await message.channel.send(string)
-    if message.content.startswith('hellouru'):
+    if "漏斗" in cont:
+        if routcount == 4:
+            await message.channel.send(message.author.mention+"誰が漏斗じゃい！")
+            routcount == 0
+        else:
+            routcount+=1
+    if cont.startswith('hellouru'):
         member = message.guild.get_member(446286203101249567)
         await message.channel.send(member.mention+' おはよう')
-    if message.content.startswith('ばぶ'):
+    if cont.startswith('ばぶ'):
         str = random.choice(("ばぶ","ばぶー","ばぶー！","ばぶ？","ばぶばぶー"))
         await message.channel.send(message.author.mention+' '+str)
-    if message.content.startswith('ガハハ'):
+    if cont.startswith('ガハハ'):
         await message.channel.send(message.author.mention+' はクソ')
-    if message.content.startswith('おやす'):
+    if cont.content.startswith('おやす'):
         await message.channel.send(message.author.mention+' おやすみー！')
-    if message.content.startswith('おは'):
+    if cont.startswith('おは'):
         await message.channel.send(message.author.mention+' おはよう！起きて！朝だよ！カンカンカンカンカンカンカンカンカン')   
-    if message.content.startswith("ウルタン"):
+    if cont.startswith("ウルタン"):
         str = random.choice(("ばかだ","無能だ","ハゲだ","ごみだ","くさい","頭悪い","気持ち悪い","かわいい"))
         await message.channel.send(message.author.mention+' ウルタン'+str+'ね')
-    if message.content=='かわいくないよ':
+    if cont=='かわいくないよ':
         if message.guild.id==586914633441607696:
             await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいい'))
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
-    if message.content=='やっぱりかわいいよ':
+    if cont=='やっぱりかわいいよ':
         if message.guild.id==586914633441607696:
             await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいい'))
-    if message.content=='np':
+    if cont=='np':
         await message.channel.send('!np')
     if cont.lower()=="!dc" or cont.lower()=="!disconnect" or cont.lower()=="!leave" or cont.lower()=="!dis" or cont.lower()=="!fuckoff":
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
+    if cont
     
         
         
