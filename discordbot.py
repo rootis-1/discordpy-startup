@@ -150,7 +150,7 @@ async def spla(ctx,string:str):
             
 @bot.command()
 async def emo5000(ctx,string:str):
-      string = string.replace("あ",":aa: ").replace("い",":ii: ").replace("う",":uu: ").replace("え",":ee: ").replace("お",":o: ")\
+      string = string.replace("あ","<:aa:596981155056582666>").replace("い",":ii: ").replace("う",":uu: ").replace("え",":ee: ").replace("お",":o: ")\
                      .replace("か",":ka: ").replace("き",":ki: ").replace("く",":ku: ").replace("け",":ke: ").replace("こ",":ko: ")\
                      .replace("さ",":sa: ").replace("し",":si: ").replace("す",":su: ").replace("せ",":se: ").replace("そ",":so: ")\
                      .replace("た",":ta: ").replace("ち",":ti: ").replace("つ",":tu: ").replace("て",":te: ").replace("と",":to: ")\
@@ -167,8 +167,7 @@ async def emo5000(ctx,string:str):
                      .replace("ぱ",":ha: ").replace("ぴ",":hi: ").replace("ぷ",":hu: ").replace("ぺ",":he: ").replace("ぽ",":ho: ")\
                      .replace("ー",":__: ").replace("R",":ReTweet: ").replace("F",":favorite: ").replace("s",":Splat_masaback: ")
       
-      await ctx.send("\\" + string)
-      await ctx.send("\\")
+      await ctx.send(string)
 
       '''
       string = string.replace("あ","a").replace("い","i").replace("う","u").replace("え","e").replace("お","o")\
