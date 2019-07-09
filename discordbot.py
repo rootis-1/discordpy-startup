@@ -166,7 +166,8 @@ async def emo5000(ctx,string:str):
                      .replace("ば",":ha: ").replace("び",":hi: ").replace("ぶ",":hu: ").replace("べ",":he: ").replace("ぼ",":ho: ")\
                      .replace("ぱ",":ha: ").replace("ぴ",":hi: ").replace("ぷ",":hu: ").replace("ぺ",":he: ").replace("ぽ",":ho: ")\
                      .replace("ー",":__: ").replace("R",":ReTweet: ").replace("F",":favorite: ").replace("s",":Splat_masaback: ")
-      await ctx.send("\"+string)
+      
+      await ctx.send("\" + string)
 
       '''
       string = string.replace("あ","a").replace("い","i").replace("う","u").replace("え","e").replace("お","o")\
