@@ -409,6 +409,11 @@ async def test(ctx,opt:str):
             await ctx.send(os.getcwd())
       if opt=="rout":
             await ctx.send("カウント状況："+str(routcount))
+      if opt=="file":
+            f = open('data2.txt','r')
+            s=f.read()
+            await ctx.send(s)
+            f.close()
 
       
         
