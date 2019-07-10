@@ -415,7 +415,7 @@ async def test(ctx,opt:str):
             await ctx.send(s)
             f.close()
       if opt=="emoji":
-            await ctx.send(get_emoji(596981155056582666))
+            await ctx.send(bot.get_emoji(596981155056582666))
 
       
         
