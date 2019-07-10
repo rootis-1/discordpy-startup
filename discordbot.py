@@ -164,6 +164,7 @@ async def emo5000(ctx,string:str):
             await ctx.send('5000兆円絵文字未導入のサーバーです。')
             return
       daku = "<:muddy:598415020023480330>"
+      string = string[:75]
       string = string.replace("あ","<:aa:596981155056582666>").replace("い","<:ii:596981205103017994>")\
                      .replace("う","<:uu:596981262451998730>").replace("え","<:ee:596981328575201281>")\
                      .replace("お","<:oo:596981372346695690>").replace("か","<:ka:596981589150400522>")\
