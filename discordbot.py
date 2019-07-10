@@ -415,17 +415,20 @@ async def test(ctx,opt:str):
             await ctx.send(s)
             f.close()
       if opt=="emoji":
+            '''
             i=0
             string = ""
-            string = bot.get_emoji(596981155056582666)
-            '''
+            
             temp = []
             for i in range(61):
                   temp.append(bot.get_emoji(596981155056582666))
             
             await ctx.send("\n".join(temp))
-            '''
+            
             await ctx.send(string)
+            '''
+            
+            print(type(bot.get_emoji(596981155056582666)))
 
       
         
