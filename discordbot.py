@@ -105,7 +105,7 @@ async def on_message(message):
             ducount = 0
             return;
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount==0:	
-            await message.channel.send('君は相当急いでるみたいだね。もしくは手順を知らない阿呆なのかな？「ダブルアップ」くらい言おうか。')
+            await message.channel.send(' ')
         
     if message.content=='リセット':
         ducount = 0
