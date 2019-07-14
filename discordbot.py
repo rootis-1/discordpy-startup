@@ -66,6 +66,9 @@ async def on_message(message):
         if ducount>0:
             await message.channel.send("もう始まってるよ")
             return;
+        if len(message.content.split())==1:
+            await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を指定してください。")
+            return;
         gold = message.content.split()[1]
         
         gold = re.sub("\\D", "", gold)
