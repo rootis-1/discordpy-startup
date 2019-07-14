@@ -97,7 +97,7 @@ async def on_message(message):
             await message.channel.send(content=None,embed=embed)
         elif rand==1 and ducount==4: #4回目のみ（穴数変更）
             ducount += 1
-            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）\n掛け金："+gold*ducount+"G"\
+            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）\n掛け金："+gold*ducount+"G",
                                   description="\n\t●\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
      
