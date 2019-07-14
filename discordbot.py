@@ -6,6 +6,7 @@ import random
 import json
 import math
 import base64
+import re
 
 bot = commands.Bot(command_prefix='/',help_command=None)
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -65,10 +66,13 @@ async def on_message(message):
         if ducount>0:
             await message.channel.send("もう始まってるよ")
             return;
+        gold = message.content.split()[1]
+        
+        gold = re.sub("\\D", "", gold)
         starter = message.author.id
         startname = message.author.name
         ducount = 0 #リスタート
-        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）", description="\n\t●\t●\n",color=0x80ff00)
+        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）\n掛け金："+gold+"円", description="\n\t●\t●\n",color=0x80ff00)
         await message.channel.send(content=None,embed=embed)
         ducount = 1
         
