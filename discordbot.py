@@ -87,10 +87,11 @@ async def on_message(message):
         
         gold = re.sub("\\D", "", string)
         gold = int(gold)
+        gold *= 2
         starter = message.author.id
         startname = message.author.name
         ducount = 0 #リスタート
-        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）\n掛け金："+str(gold)+"G", description="\n\t●\t●\n",color=0x80ff00)
+        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）\n次の掛け金："+str(gold)+"G", description="\n\t●\t●\n",color=0x80ff00)
         await message.channel.send(content=None,embed=embed)
         ducount = 1
         
@@ -110,12 +111,12 @@ async def on_message(message):
         if rand==1 and ducount!=4: #4回目以外
             ducount += 1
             gold *= 2
-            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）\n掛け金："+str(gold)+"G",description="\n\t●\t●\n",color=0x80ff00)
+            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）\n次の掛け金："+str(gold)+"G",description="\n\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
         elif rand==1 and ducount==4: #4回目のみ（穴数変更）
             ducount += 1
             gold *= 3
-            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）\n掛け金："+str(gold)+"G",
+            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）\n次の掛け金："+str(gold)+"G",
                                   description="\n\t●\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
      
@@ -133,7 +134,7 @@ async def on_message(message):
             ducount = 0
             return
         if rand==2:
-            await message.channel.send(message.author.mention+"おめでとう 達成できたのは今回で……何回目だったっけ")
+            await message.channel.send(message.author.mention+"おめでとう "+gold+" G入手したよ！ 達成できたのは今回で……何回目だったっけ")
             ducount = 0
             return
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount==0:	
