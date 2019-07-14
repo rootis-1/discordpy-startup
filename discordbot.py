@@ -86,6 +86,7 @@ async def on_message(message):
         string = message.content.split()[1]
         
         gold = re.sub("\\D", "", string)
+        gold = int(gold)
         starter = message.author.id
         startname = message.author.name
         ducount = 0 #リスタート
@@ -122,6 +123,9 @@ async def on_message(message):
             await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
             return;
         rand = random.randrange(3)
+        
+        rand = 2 #デバッグ後に削除！
+        
         if rand==0 or rand==1:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
