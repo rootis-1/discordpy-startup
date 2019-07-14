@@ -79,15 +79,21 @@ async def on_message(message):
     if message.content.startswith('ダブルアップ'): #初回
         if ducount>0:
             await message.channel.send("もう始まってるよ")
-            return;
+            return
         if len(message.content.split())==1:
             await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を指定してください。")
-            return;
+            return
         string = message.content.split()[1]
         
-        gold = re.sub("\\D", "", string)
-        gold = int(gold)
-        gold *= 2
+        if re.search("[0-9]",string):
+            gold = re.sub("\\D", "", string)
+            gold = int(gold)
+            gold *= 2
+        elif:
+            await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を**半角数字で**指定してください。")
+        
+        if gold == 0:
+            await message.channel.send("0以上の金額を入力してください！")
         starter = message.author.id
         startname = message.author.name
         ducount = 0 #リスタート
