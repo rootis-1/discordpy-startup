@@ -7,6 +7,7 @@ import json
 import math
 import base64
 import re
+gold = 0
 
 
 bot = commands.Bot(command_prefix='/',help_command=None)
@@ -71,6 +72,7 @@ async def on_message(message):
     global ducount
     global starter
     global startname
+    global gold
     if message.content.startswith('口が悪いね、残念だがここでお別れだ'): 
         await message.channel.send('もちろんy')
         
@@ -81,9 +83,9 @@ async def on_message(message):
         if len(message.content.split())==1:
             await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を指定してください。")
             return;
-        gold = message.content.split()[1]
+        string = message.content.split()[1]
         
-        gold = re.sub("\\D", "", gold)
+        gold = re.sub("\\D", "", string)
         starter = message.author.id
         startname = message.author.name
         ducount = 0 #リスタート
@@ -92,7 +94,7 @@ async def on_message(message):
         ducount = 1
         
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
-        global gold
+        
         if starter != message.author.id:
             await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
             return
