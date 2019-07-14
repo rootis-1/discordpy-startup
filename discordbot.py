@@ -6,6 +6,7 @@ import random
 import json
 import math
 import base64
+import re
 
 
 bot = commands.Bot(command_prefix='/',help_command=None)
@@ -55,18 +56,7 @@ async def help(ctx):
       embed.add_field(name="リセット", value="ダブルアップチャンスの状態をリセットします", inline=False)
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
-       
-@bot.command() #ヘルプ
-async def help(ctx):
-      embed=discord.Embed(title="いちごおばけbot", description="いちごおばけbotについての説明です。", color=0x80ffff)
-      embed.add_field(name="/help", value="この文章を送信します。まあこの文章を読めてる時点で/helpって打ってるんだよね君", inline=False)
-      embed.add_field(name="/(コマンド)で反応する単語一覧", value="dc、root、m、いちごおばけ、noxのどれかを打つと反応します", inline=False)
-      embed.add_field(name="おはよう、おやすみ、まいにち過疎", value="特定の文章を返します", inline=False)
-      embed.add_field(name="ダブルアップ", value="ダブルアップチャンスを開始します。続いて表示される指示に従ってください", inline=False)
-      embed.add_field(name="リセット", value="ダブルアップチャンスの状態をリセットします", inline=False)
-      dm_channel = await ctx.author.create_dm()
-      await dm_channel.send(embed=embed)
-        
+               
 @bot.event
 async def on_message(message):
     '''
@@ -104,7 +94,7 @@ async def on_message(message):
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
         if starter != message.author.id:
             await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
-            return;
+            return
         rand = random.randrange(2)
         
         rand=1 #デバッグが終わったら削除！
@@ -112,7 +102,7 @@ async def on_message(message):
         if rand==0:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
-            return;
+            return
         if rand==1 and ducount!=4: #4回目以外
             ducount += 1
             embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）\n掛け金："+gold*ducount+"G",description="\n\t●\t●\n",color=0x80ff00)
@@ -132,11 +122,11 @@ async def on_message(message):
         if rand==0 or rand==1:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
-            return;
+            return
         if rand==2:
             await message.channel.send(message.author.mention+"おめでとう 達成できたのは今回で……何回目だったっけ")
             ducount = 0
-            return;
+            return
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount==0:	
             await message.channel.send('今日も良い天気だね')
         
@@ -152,7 +142,7 @@ async def on_message(message):
         await message.channel.send(message.author.name+' Gute Nacht, gute Träume')
     if message.content.startswith('おはよう'):
         await message.channel.send('言動には注意すべきだ。発言者本人は発せられたその言葉の意味や意図をよく考えないで使っているかもしれないが、あらゆる行動に意味を持つように、その言葉を発した意味も当然存在する筈だ。言葉の意味を失わない為に、また、今後は反射的な発言をしないように、今一度、その発言の意味を深く考えてみてはどうだろうか。')
-    if message.author.bot==True:return;
+    if message.author.bot==True:return
     if message.content.startswith('まいにち過疎'):
         await message.channel.send('わかる')
     if 564709839859744769 in message.raw_channel_mentions:
