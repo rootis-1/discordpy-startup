@@ -6,7 +6,6 @@ import random
 import json
 import math
 import base64
-import re
 
 bot = commands.Bot(command_prefix='/',help_command=None)
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -45,6 +44,17 @@ async def dc(ctx):
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
        
+@bot.command() #ヘルプ
+async def help(ctx):
+      embed=discord.Embed(title="いちごおばけbot", description="いちごおばけbotについての説明です。", color=0x80ffff)
+      embed.add_field(name="/help", value="この文章を送信します。まあこの文章を読めてる時点で/helpって打ってるんだよね君", inline=False)
+      embed.add_field(name="/(コマンド)で反応する単語一覧", value="dc、root、m、いちごおばけ、noxのどれかを打つと反応します", inline=False)
+      embed.add_field(name="おはよう、おやすみ、まいにち過疎", value="特定の文章を返します", inline=False)
+      embed.add_field(name="ダブルアップ", value="ダブルアップチャンスを開始します。続いて表示される指示に従ってください", inline=False)
+      embed.add_field(name="リセット", value="ダブルアップチャンスの状態をリセットします", inline=False)
+      dm_channel = await ctx.author.create_dm()
+      await dm_channel.send(embed=embed)
+        
 @bot.event
 async def on_message(message):
     '''
@@ -66,16 +76,10 @@ async def on_message(message):
         if ducount>0:
             await message.channel.send("もう始まってるよ")
             return;
-        if len(message.content.split())==1:
-            await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を指定してください。")
-            return;
-        gold = message.content.split()[1]
-        
-        gold = re.sub("\\D", "", gold)
         starter = message.author.id
         startname = message.author.name
         ducount = 0 #リスタート
-        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）\n掛け金："+gold+"G", description="\n\t●\t●\n",color=0x80ff00)
+        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）", description="\n\t●\t●\n",color=0x80ff00)
         await message.channel.send(content=None,embed=embed)
         ducount = 1
         
@@ -84,21 +88,17 @@ async def on_message(message):
             await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
             return;
         rand = random.randrange(2)
-        
-        rand=1 #デバッグが終わったら削除！
-        
         if rand==0:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
             return;
         if rand==1 and ducount!=4: #4回目以外
             ducount += 1
-            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）\n掛け金："+gold*ducount+"G",description="\n\t●\t●\n",color=0x80ff00)
+            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）",description="\n\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
         elif rand==1 and ducount==4: #4回目のみ（穴数変更）
             ducount += 1
-            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）\n掛け金："+gold*ducount+"G",
-                                  description="\n\t●\t●\t●\n",color=0x80ff00)
+            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）",description="\n\t●\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
      
             
@@ -136,5 +136,5 @@ async def on_message(message):
     if 564709839859744769 in message.raw_channel_mentions:
         await message.channel.send('まいにち過疎')
     await bot.process_commands(message)
-
+ 
 bot.run(token)
