@@ -114,7 +114,7 @@ async def on_message(message):
             await message.channel.send(content=None,embed=embed)
         elif rand==1 and ducount==4: #4回目のみ（穴数変更）
             ducount += 1
-            gold *= 2
+            gold *= 3
             embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）\n掛け金："+str(gold)+"G",
                                   description="\n\t●\t●\t●\n",color=0x80ff00)
             await message.channel.send(content=None,embed=embed)
@@ -123,7 +123,7 @@ async def on_message(message):
     elif (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
         if starter != message.author.id:
             await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
-            return;
+            return
         rand = random.randrange(3)
         
         rand = 2 #デバッグ後に削除！
