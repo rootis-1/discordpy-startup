@@ -109,8 +109,6 @@ async def on_message(message):
             return
         rand = random.randrange(2)
         
-        rand=1 #デバッグが終わったら削除！
-        
         if rand==0:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
             ducount = 0
@@ -133,8 +131,6 @@ async def on_message(message):
             await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
             return
         rand = random.randrange(3)
-        
-        rand = 2 #デバッグ後に削除！
         
         if rand==0 or rand==1:
             await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
