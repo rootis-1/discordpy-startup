@@ -92,6 +92,7 @@ async def on_message(message):
         ducount = 1
         
     if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
+        global gold
         if starter != message.author.id:
             await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
             return
