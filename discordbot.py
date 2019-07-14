@@ -89,8 +89,9 @@ async def on_message(message):
             gold = re.sub("\\D", "", string)
             gold = int(gold)
             gold *= 2
-        elif:
+        el:
             await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を**半角数字で**指定してください。")
+            return
         
         if gold == 0:
             await message.channel.send("0以上の金額を入力してください！")
