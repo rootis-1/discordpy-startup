@@ -107,7 +107,7 @@ async def on_message(message):
             
         # 自分とrootくんへ。以下はメンション者に連続で反応しないようにするものです。
         
-        if !(message.author.id in talklist): #ないなら、追加する
+        if message.author.id in talklist==0: #ないなら、追加する
             talklist.append(message.author.id)
             talkcount.append(0)
             
