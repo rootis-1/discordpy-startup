@@ -114,10 +114,10 @@ async def on_message(message):
         talkcount.append(0)
             
         print(talklist)
-        """    
+            
         if talkcount[talklist.index(message.author.id)] == 4: #4回目で再度反応
             talkcount[talklist.index(message.author.id)] = 0
-            """
+            
             
     await bot.process_commands(message)
 
