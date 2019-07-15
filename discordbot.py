@@ -13,7 +13,6 @@ bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
-switch = "ON"
 routcount = 0
 
 frdic={"ウルタン":b'NzI3NC0wNjkyLTQ1MTY=',"デコピン【R】":b'MDg1Ny0wODgzLTE3ODc=',"鮪":b'NTk4Ny0zOTkxLTQ0ODE=',"千秋":b'MTE1My0xOTU4LTc1MDM=',"リアル":b'MjcwNy01NjMyLTI5OTU=',
@@ -33,73 +32,95 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
 @bot.event
 async def on_ready():
     print("動作を開始しました。")
-    await bot.change_presence(activity=discord.Game(name=switch+'-ウルタンアンチ'))
+    await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 
 class MyHelpCommand(commands.MinimalHelpCommand):
     def get_command_signature(self, command):
         return '{0.clean_prefix}{1.qualified_name} {1.signature}'.format(self, command)
 
-@bot.event #startswith反応単語
+@bot.event #反応単語
 async def on_message(message):
-    global switch
+
     cont = message.content
-    global routcount 
-    if not cont.startswith('_') and switch == "OFF":
-        return
-    if message.author == client.user:
-        return
-    if "tw:@" in cont:
+    global routcount
+
+    if message.author.bot:return #botを無視！
+
+    if "tw:@" in cont: #ツイッター
         s = message.content
         s = s+" "
         m = re.search('\@+[a-zA-Z0-9_]+[\a-zA-Z0-9_]', s)
         string = m.group(0).replace("@","https://twitter.com/")
         await message.channel.send(string)
-    if message.author.bot:return
-    if "漏斗" in cont:
+      
+    
+    if "漏斗" in cont: #漏斗
         if routcount == 4:
             await message.channel.send(message.author.mention+"誰が漏斗じゃい！")
             routcount = 0
         else:
             routcount+=1
-    if cont.startswith('hellouru'):
-        member = message.guild.get_member(446286203101249567)
-        await message.channel.send(member.mention+' おはよう')
-    if cont.startswith('ばぶ'):
-        str = random.choice(("ばぶ","ばぶー","ばぶー！","ばぶ？","ばぶばぶー"))
-        await message.channel.send(message.author.mention+' '+str)
-    if cont.startswith('ガハハ'):
-        await message.channel.send(message.author.mention+' はクソ')
-    if cont.startswith('おやす'):
-        await message.channel.send(message.author.mention+' おやすみー！')
-    if cont.startswith('おは'):
-        await message.channel.send(message.author.mention+' おはよう！起きて！朝だよ！カンカンカンカンカンカンカンカンカン')   
-    if cont.startswith("ウルタン"):
-        str = random.choice(("ばかだ","無能だ","ハゲだ","ごみだ","くさい","頭悪い","気持ち悪い","かわいい"))
-        await message.channel.send(message.author.mention+' ウルタン'+str+'ね')
-    if cont=='かわいくないよ':
+            
+    if cont=='かわいくないよ': # かわいくない役職（総合ゲーム）
         if message.guild.id==586914633441607696:
             await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいい'))
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
-    if cont=='やっぱりかわいいよ':
+    if cont=='やっぱりかわいいよ': #かわいい役職（総合ゲーム）
         if message.guild.id==586914633441607696:
             await message.author.remove_roles(discord.utils.get(message.guild.roles, name='かわいくない'))
             await message.author.add_roles(discord.utils.get(message.guild.roles, name='かわいい'))
-    if cont=='np':
-        await message.channel.send('!np')
+            
     if cont.lower()=="!dc" or cont.lower()=="!disconnect" or cont.lower()=="!leave" or cont.lower()=="!dis" or cont.lower()=="!fuckoff":
-        await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
-    
-    
+        #dc反応（いちごおばけ）
+        if message.guild.id==480522357467774976:
+            await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
+            
+    if bot.user in message.mentions: # 話しかけられたかの判定
+              
+        import datetime
+        import pytz
+
+        hour = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).hour
+        if hour>=22 or hour<=3:
+            await message.channel.send("おやすみー！")
+        elif hour>=4 or hour<=10:
+            await message.channel.send("おはよー！")
+        elif hour>=11 or hour<=15:
+            await message.channel.send("こんにちは！")
+        elif hour>=16 or hour<=21:
+            await message.channel.send("こんばんは！")
+            
+        string = random.choice(("眠い","はらへった","なに？","返信だるい","こん","ばぶー？","ガハハｗ","うるせぇ、俺が法律だ。","くさそう",\
+                      "http://urutan.com","ウルタンリーダーやめろ","ヘイト企業S■ーMは謝罪しろ！","SSーM評判悪いねｗｗｗｗ",\
+                      "ウルタンは敗北者","ウルタン政治を許さない","ウルタンくさすぎ","こんなことしてないで勉強したら？w",\
+                      "ウルタンは、邪知暴虐の王である。","ウルタンぶりぶりー","わなる","SSーM㊙情報\nウルタンの言っていることの99%は嘘",\
+                      "【SS－Mのラジオ番組一覧】\n・ウルタンラジオ（ウルラジ）\n・rootラジオ（ルーラジ）\n・あげパンラジオ（あげラジ）"))
+        await message.channel.send(string)
+            
+        #----------------------------------------------------------------------------
+            
+        # 自分とrootくんへ。以下はメンション者に連続で反応しないようにするものです。
+        talklist = [] #話者のIDリスト
+        talkcount = [] #話者の回数保存用
         
-        
+        if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
+            talkcount[talklist.index(message.author.id)] += 1
+        else: #ないなら、追加する
+            talklist.append(message.author.id)
+            talkcount.append(0)
+            
+        if talkcount[talklist.index(message.author.id)] == 4: #4回目で再度反応
+            talkcount[talklist.index(message.author.id)] = 0
+            
     await bot.process_commands(message)
 
 
 @bot.command() #プレイ中の表示を変更
 async def play(ctx):
-      global switch
-      str = random.choice(("妖怪ウォッチ4","スプラトゥーン2","ウルタンくさい","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","健康ミネラルウル茶","ウルタン語彙力ない"))
-      await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
+      
+      string = random.choice(("妖怪ウォッチ4","スプラトゥーン2","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","テトリス99","フォートナイト",\
+                              "リーグマッチ","ぼっちプラべ","rootラジオ","あげパンラジオ","音楽室"))
+      await bot.change_presence(activity=discord.Game(name=string))
       
 @bot.command()
 async def decore(ctx,target:str,cont:str):
@@ -119,13 +140,16 @@ async def umekomi(ctx,string1:str,string2:str):
       embed.set_author(name=ctx.author.name,icon_url=ctx.author.avatar_url)
       await ctx.send(content=None,embed=embed)
 
-@bot.command() #botの状態を設定
+'''
+※削除されたコマンドです。
+@bot.command() 
 async def botsw(ctx):
       global switch
       if switch=="ON":switch="OFF"
       elif switch=="OFF":switch="ON"
       str = random.choice(("妖怪ウォッチ4","スプラトゥーン2","ウルタンくさい","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","健康ミネラルウル茶","ウルタン語彙力ない"))
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
+'''
       
 @bot.command() #jsonファイルの読み書きテスト
 async def jsontest(ctx,name:str):
@@ -353,7 +377,7 @@ async def on_member_join(member):
         role = discord.utils.get(member.guild.roles, name='かわいい')
       elif member.guild.id==593372280969756682: #作業用鯖用設定
         role = discord.utils.get(member.guild.roles, name='Gewöhnliche')
-      else:return;
+      else:return
       await member.add_roles(role)
       
 @bot.event #メンバーが退出したとき
@@ -372,7 +396,6 @@ async def on_member_ban(guild,member):
 async def help(ctx):
       embed=discord.Embed(title="SSーM bot ヘルプ", description="SSーMの支援bot「SSーM bot」の機能についての説明です。", color=0x80ffff)
       embed.add_field(name="**__コマンド__**", value="_コマンド文字列 と送信すると反応します。", inline=False)
-      embed.add_field(name="_botsw", value="botの反応を抑制するかを切り替えます（ONOFFはプレイ中の欄に表示されます）", inline=False)
       embed.add_field(name="_dcurutan", value="ウルタンアンチレベルを1上げます。（ネタ要素）", inline=False)
       embed.add_field(name="_call", value="ウルタンアンチレベルを表示します。（ネタ要素）", inline=False)
       embed.add_field(name="_frlist", value="登録されているメンバーのフレンドコードリスト。", inline=False)
@@ -382,16 +405,12 @@ async def help(ctx):
       embed.add_field(name="_team 人数", value="与えられた人数に対してランダムに2チームを生成。", inline=False)
       embed.add_field(name="_ping", value="返信テストコマンド", inline=False)
       embed.add_field(name="_role", value="役職半自動配布(試運転)。", inline=False)
-      embed.add_field(name="_helpbot", value="このDMを送信します。", inline=False)
-      embed.add_field(name="**__先頭反応語句__**", value="単語がメッセージの先頭にあった場合に反応します。", inline=False)
-      embed.add_field(name="おは", value="返信「おはよう！・・・」", inline=False)
-      embed.add_field(name="おやす", value="返信「おやすみー！」", inline=True)
-      embed.add_field(name="ばぶ", value="返信「（ランダム）」", inline=True)
-      embed.add_field(name="ガハハ", value="返信「はクソ」", inline=True)
-      embed.add_field(name="ウルタン", value="返信「ウルタン（ランダム）ね」", inline=True)
-      embed.add_field(name="hellouru", value="@ウルタン おはよう", inline=True)
+      embed.add_field(name="_emo5000 ひらがな",value="文字列を5000兆円絵文字に変換します（SSーM本鯖限定）",inline=False)
+      embed.add_filed(name="_spla 文字列",value="文字列にパブロとか入れると画像URLをくれます。",inline=False)
+      embed.add_field(name="_help", value="このDMを送信します。", inline=False)
       embed.add_field(name="**__その他__**", value="自動変換機能など。メッセージの先頭でなくても反応。", inline=False)
       embed.add_field(name="tw:@ID", value="IDをツイッターのURLに変換します。存在しないIDでも変換しちゃいます…", inline=True)
+      embed.add_field(name="漏斗", value="これを送るとたまにしゃべります", inline=True)
       embed.set_footer(text="何か不明な点があれば、わたくし @カッシー/にゅげ#5706 までご連絡くださーい！ｗ")
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
