@@ -50,10 +50,7 @@ async def on_message(message):
     global talkcount
 
     if message.author.bot:return #botを無視！
-    if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
-            if talkcount[talklist.index(message.author.id)] != 0:
-                  talkcount[talklist.index(message.author.id)] += 1
-                  return
+    
 
     if "tw:@" in cont: #ツイッター
         s = message.content
@@ -85,6 +82,12 @@ async def on_message(message):
             await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
             
     if bot.user in message.mentions: # 話しかけられたかの判定
+       if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
+            if talkcount[talklist.index(message.author.id)] ==4:
+                  talkcount[talklist.index(message.author.id)] = 0
+            else:
+                  talkcount[talklist.index(message.author.id)] += 1
+                  return 
         now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).hour
                                                 
         if now>=22 or now<=3:
@@ -114,9 +117,6 @@ async def on_message(message):
         talkcount.append(0)
             
         print(talklist)
-            
-        if talkcount[talklist.index(message.author.id)] == 4: #4回目で再度反応
-            talkcount[talklist.index(message.author.id)] = 0
             
             
     await bot.process_commands(message)
