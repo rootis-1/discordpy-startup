@@ -108,9 +108,10 @@ async def on_message(message):
         # 自分とrootくんへ。以下はメンション者に連続で反応しないようにするものです。
         print(message.author.id in talklist)
             
-        if message.author.id in talklist==0: #ないなら、追加する
+        if message.author.id in talklist==False: #ないなら、追加する
             talklist.append(message.author.id)
             talkcount.append(0)
+            print(talklist)
         """    
         if talkcount[talklist.index(message.author.id)] == 4: #4回目で再度反応
             talkcount[talklist.index(message.author.id)] = 0
