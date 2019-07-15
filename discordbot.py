@@ -82,7 +82,7 @@ async def on_message(message):
             await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
             
     if bot.user in message.mentions: # 話しかけられたかの判定
-       if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
+        if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
             if talkcount[talklist.index(message.author.id)] ==4:
                   talkcount[talklist.index(message.author.id)] = 0
             else:
