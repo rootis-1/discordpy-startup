@@ -111,7 +111,8 @@ async def on_message(message):
         if message.author.id in talklist==False: #ないなら、追加する
             talklist.append(message.author.id)
             talkcount.append(0)
-            print(talklist)
+            
+        print(talklist)
         """    
         if talkcount[talklist.index(message.author.id)] == 4: #4回目で再度反応
             talkcount[talklist.index(message.author.id)] = 0
