@@ -80,9 +80,10 @@ async def on_message(message):
         import datetime
 
         nowhour = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)).hour
-        #if nowhour>=22 or nowhour<=3:
-            #await message.channel.send("おやすみー！")
-        if nowhour>=4 or nowhour<=10:
+        print(str(nowhour))                                        
+        if nowhour>=22 or nowhour<=3:
+            await message.channel.send("おやすみー！")
+        elif nowhour>=4 or nowhour<=10:
             await message.channel.send("おはよー！")
         elif nowhour>=11 or nowhour<=15:
             await message.channel.send("こんにちは！")
