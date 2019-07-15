@@ -79,14 +79,14 @@ async def on_message(message):
               
         import datetime
 
-        hour = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)).hour
-        if hour>=22 or hour<=3:
+        nowhour = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)).hour
+        if nowhour>=22 or nowhour<=3:
             await message.channel.send("おやすみー！")
-        elif hour>=4 or hour<=10:
+        elif nowhour>=4 or nowhour<=10:
             await message.channel.send("おはよー！")
-        elif hour>=11 or hour<=15:
+        elif nowhour>=11 or nowhour<=15:
             await message.channel.send("こんにちは！")
-        elif hour>=16 or hour<=21:
+        elif nowhour>=16 or nowhour<=21:
             await message.channel.send("こんばんは！")
             
         string = random.choice(("眠い","はらへった","なに？","返信だるい","こん","ばぶー？","ガハハｗ","うるせぇ、俺が法律だ。","くさそう",\
