@@ -8,12 +8,15 @@ import base64
 import json
 import re
 import os
+import datetime
 
 bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
 token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 routcount = 0
+talklist = []
+talkcount = []
 
 frdic={"ウルタン":b'NzI3NC0wNjkyLTQ1MTY=',"デコピン【R】":b'MDg1Ny0wODgzLTE3ODc=',"鮪":b'NTk4Ny0zOTkxLTQ0ODE=',"千秋":b'MTE1My0xOTU4LTc1MDM=',"リアル":b'MjcwNy01NjMyLTI5OTU=',
       "流星(Light)":b'NDY2OC02OTUzLTEzOTE=',"闇":b'Mjk5Ni0zOTM2LTU4NjQ=',"ゆっくりはやくタロウ":b'MTM5Ni02ODg4LTIyOTM=',"あげパン":b'MTc5Mi03NzUzLTY4OTE=',
@@ -43,8 +46,14 @@ async def on_message(message):
 
     cont = message.content
     global routcount
+    global talklist
+    global talkcount
 
     if message.author.bot:return #botを無視！
+    if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
+            if talkcount[talklist.index(message.author.id)] != 0:
+                  talkcount[talklist.index(message.author.id)] += 1
+                  return
 
     if "tw:@" in cont: #ツイッター
         s = message.content
@@ -76,18 +85,15 @@ async def on_message(message):
             await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
             
     if bot.user in message.mentions: # 話しかけられたかの判定
-              
-        import datetime
-
-        nowhour = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)).hour
-        print(str(nowhour))                                        
-        if nowhour>=22 or nowhour<=3:
+        now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).hour
+                                                
+        if now>=22 or now<=3:
             await message.channel.send("おやすみー！")
-        elif nowhour>=4 or nowhour<=10:
+        elif now>=4 or now<=10:
             await message.channel.send("おはよー！")
-        elif nowhour>=11 or nowhour<=15:
+        elif now>=11 or now<=15:
             await message.channel.send("こんにちは！")
-        elif nowhour>=16 or nowhour<=21:
+        elif now>=16 or now<=21:
             await message.channel.send("こんばんは！")
             
         string = random.choice(("眠い","はらへった","なに？","返信だるい","こん","ばぶー？","ガハハｗ","うるせぇ、俺が法律だ。","くさそう",\
@@ -100,12 +106,8 @@ async def on_message(message):
         #----------------------------------------------------------------------------
             
         # 自分とrootくんへ。以下はメンション者に連続で反応しないようにするものです。
-        talklist = [] #話者のIDリスト
-        talkcount = [] #話者の回数保存用
         
-        if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
-            talkcount[talklist.index(message.author.id)] += 1
-        else: #ないなら、追加する
+        if !(message.author.id in talklist): #ないなら、追加する
             talklist.append(message.author.id)
             talkcount.append(0)
             
