@@ -78,9 +78,8 @@ async def on_message(message):
     if bot.user in message.mentions: # 話しかけられたかの判定
               
         import datetime
-        import pytz
 
-        hour = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).hour
+        hour = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)).hour
         if hour>=22 or hour<=3:
             await message.channel.send("おやすみー！")
         elif hour>=4 or hour<=10:
