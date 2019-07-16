@@ -111,10 +111,9 @@ async def on_message(message):
         # 自分とrootくんへ。以下はメンション者に連続で反応しないようにするものです。
         print(message.author.id in talklist)
             
-        if message.author.id in talklist==True:
+        if message.author.id not in talklist:
             talklist.append(message.author.id)
             talkcount.append(0)
-        else:print("登録済み")
             
         print(talklist)
             
