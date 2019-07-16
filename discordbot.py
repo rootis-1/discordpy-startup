@@ -131,6 +131,10 @@ async def play(ctx):
       await bot.change_presence(activity=discord.Game(name=string))
       
 @bot.command()
+async def vcco(ctx):
+      await message.channel.send("現在このチャンネルにいる人数は"+str(len(discord.VoiceChannel.members))+"人です。")
+      
+@bot.command()
 async def decore(ctx,target:str,cont:str):
       string=""
       if target=="b" or target=="bold" or target=="strong" or target=="太字" or target=="太い" or target=="ふとい" or target=="太め" or target=="太":string="**"
