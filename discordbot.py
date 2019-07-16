@@ -132,7 +132,7 @@ async def play(ctx):
       
 @bot.command()
 async def vcco(ctx):
-      print(discord.VoiceChannel.members)
+      print(VoiceChannel.members)
       #await ctx.send("現在このチャンネルにいる人数は"+str(len(discord.VoiceChannel.members))+"人です。")
       
 @bot.command()
