@@ -113,7 +113,7 @@ async def on_message(message):
             
         if message.author.id in talklist==False:
             talklist.append(message.author.id)
-            talkcount.append(0)d
+            talkcount.append(0)
         else:print("登録済み")
             
         print(talklist)
