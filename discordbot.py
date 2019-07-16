@@ -132,7 +132,7 @@ async def play(ctx):
       
 @bot.command()
 async def vcco(ctx):
-      await message.channel.send("現在このチャンネルにいる人数は"+str(len(discord.VoiceChannel.members))+"人です。")
+      await ctx.send("現在このチャンネルにいる人数は"+str(len(discord.VoiceChannel.members))+"人です。")
       
 @bot.command()
 async def decore(ctx,target:str,cont:str):
