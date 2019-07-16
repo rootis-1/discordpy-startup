@@ -17,6 +17,7 @@ urulv = 0
 routcount = 0
 talklist = []
 talkcount = []
+limit = 0
 
 frdic={"ウルタン":b'NzI3NC0wNjkyLTQ1MTY=',"デコピン【R】":b'MDg1Ny0wODgzLTE3ODc=',"鮪":b'NTk4Ny0zOTkxLTQ0ODE=',"千秋":b'MTE1My0xOTU4LTc1MDM=',"リアル":b'MjcwNy01NjMyLTI5OTU=',
       "流星(Light)":b'NDY2OC02OTUzLTEzOTE=',"闇":b'Mjk5Ni0zOTM2LTU4NjQ=',"ゆっくりはやくタロウ":b'MTM5Ni02ODg4LTIyOTM=',"あげパン":b'MTc5Mi03NzUzLTY4OTE=',
@@ -82,8 +83,9 @@ async def on_message(message):
             await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
             
     if bot.user in message.mentions: # 話しかけられたかの判定
+        global limit
         if message.author.id in talklist: #著者が話者リストにあるなら、カウントを1増加
-            if talkcount[talklist.index(message.author.id)] ==4:
+            if talkcount[talklist.index(message.author.id)] == limit:
                   talkcount[talklist.index(message.author.id)] = 0
             else:
                   talkcount[talklist.index(message.author.id)] += 1
@@ -455,6 +457,10 @@ async def test(ctx,opt:str):
             '''
             
             await ctx.send(type(bot.get_emoji(596981155056582666)))
+       if opt.startswith("c"): #反応カウント変更
+            global limit
+            limit=int(opt[1])
+            print("限界値を"+opt[1]+"に変更しました。")
 
       
         
