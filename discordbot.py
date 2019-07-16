@@ -457,7 +457,7 @@ async def test(ctx,opt:str):
             '''
             
             await ctx.send(type(bot.get_emoji(596981155056582666)))
-       if opt.startswith("c"): #反応カウント変更
+      if opt.startswith("c"): #反応カウント変更
             global limit
             limit=int(opt[1])
             print("限界値を"+opt[1]+"に変更しました。")
