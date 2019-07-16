@@ -110,14 +110,11 @@ async def on_message(message):
             
         #----------------------------------------------------------------------------
             
-        # 自分とrootくんへ。以下はメンション者に連続で反応しないようにするものです。
-        print(message.author.id in talklist)
             
-        if message.author.id not in talklist:
+        if message.author.id not in talklist: #もし、リストに話者がなければ追加する
             talklist.append(message.author.id)
             talkcount.append(0)
-            
-        print(talklist)
+            print(talklist)
             
             
     await bot.process_commands(message)
@@ -129,11 +126,6 @@ async def play(ctx):
       string = random.choice(("妖怪ウォッチ4","スプラトゥーン2","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","テトリス99","フォートナイト",\
                               "リーグマッチ","ぼっちプラべ","rootラジオ","あげパンラジオ","音楽室"))
       await bot.change_presence(activity=discord.Game(name=string))
-      
-@bot.command()
-async def vcco(ctx):
-      print(VoiceChannel.members)
-      #await ctx.send("現在このチャンネルにいる人数は"+str(len(discord.VoiceChannel.members))+"人です。")
       
 @bot.command()
 async def decore(ctx,target:str,cont:str):
