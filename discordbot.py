@@ -94,7 +94,7 @@ async def on_message(message):
             return
         
         if gold == 0:
-            await message.channel.send("0以上の金額を入力してください！")
+            await message.channel.send("1以上の金額を入力してください！")
         starter = message.author.id
         startname = message.author.name
         ducount = 0 #リスタート
