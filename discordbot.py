@@ -133,7 +133,7 @@ async def on_message(message):
         rand = random.randrange(3)
         
         if rand==0 or rand==1:
-            await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
+            await message.channel.send("はずれ。君たちは一体今までにいくら貢いだんだろうね")
             ducount = 0
             return
         if rand==2:
