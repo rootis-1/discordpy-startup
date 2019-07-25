@@ -47,6 +47,18 @@ async def dc(ctx):
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
     
+@bot.command()
+async def リサイクル(ctx,rare:int):
+    rare = 1 #デバッグ用
+    
+    fname = "rare/rare"+rare+".txt" #ファイルのパス
+    f = open(fname,"r") #ファイルの読み込み
+    items = f.readlines() #ファイル.readlines()で行ごとにリスト化
+    f.close()
+    
+    result = items[random.randrange(0,len(items))]
+    await ctx.send(ctx.author.mention + "\n" + result + "です")
+    
 @bot.command() #ヘルプ
 async def help(ctx):
       embed=discord.Embed(title="いちごおばけbot", description="いちごおばけbotについての説明です。", color=0x80ffff)
