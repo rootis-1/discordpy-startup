@@ -50,13 +50,20 @@ async def いちごおばけ(ctx):
 async def re(ctx,rare:int):
     rare = 1 #デバッグ用
     
+    '''
+    rand = random.randrange(0,2)
+    res = ["かんせ～い！","ちょっと残念？","ほわぁ！大成功だよ！"]
+    '''
+    
     fname = "rare/rare"+str(rare)+".txt" #ファイルのパス
     f = open(fname,"r") #ファイルの読み込み
     items = f.readlines() #ファイル.readlines()で行ごとにリスト化
     f.close()
     
     result = items[random.randrange(0,len(items))]
-    await ctx.send(ctx.author.mention + "\n" + result + "です")
+    result = result.replace("\n","") #readlinesは各行の改行コードを読んでしまうため改行コードを消去
+    
+    await ctx.send(ctx.author.mention + "かんせ～い！ ☆" + str(rare) + "の\n**" + result + "**ができたわ。")
 
 
 @bot.command() #ヘルプ
