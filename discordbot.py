@@ -49,7 +49,7 @@ async def いちごおばけ(ctx):
 @bot.command()
 async def re(ctx,rare:int):
     if rare>1 and rare<10:
-        rand = random.randrange(-1,0,2) #レア度の上下調整
+        rand = random.randrange(-1,2) #レア度の上下調整
         rare += rand
     elif rare<=1:
         rare = 1
