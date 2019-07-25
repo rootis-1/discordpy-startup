@@ -48,7 +48,7 @@ async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
     
 @bot.command()
-async def リサイクル(ctx,rare:int):
+async def re(ctx,rare:int):
     rare = 1 #デバッグ用
     
     fname = "rare/rare"+rare+".txt" #ファイルのパス
