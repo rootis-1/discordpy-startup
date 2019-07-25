@@ -58,7 +58,8 @@ async def re(ctx,rare:int):
     
     result = items[random.randrange(0,len(items))]
     await ctx.send(ctx.author.mention + "\n" + result + "です")
-    
+
+'''
 @bot.command() #ヘルプ
 async def help(ctx):
       embed=discord.Embed(title="いちごおばけbot", description="いちごおばけbotについての説明です。", color=0x80ffff)
@@ -69,6 +70,7 @@ async def help(ctx):
       embed.add_field(name="リセット", value="ダブルアップチャンスの状態をリセットします", inline=False)
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
+'''
                
 @bot.event
 async def on_message(message):
