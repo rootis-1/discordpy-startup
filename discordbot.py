@@ -48,12 +48,22 @@ async def いちごおばけ(ctx):
     
 @bot.command()
 async def re(ctx,rare:int):
-    rare = 1 #デバッグ用
-    
-    '''
-    rand = random.randrange(0,2)
-    res = ["かんせ～い！","ちょっと残念？","ほわぁ！大成功だよ！"]
-    '''
+    if rare>1 and rare<10:
+        rand = random.randrange(-1,0,2) #レア度の上下調整
+        rare = rare + rand
+    elif rare<=1:
+        rare = 1
+        rand = random.randrange(0,2) #下限なので0か1。
+        rare = rand
+    elif rare>=10:
+        rare = 10
+        rand = random.randrange(-1,1) #上限なので-1か0。
+        rare = rand
+        
+    resrand = random.randrange(0,2) #レア度ごとに2つのセリフがあるので、それを選択（0のとき1つめ、1のとき2つめ）
+        
+    res1 = ["んー、こういうこともあるよね。","ちょっと残念？","はい、どうぞ～。","かんせ～い！","すごい、すごーい！","ほわぁ！大成功だよ！"]
+    res2 = ["ができたわ。","ができたわ。","ができたわよ。","ができたわ。","ができたわ！","ができたー！"]
     
     fname = "rare/rare"+str(rare)+".txt" #ファイルのパス
     f = open(fname,"r") #ファイルの読み込み
@@ -63,7 +73,7 @@ async def re(ctx,rare:int):
     result = items[random.randrange(0,len(items))]
     result = result.replace("\n","") #readlinesは各行の改行コードを読んでしまうため改行コードを消去
     
-    await ctx.send(ctx.author.mention + "かんせ～い！ ☆" + str(rare) + "の\n**" + result + "**ができたわ。")
+    await ctx.send(ctx.author.mention + res1[(3+resrand+2*rand)-1] + " ☆" + str(rare) + "の\n**" + result + "**ができたわ。")
 
 
 @bot.command() #ヘルプ
