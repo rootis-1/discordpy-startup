@@ -50,7 +50,7 @@ async def いちごおばけ(ctx):
 async def re(ctx,rare:int):
     rare = 1 #デバッグ用
     
-    fname = "rare/rare"+rare+".txt" #ファイルのパス
+    fname = "rare/rare"+str(rare)+".txt" #ファイルのパス
     f = open(fname,"r") #ファイルの読み込み
     items = f.readlines() #ファイル.readlines()で行ごとにリスト化
     f.close()
