@@ -9,8 +9,8 @@ import base64
 import re
 gold = 0
 
-
-bot = commands.Bot(command_prefix='/',help_command=None)
+bot = commands.Bot(command_prefix='/')
+#bot = commands.Bot(command_prefix='/',help_command=None)
 token = os.environ['DISCORD_BOT_TOKEN']
 ducount = 0
 starter = 0
