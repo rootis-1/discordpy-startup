@@ -50,15 +50,15 @@ async def いちごおばけ(ctx):
 async def re(ctx,rare:int):
     if rare>1 and rare<10:
         rand = random.randrange(-1,0,2) #レア度の上下調整
-        rare = rare + rand
+        rare += rand
     elif rare<=1:
         rare = 1
         rand = random.randrange(0,2) #下限なので0か1。
-        rare = rand
+        rare += rand
     elif rare>=10:
         rare = 10
         rand = random.randrange(-1,1) #上限なので-1か0。
-        rare = rand
+        rare += rand
         
     resrand = random.randrange(0,2) #レア度ごとに2つのセリフがあるので、それを選択（0のとき1つめ、1のとき2つめ）
         
