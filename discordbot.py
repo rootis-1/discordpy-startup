@@ -9,18 +9,17 @@ import base64
 import re
 gold = 0
 
-bot = commands.Bot(command_prefix='/')
-#bot = commands.Bot(command_prefix='/',help_command=None)
+bot = commands.Bot(command_prefix='/',help_command=None)
 token = os.environ['DISCORD_BOT_TOKEN']
 ducount = 0
 starter = 0
 startname = ""
 
-
+'''
 @bot.event #FalseCommand
 async def on_command_error(ctx, error):
     await ctx.send('そんなコマンドないよ？出直してきな？')
- 
+''' 
 
 @bot.event
 async def on_ready():
@@ -59,7 +58,7 @@ async def re(ctx,rare:int):
     result = items[random.randrange(0,len(items))]
     await ctx.send(ctx.author.mention + "\n" + result + "です")
 
-'''
+
 @bot.command() #ヘルプ
 async def help(ctx):
       embed=discord.Embed(title="いちごおばけbot", description="いちごおばけbotについての説明です。", color=0x80ffff)
@@ -70,7 +69,7 @@ async def help(ctx):
       embed.add_field(name="リセット", value="ダブルアップチャンスの状態をリセットします", inline=False)
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
-'''
+
                
 @bot.event
 async def on_message(message):
