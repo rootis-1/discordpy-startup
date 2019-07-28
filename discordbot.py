@@ -9,12 +9,20 @@ import json
 import re
 import os
 import datetime
+import time
+import asyncio
+import requests
+import ffmpeg
+import io
+import aiohttp
+import textwrap
+from PIL import Image,ImageDraw,ImageFont,ImageFilter
 
 bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
-token = os.environ['DISCORD_BOT_TOKEN']
 urulv = 0
 routcount = 0
+token = os.environ['DISCORD_BOT_TOKEN']
 talklist = []
 talkcount = []
 limit = 0
@@ -34,13 +42,45 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
        "ショッツル鉱山":"DZbK2EDVAAAuvbI","フジツボスポーツクラブ":"C3K5Ou1VcAAG-2z","マンタマリア号":"DIEFuh-UIAAAz_w"}
 
 @bot.event
+async def on_command_error(ctx, error):
+    await ctx.send('エラーが発生しました\n'+str(error))
+
+@bot.event
 async def on_ready():
     print("動作を開始しました。")
+
+    starttime = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).minute
+    print("starttime:"+str(starttime))
+    timediff = 60-starttime
+
+    channel = bot.get_channel(572803866400391218)
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 
-class MyHelpCommand(commands.MinimalHelpCommand):
-    def get_command_signature(self, command):
-        return '{0.clean_prefix}{1.qualified_name} {1.signature}'.format(self, command)
+    await asyncio.sleep(timediff*60)
+    print("ループ開始")
+    nsyu = 0
+    while 1:
+            await asyncio.sleep(3600*2)
+            print("n週目")
+            string = random.choice(("ウルタンは反社と関わりを持ったため無期限謹慎処分になったことがある",\
+                                "ウルタンはまさばより偏差値が高い",\
+                                "ウルタンは文の最後の文字を二回書いたり語尾に小文字を付けがちでそれが不評だったのでメンヘラ化したらしい",\
+                                "ウルタン㊙情報\nかっこいい（本人投稿）",\
+                                "あげパンはYouTubeで毎日動画を投稿しているが、彼の動画の下ネタシーン集を収集する「Agepan Mania」というアカウントがある。\n"\
+                                "「ウルタンは抜ける」「パンパンパンパンパン！パンパン！スーパーあげパンボム」"\
+                                "「ベバンダ、リア、ゥ」などが有名である。",\
+                                "くそ！","root-1は本来は存在しない数字なので彼の存在も幻覚である","誰がSSーM㊙情報じゃい！",
+                                "くそ！とはリアルくんの隠喩である","かろーらはノンケ向け淫夢動画からエロゲに目覚めた",\
+                                "I sue you for fraudulent charges and property damage charges!\nYou understand the reason, isn't it?"\
+                                "Because you beat everyone with such a trick and destroyed save data! Please ready to be prepared for it."\
+                                "Sue you before long. I also bring a trial. You must go the court whatever you say. Please be prepare the Palimony!"\
+                                "You are a criminal! Please look forward to being thrown into jail! Are you?!",\
+                                "【衝撃】ウルタンは引きこもり","【全米が涙】ウルタンはニート",\
+                                "**おちばシューターウルタン**\nサブはポイントセンサー、スペシャルはインクアーマーだ"))
+            embed = discord.Embed(title="SSーM㊙情報",description=string)
+            await channel.send(embed=embed)
+            nsyu += 1
+
 
 @bot.event #反応単語
 async def on_message(message):
@@ -91,22 +131,24 @@ async def on_message(message):
                   talkcount[talklist.index(message.author.id)] += 1
                   return 
         now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).hour
-                                                
+        print(now)                                        
         if now>=22 or now<=3:
-            await message.channel.send("おやすみー！")
-        elif now>=4 or now<=10:
-            await message.channel.send("おはよー！")
-        elif now>=11 or now<=15:
-            await message.channel.send("こんにちは！")
-        elif now>=16 or now<=21:
-            await message.channel.send("こんばんは！")
-            
+            greet = "おやすみー！"
+        elif now>=4 and now<=10:
+            greet = "おはよ"
+        elif now>=11 and now<=15:
+            greet = "こん"
+        elif now>=16 and now<=21:
+            greet = "こんばんは！"
+
+
         string = random.choice(("眠い","はらへった","なに？","返信だるい","こん","ばぶー？","ガハハｗ","うるせぇ、俺が法律だ。","くさそう",\
                       "http://urutan.com","ウルタンリーダーやめろ","ヘイト企業S■ーMは謝罪しろ！","SSーM評判悪いねｗｗｗｗ",\
                       "ウルタンは敗北者","ウルタン政治を許さない","ウルタンくさすぎ","こんなことしてないで勉強したら？w",\
                       "ウルタンは、邪知暴虐の王である。","ウルタンぶりぶりー","わなる","SSーM㊙情報\nウルタンの言っていることの99%は嘘",\
-                      "【SS－Mのラジオ番組一覧】\n・ウルタンラジオ（ウルラジ）\n・rootラジオ（ルーラジ）\n・あげパンラジオ（あげラジ）"))
-        await message.channel.send(string)
+                      "【SS－Mのラジオ番組一覧】\n・ウルタンラジオ（ウルラジ）\n・rootラジオ（ルーラジ）\n・あげパンラジオ（あげラジ）",\
+                      "SSーMの人たちは、不安よな。ウルタン、動きません（無能）","SSーMの人たちは、不安よな。ウルタン、動きません（ニート）"))
+        await message.channel.send(message.author.mention+" "+greet+"\n"+string)
             
         #----------------------------------------------------------------------------
             
@@ -126,7 +168,39 @@ async def play(ctx):
       string = random.choice(("妖怪ウォッチ4","スプラトゥーン2","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","テトリス99","フォートナイト",\
                               "リーグマッチ","ぼっちプラべ","rootラジオ","あげパンラジオ","音楽室"))
       await bot.change_presence(activity=discord.Game(name=string))
+
+@bot.command()
+async def summon(ctx):
       
+      voice = ctx.guild.voice_client
+      if ctx.author.voice == None:
+          await ctx.send("ボイスチャンネルにいないよね？")
+          return
+      if voice is None:
+          vc = ctx.author.voice.channel
+          if vc==None:
+              await ctx.send("ボイスチャンネルにいませんね")
+              return
+          voice = await vc.connect()
+      voice.play(discord.FFmpegPCMAudio('famipop3.mp3'))
+      #player.start()
+
+      #voice.play(discord.FFmpegPCMAudio('famipop2.mp3'))
+      await bot.change_presence(activity=discord.Game(name="famipop3"))
+
+      
+@bot.command()
+async def dc(ctx):
+      voice = ctx.guild.voice_client
+      if voice:
+          await voice.disconnect()
+          await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
+      else:
+          await ctx.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
+          await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
+
+      
+
 @bot.command()
 async def decore(ctx,target:str,cont:str):
       string=""
@@ -169,14 +243,6 @@ async def idwrite(ctx):
       with open('/tmp/data.txt','a') as f:
             f.write(str(ctx.author.id)+"\n")
       print("書き込みました。")
-     
-@bot.event
-async def on_command_error(ctx, exception):
-    if isinstance(exception, commands.BadArgument):
-        await ctx.send("不正な入力です")
-@bot.event
-async def on_command_error(ctx, error):
-    await ctx.send('エラーが発生しました\n'+str(error))
 
 @bot.command() #画像表示 URL一覧は上記辞書
 async def spla(ctx,string:str):
@@ -295,16 +361,180 @@ async def team(ctx,num:int):
 
 
 @bot.command() #いらない
-async def Bosyu(ctx,rule:str,open:str):
-      if rule == "n":rule="ナワバリバトル"
-      elif rule == "r2":rule="リーグマッチ（2）"
-      elif rule == "r4":rule="リーグマッチ（4）"
-      elif rule == "s":rule="サーモンラン"
-      elif rule == "f":rule="フェスマッチ（フレンド）"
-      else : return;
-      embed_message = discord.Embed(title=ctx.author.name+' が'+open+'から'+rule+'を開催！',color=7506394)
-      embed_message.set_image(url="https://www.sankei.com/images/news/180503/plt1805030018-p1.jpg")
-      await ctx.send(content=None, embed=embed_message)
+async def Bosyu(ctx,rule:str,open:str,*,come):
+      if rule != "n" and rule!= "r" and rule != "s" and rule!="p":
+          await ctx.send("ルールが正しく入力されていません！\n"\
+                         "**n**：ナワバリバトル\n"\
+                         "**r**：リーグマッチ\n"\
+                         "**s**：サーモンラン\n"\
+                         "**p**：プライベートマッチ  と指定できます。")
+          return
+
+      if open is None:
+          await ctx.send("時刻が入力されていません！\n"\
+                         "時刻は ```00:00``` のように指定します。")
+          return
+
+      match = re.match(r'[0-9]{2}:[0-9]+', open)
+
+      if match is None:
+          await ctx.send("時刻が入力されていません！\n"\
+                         "時刻は ```00:00```のように指定します。")
+          return
+      else:
+          print(match.group(0))
+          shour = re.split(r':', open)[0]
+          smin = re.split(r':',open)[1]
+          print(smin)
+
+      if int(shour)>=24:
+          await ctx.send("存在しない時刻です！\n時刻は00:00～23:59まで指定できます。")
+          return
+      elif int(smin)>=60:
+          await ctx.send("存在しない時刻です！\n分は59まで指定できます。")
+          return
+      
+      #alert = datetime.datetime.strptime(str(args[1]),'%H:%M')
+
+      nowobject = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
+      print(nowobject)
+      nhour = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).hour
+      nmin = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).minute
+
+      
+
+      if rule == "r" or rule=="n": #nawarigu
+          headers = {'User-Agent': 'SS-Mbot @shidoro_onn'}
+          if rule=="n":
+              rulename = "regular"
+          else:
+              rulename = "league"
+
+          string = requests.get("https://spla2.yuu26.com/"+rulename+"/now",headers=headers).json()
+      
+          stage1 = string["result"][0]["maps_ex"][0]["image"]
+          stage2 = string["result"][0]["maps_ex"][1]["image"]
+
+          stage1_name = string["result"][0]["maps"][0]
+          stage2_name = string["result"][0]["maps"][1]
+
+          if stage1_name == "フジツボスポーツクラブ":
+              stage1_name = "フジツボ\nスポーツクラブ"
+          elif stage2_name == "フジツボスポーツクラブ":
+              stage2_name = "フジツボ\nスポーツクラブ"
+
+      if rule == "s":
+          headers = {'User-Agent': 'SS-Mbot @shidoro_onn'}
+
+          string = requests.get("https://spla2.yuu26.com/coop/schedule",headers=headers).json()
+
+          stagename = string["result"][0]["stage"]["name"]
+          stageim = string["result"][0]["stage"]["image"]
+          buki1 = string["result"][0]["weapons"][0]["name"]
+          buki2 = string["result"][0]["weapons"][1]["name"]
+          buki3 = string["result"][0]["weapons"][2]["name"]
+          buki4 = string["result"][0]["weapons"][3]["name"]
+
+      """alert = datetime.datetime.strptime(str(args[1]),'%H:%M')
+      ここから画像処理"""
+
+      img = Image.open(rule+".jpg")
+      draw = ImageDraw.Draw(img)
+
+      # ！フォントの設定(フォントファイルのパスと文字の大きさ)
+      main = ImageFont.truetype(r"C:\Users\erabl\AppData\Local\Microsoft\Windows\Fonts\GenEiLateMinP_v2.ttf", 40)
+      stagef = ImageFont.truetype(r"C:\Users\erabl\AppData\Local\Microsoft\Windows\Fonts\GenEiLateMinP_v2.ttf",24)
+      timef = ImageFont.truetype(r"C:\Users\erabl\AppData\Local\Microsoft\Windows\Fonts\logotypejp_mp_b_1.1.ttf",50)
+      # ？ フォントの設定(フォントファイルのパスと文字の大きさ)
+
+      # ！ 投稿者情報
+      draw.text((375, 60), ctx.author.display_name, fill=(0, 0, 0), font=main)
+      icon = Image.open(io.BytesIO(requests.get(ctx.author.avatar_url).content))
+      icon = mask_circle_solid(icon)
+      icon = icon.resize((200,200))
+      img.paste(icon,(115,50))
+
+      draw.text((470,185),open+"～",fill=(0,0,0),font=timef)
+      
+      draw.text((900,665),datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y-%m-%d %H:%M:%S'),fill=(0,0,0),font=stagef)
+
+      # ？ 投稿者情報
+
+      # ！ ステージ情報
+      if rule == "r" or rule == "n":
+          s1im = Image.open(io.BytesIO(requests.get(stage1).content))
+          s2im = Image.open(io.BytesIO(requests.get(stage2).content))
+
+          s1im = s1im.resize((128,72))
+          s2im = s2im.resize((128,72))
+
+          img.paste(s1im,(790,360))
+          img.paste(s2im,(790,480))
+
+          draw.text((930,385),stage1_name,fill=(0,0,0),font=stagef)
+          draw.text((930,500),stage2_name,fill=(0,0,0),font=stagef)
+
+      elif rule == "s":
+          stim = Image.open(io.BytesIO(requests.get(stageim).content))
+
+          stim = stim.resize((311,175))
+
+          img.paste(stim,(890,30))
+
+          draw.text((800,460),buki1+"\n"+buki2+"\n"+buki3+"\n"+buki4+"\n",fill=(0,0,0),font=main)
+
+      # ？ ステージ情報
+
+      # ！ コメント
+
+      come = "\n".join(textwrap.wrap(come,width=13))
+      draw.text((160,342),come,fill=(0,0,0),font=main)
+
+      # ？ コメント
+
+
+      img.save("result.png")
+      await ctx.send(file=discord.File('result.png'))
+
+      if nhour>int(shour):
+          await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")
+      elif nhour==int(shour) and nmin>int(smin):
+          await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")
+      else:
+          #先に現在時刻を文字列に変換
+          nowstr = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y-%m-%d')
+          #予定時刻を追記
+          nowstr = nowstr+" "+str(shour)+":"+str(smin)+":00 +09:00:00"
+          print(nowstr)
+          stime = datetime.datetime.strptime(nowstr, '%Y-%m-%d %H:%M:%S %z')
+          print(stime)
+          #予定と現在の差を計算
+
+          sa = stime - nowobject
+          await asyncio.sleep(sa.total_seconds())
+
+          if rule=="n":temprule="ナワバリバトル"
+          elif rule=="r":temprule="リーグマッチ"
+          elif rule=="p":temprule="プライベートマッチ"
+          else:temprule="サーモンラン"
+
+          await ctx.send("@everyone\n"+ctx.author.mention+"が"+open+"から"+temprule+"を募集しています")
+
+def mask_circle_solid(pil_img, background_color=(255,255,255), blur_radius=0, offset=0):
+    background = Image.new(pil_img.mode, pil_img.size, background_color)
+
+    offset = blur_radius * 2 + offset
+    mask = Image.new("L", pil_img.size, 0)
+    draw = ImageDraw.Draw(mask)
+    draw.ellipse((offset, offset, pil_img.size[0] - offset, pil_img.size[1] - offset), fill=255)
+    mask = mask.filter(ImageFilter.GaussianBlur(blur_radius))
+
+    return Image.composite(pil_img, background, mask)
+
+@Bosyu.error
+async def Bosyu_error(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send('**引数エラー！**\nヒント：引数が足りていないか、正しく入力できていません。\n```_Bosyu ルール文字 時刻 コメント```と指定します。')
 
 
 @bot.command() #ピンポンテスト
@@ -459,6 +689,18 @@ async def test(ctx,opt:str):
             limit=int(opt[1])
             print("限界値を"+opt[1]+"に変更しました。")
 
+      if opt=="regular":
+            string = requests.get("https://spla2.yuu26.com/regular/now").json()
+            #f = open(string,"r")
+            #stages = json.load(string)
+            await ctx.send(string)
+            await ctx.send("現在のステージ："+string["result"][0]["maps_ex"][0]["image"]+"\n"+string["result"][0]["maps_ex"][1]["image"])
+
+      if opt=="everyone":
+            #target = discord.utils.get(ctx.guild.roles, id=586914633441607696)
+            await ctx.send("@everyone むりだろうけど")
+            #await ctx.send(ctx.guild.default_role.mention+" テストです")
+                           
       
         
 bot.run(token)
