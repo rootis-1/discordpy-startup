@@ -538,6 +538,9 @@ async def bosyu(ctx,rule:str,open:str,*,come):
 
       img.save("result.png")
       await ctx.send(file=discord.File('result.png'))
+      await ctx.send("```著作権表記\n画像生成時に「源瑛ラテゴ」(https://okoneya.jp/font/genei-latin.html) を使用しています。\n"\
+                     "Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)\n"\
+                     "© おたもん, © 2014-2019 Adobe Systems Incorporated, All Rights Reserved. © 2008–2019  フォント910```")
 
       if nhour>int(shour):
           await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")
