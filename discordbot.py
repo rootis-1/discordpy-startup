@@ -485,9 +485,9 @@ async def bosyu(ctx,rule:str,open:str,*,come):
       draw = ImageDraw.Draw(img)
 
       # ！フォントの設定(フォントファイルのパスと文字の大きさ)
-      main = ImageFont.truetype(r"C:\Users\erabl\AppData\Local\Microsoft\Windows\Fonts\GenEiLateMinP_v2.ttf", 40)
-      stagef = ImageFont.truetype(r"C:\Users\erabl\AppData\Local\Microsoft\Windows\Fonts\GenEiLateMinP_v2.ttf",24)
-      timef = ImageFont.truetype(r"C:\Users\erabl\AppData\Local\Microsoft\Windows\Fonts\logotypejp_mp_b_1.1.ttf",50)
+      main = ImageFont.truetype(r"GENEILATEGON_V2.TTF", 40)
+      stagef = ImageFont.truetype(r"GENEILATEGON_V2.TTF",24)
+      timef = ImageFont.truetype(r"GENEILATEGON_V2.TTF",50)
       # ？ フォントの設定(フォントファイルのパスと文字の大きさ)
 
       # ！ 投稿者情報
