@@ -487,7 +487,7 @@ async def bosyu(ctx,rule:str,open:str,*,come):
       # ！フォントの設定(フォントファイルのパスと文字の大きさ)
       main = ImageFont.truetype(r"GENEILATEGON_V2.TTF", 40)
       stagef = ImageFont.truetype(r"GENEILATEGON_V2.TTF",24)
-      timef = ImageFont.truetype(r"GENEILATEGON_V2.TTF",50)
+      timef = ImageFont.truetype(r"LOGOTYPEJP_MP_B_1.1.TTF",50)
       # ？ フォントの設定(フォントファイルのパスと文字の大きさ)
 
       # ！ 投稿者情報
@@ -538,9 +538,11 @@ async def bosyu(ctx,rule:str,open:str,*,come):
 
       img.save("result.png")
       await ctx.send(file=discord.File('result.png'))
-      await ctx.send("```著作権表記\n画像生成時に「源瑛ラテゴ」(https://okoneya.jp/font/genei-latin.html) を使用しています。\n"\
+      await ctx.send("```著作権表記\n画像生成時に「源瑛ラテミン」(https://okoneya.jp/font/genei-latin.html) 、"\
+                     "「コーポレート・ロゴ」(https://logotype.jp/corporate-logo-font-dl.html)を使用しています。\n"\
                      "Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)\n"\
-                     "© おたもん, © 2014-2019 Adobe Systems Incorporated, All Rights Reserved. © 2008–2019  フォント910```")
+                     "© おたもん, © 2014-2019 Adobe Systems Incorporated, All Rights Reserved. © 2008–2019  フォント910\n"\
+                     "© 2014 自家製フォント工房 by MM. © 2015 M+ FONTS PROJECT © 2019 転職サイト情報のLOGOTYPE.JP.```")
 
       if nhour>int(shour):
           await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")
