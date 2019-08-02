@@ -14,6 +14,7 @@ import asyncio
 import requests
 import io
 import aiohttp
+import libopus
 import textwrap
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
 
@@ -46,6 +47,7 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
 @bot.event
 async def on_ready():
     print("動作を開始しました。")
+    discord.opus.load_opus(libopus)
 
     starttime = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).minute
     print("starttime:"+str(starttime))
