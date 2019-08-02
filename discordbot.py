@@ -210,6 +210,9 @@ async def play(ctx):
 
 @bot.command()
 async def summon(ctx):
+      await ctx.send("廃止されちゃった・・・")
+      
+      '''
       voice = ctx.guild.voice_client
       if ctx.author.voice == None:
           await ctx.send("ボイスチャンネルにいないよね？")
@@ -225,16 +228,11 @@ async def summon(ctx):
 
       #voice.play(discord.FFmpegPCMAudio('famipop2.mp3'))
       #await bot.change_presence(activity=discord.Game(name="famipop3"))
-
+      '''
       
 @bot.command()
 async def dc(ctx):
-      voice = ctx.guild.voice_client
-      if voice:
-          await voice.disconnect()
-          #await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
-      else:
-          await ctx.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
+       await ctx.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
           #await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
       
 
@@ -715,6 +713,10 @@ async def help(ctx):
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
       
+@bot.event
+async def on_command_error(ctx, error):
+    await ctx.send(str(error))
+      
 @bot.command()
 async def test(ctx,opt:str):
       global routcount
@@ -778,6 +780,9 @@ async def test(ctx,opt:str):
             newlist = list(set(newlist))
             await ctx.send("\n".join(newlist))
             newlist = []
+      if opt=="error":
+            raise RunTimeError('エラー出してみた')
+            
       
         
 bot.run(token)
