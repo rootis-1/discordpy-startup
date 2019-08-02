@@ -14,7 +14,6 @@ import asyncio
 import requests
 import io
 import aiohttp
-import libopus
 import textwrap
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
 
