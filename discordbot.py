@@ -781,7 +781,7 @@ async def test(ctx,opt:str):
             await ctx.send("\n".join(newlist))
             newlist = []
       if opt=="error":
-            raise RunTimeError('エラー出してみた')
+            raise ValueError('エラー出してみた')
             
       
         
