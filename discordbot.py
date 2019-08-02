@@ -204,10 +204,8 @@ async def play(ctx):
                               "リーグマッチ","ぼっちプラべ","rootラジオ","あげパンラジオ","音楽室"))
       await bot.change_presence(activity=discord.Game(name=string))
 
-'''
 @bot.command()
 async def summon(ctx):
-      
       voice = ctx.guild.voice_client
       if ctx.author.voice == None:
           await ctx.send("ボイスチャンネルにいないよね？")
@@ -215,14 +213,14 @@ async def summon(ctx):
       if voice is None:
           vc = ctx.author.voice.channel
           if vc==None:
-              await ctx.send("ボイスチャンネルにいませんね")
+              await ctx.send("君ボイスチャンネルにいないよね？")
               return
           voice = await vc.connect()
-      voice.play(discord.FFmpegPCMAudio('famipop3.mp3'))
+      #voice.play(discord.FFmpegPCMAudio('famipop3.mp3'))
       #player.start()
 
       #voice.play(discord.FFmpegPCMAudio('famipop2.mp3'))
-      await bot.change_presence(activity=discord.Game(name="famipop3"))
+      #await bot.change_presence(activity=discord.Game(name="famipop3"))
 
       
 @bot.command()
@@ -230,11 +228,10 @@ async def dc(ctx):
       voice = ctx.guild.voice_client
       if voice:
           await voice.disconnect()
-          await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
+          #await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
       else:
           await ctx.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
-          await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
-'''
+          #await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
       
 
 @bot.command()
