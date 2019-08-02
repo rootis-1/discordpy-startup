@@ -1,3 +1,4 @@
 discord.py[voice]
 Pillow
 requests
+libopus
