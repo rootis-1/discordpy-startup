@@ -47,7 +47,9 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
 @bot.event
 async def on_ready():
     print("動作を開始しました。")
-    discord.opus.load_opus("libopus-dev")
+    OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
+    opus.load_opus(OPUS_LIBS)
+
     if not discord.opus.is_loaded():
             raise RunTimeError('Opus failed to load')
 
