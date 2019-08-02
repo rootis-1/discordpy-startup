@@ -718,10 +718,11 @@ async def on_command_error(ctx, error):
     await ctx.send("（エラー出しちゃった・・・）\n```"+str(error)+"```")
       
 @bot.command()
-async def test(ctx,opt:str):
+async def test(ctx,opt:str,*args):
       global routcount
       global bosyulist
       global nusi
+      
       if opt=="ユーザー":
             string=[]
             i=0
@@ -781,7 +782,10 @@ async def test(ctx,opt:str):
             await ctx.send("\n".join(newlist))
             newlist = []
       if opt=="error":
-            raise ValueError('エラー出してみた！')
+            if len(args)>0:
+                  raise ValueError(str(args[0]))
+            else:
+                  raise ValueError('エラー出してみた！')
             
       
         
