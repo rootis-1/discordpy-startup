@@ -715,7 +715,7 @@ async def help(ctx):
       
 @bot.event
 async def on_command_error(ctx, error):
-    await ctx.send(str(error))
+    await ctx.send("（エラー出しちゃった・・・）\n```"+str(error)+"```")
       
 @bot.command()
 async def test(ctx,opt:str):
@@ -781,7 +781,7 @@ async def test(ctx,opt:str):
             await ctx.send("\n".join(newlist))
             newlist = []
       if opt=="error":
-            raise ValueError('エラー出してみた')
+            raise ValueError('エラー出してみた！')
             
       
         
