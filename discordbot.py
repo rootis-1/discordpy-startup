@@ -9,7 +9,6 @@ import json
 import re
 import os
 import datetime
-import libopus
 import time
 import asyncio
 import requests
