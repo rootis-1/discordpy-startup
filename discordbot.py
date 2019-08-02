@@ -16,6 +16,7 @@ import io
 import aiohttp
 import textwrap
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
+from discord import opus
 
 bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
