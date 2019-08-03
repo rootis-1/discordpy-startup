@@ -472,7 +472,7 @@ async def bosyu(ctx,*args):
               timetmp = 0
           else:
               string = requests.get("https://spla2.yuu26.com/"+rulename+"/schedule",headers=headers).json()
-              timetmp = int(shour)/2
+              timetmp = int(int(shour)/2)
               
       
           stage1 = string["result"][timetmp]["maps_ex"][0]["image"]
@@ -739,9 +739,9 @@ async def help(ctx):
       dm_channel = await ctx.author.create_dm()
       await dm_channel.send(embed=embed)
       
-@bot.event
+'''@bot.event
 async def on_command_error(ctx, error):
-    await ctx.send("（エラー出しちゃった・・・）\n```"+str(error)+"```")
+    await ctx.send("（エラー出しちゃった・・・）\n```"+str(error)+"```")'''
       
 @bot.command()
 async def test(ctx,opt:str,*args):
