@@ -472,7 +472,7 @@ async def bosyu(ctx,*args):
               timetmp = 0
           else:
               string = requests.get("https://spla2.yuu26.com/"+rulename+"/schedule",headers=headers).json()
-              timetmp = int(int(shour)/2)
+              timetmp = int(int(shour)/2+int(shour)%2)
               
       
           stage1 = string["result"][timetmp]["maps_ex"][0]["image"]
