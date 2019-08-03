@@ -485,9 +485,14 @@ async def bosyu(ctx,*args):
               stage1_name = "フジツボ\nスポーツクラブ"
           elif stage2_name == "フジツボスポーツクラブ":
               stage2_name = "フジツボ\nスポーツクラブ"
+                  
+          if stage1_name == "ホテルニューオートロ":
+              stage1_name = "ホテル\nホテルニューオートロ"
+          elif stage2_name == "ホテルニューオートロ":
+              stage2_name = "ホテル\nニューオートロ"
 
       if rule == "s":
-          headers = {'User-Agent': 'SS-Mbot @shidoro_onn'}
+          headers = {'User-Agent': 'SS-Mbot tw@shidoro_onn'}
 
           string = requests.get("https://spla2.yuu26.com/coop/schedule",headers=headers).json()
 
@@ -559,12 +564,8 @@ async def bosyu(ctx,*args):
 
       img.save("result.png")
       await ctx.send(file=discord.File('result.png'))
-      await ctx.send("```著作権表記\n画像生成時に「源瑛ラテミン」(https://okoneya.jp/font/genei-latin.html) 、"\
-                     "「コーポレート・ロゴ」(https://logotype.jp/corporate-logo-font-dl.html)を使用しています。\n"\
-                     "Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)\n"\
-                     "© おたもん, © 2014-2019 Adobe Systems Incorporated, All Rights Reserved. © 2008–2019  フォント910\n"\
-                     "© 2014 自家製フォント工房 by MM. © 2015 M+ FONTS PROJECT © 2019 転職サイト情報のLOGOTYPE.JP.```")
-
+      await ctx.send("募集者にメンションすることで参加を表明できます！")
+      await ctx.send("著作権表記: https://github.com/coolwind0202/discordpy-startup/blob/master/README.md ")
       '''if nhour>int(shour):
           await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")
       elif nhour==int(shour) and nmin>int(smin):
@@ -589,7 +590,7 @@ async def bosyu(ctx,*args):
           print(nusi.id)
           bosyuflag = 1
       else:
-          await ctx.send("現在"+ctx.guild.get_member(nusi.id).display_name+"さんが募集しています。")
+          await ctx.send("現在"+ctx.guild.get_member(nusi.id).display_name+"さんが予約しています。")
           return
 
       sa = stime - nowobject
