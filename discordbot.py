@@ -466,14 +466,20 @@ async def bosyu(ctx,*args):
               rulename = "regular"
           else:
               rulename = "league"
-
-          string = requests.get("https://spla2.yuu26.com/"+rulename+"/now",headers=headers).json()
+                  
+          if nhour/2 == int(shour)/2:
+              string = requests.get("https://spla2.yuu26.com/"+rulename+"/now",headers=headers).json()
+              timetmp = 0
+          else:
+              string = requests.get("https://spla2.yuu26.com/"+rulename+"/schedule",headers=headers).json()
+              timetmp = int(shour)/2
+              
       
-          stage1 = string["result"][0]["maps_ex"][0]["image"]
-          stage2 = string["result"][0]["maps_ex"][1]["image"]
+          stage1 = string["result"][timetmp]["maps_ex"][0]["image"]
+          stage2 = string["result"][timetmp]["maps_ex"][1]["image"]
 
-          stage1_name = string["result"][0]["maps"][0]
-          stage2_name = string["result"][0]["maps"][1]
+          stage1_name = string["result"][timetmp]["maps"][0]
+          stage2_name = string["result"][timetmp]["maps"][1]
 
           if stage1_name == "フジツボスポーツクラブ":
               stage1_name = "フジツボ\nスポーツクラブ"
@@ -573,7 +579,7 @@ async def bosyu(ctx,*args):
       stime = datetime.datetime.strptime(nowstr, '%Y-%m-%d %H:%M:%S %z')
       
       if (nhour>int(shour)) or (nhour==int(shour) and nmin>int(smin)):
-          stime + datetime.timedelta(days=1)
+          stime += datetime.timedelta(days=1)
       print(stime)
       #予定と現在の差を計算
 
