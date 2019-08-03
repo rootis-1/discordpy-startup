@@ -480,6 +480,8 @@ async def bosyu(ctx,*args):
 
           stage1_name = string["result"][timetmp]["maps"][0]
           stage2_name = string["result"][timetmp]["maps"][1]
+      
+          rulename = string["result"][timetmp]["rule"]
 
           if stage1_name == "フジツボスポーツクラブ":
               stage1_name = "フジツボ\nスポーツクラブ"
@@ -541,6 +543,7 @@ async def bosyu(ctx,*args):
 
           draw.text((930,385),stage1_name,fill=(0,0,0),font=stagef)
           draw.text((930,500),stage2_name,fill=(0,0,0),font=stagef)
+          draw.text((842,587),rulename,fill=(0,0,0),font=stagef)
 
       elif rule == "s":
           stim = Image.open(io.BytesIO(requests.get(stageim).content))
