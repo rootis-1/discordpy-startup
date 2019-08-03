@@ -408,6 +408,7 @@ async def bosyu(ctx,*args):
       args[1] = open
       args[2] = come
       '''
+      
       if len(args) < 2:
             await ctx.send("ルール、開催時刻の入力は必須です！")
             return
@@ -426,12 +427,12 @@ async def bosyu(ctx,*args):
                          "**p**：プライベートマッチ  と指定できます。")
           return
 
-      if open is None:
+      if optime is None:
           await ctx.send("時刻が入力されていません！\n"\
                          "時刻は ```00:00``` のように指定します。")
           return
 
-      match = re.match(r'[0-9]{2}:[0-9]+', open)
+      match = re.match(r'[0-9]{2}:[0-9]+', optime)
 
       if match is None:
           await ctx.send("時刻が入力されていません！\n"\
@@ -439,8 +440,8 @@ async def bosyu(ctx,*args):
           return
       else:
           print(match.group(0))
-          shour = re.split(r':', open)[0]
-          smin = re.split(r':',open)[1]
+          shour = re.split(r':', optime)[0]
+          smin = re.split(r':',optime)[1]
           print(smin)
 
       if int(shour)>=24:
@@ -510,7 +511,7 @@ async def bosyu(ctx,*args):
       icon = icon.resize((200,200))
       img.paste(icon,(115,50))
 
-      draw.text((470,185),open+"～",fill=(0,0,0),font=timef)
+      draw.text((470,185),optime+"～",fill=(0,0,0),font=timef)
       
       draw.text((900,665),datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y-%m-%d %H:%M:%S'),fill=(0,0,0),font=stagef)
 
@@ -589,7 +590,7 @@ async def bosyu(ctx,*args):
           elif rule=="p":temprule="プライベートマッチ"
           else:temprule="サーモンラン"
 
-          await ctx.send("@everyone\n"+ctx.author.mention+"が"+open+"から"+temprule+"を募集しています")
+          await ctx.send("@everyone\n"+ctx.author.mention+"が"+optime+"から"+temprule+"を募集しています")
 
           newlist = []
           for i in range(len(bosyulist)):
