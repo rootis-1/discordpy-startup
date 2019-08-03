@@ -396,13 +396,27 @@ async def team(ctx,num:int):
 
 
 @bot.command() #いらない
-async def bosyu(ctx,rule:str,open:str,*,come):
+async def bosyu(ctx,*args):
 
-      if ctx.author.id!=519434882460549169:
-          return
       global nusi
       global bosyuflag
       global bosyulist
+      
+      '''
+      ★ argsのルール
+      args[0] = rule
+      args[1] = open
+      args[2] = come
+      '''
+      if len(args) < 2:
+            await ctx.send("ルール、開催時刻の入力は必須です！")
+            return
+      
+      rule = args[0]
+      optime = args[1]
+      
+      if len(args) == 3:
+          come = args[2]
 
       if rule != "n" and rule!= "r" and rule != "s" and rule!="p":
           await ctx.send("ルールが正しく入力されていません！\n"\
@@ -528,7 +542,8 @@ async def bosyu(ctx,rule:str,open:str,*,come):
       # ？ ステージ情報
 
       # ！ コメント
-
+      if len(args) != 3:
+            come = "特になし"
       come = "\n".join(textwrap.wrap(come,width=13))
       draw.text((160,342),come,fill=(0,0,0),font=main)
 
