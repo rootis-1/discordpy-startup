@@ -559,51 +559,55 @@ async def bosyu(ctx,*args):
                      "© おたもん, © 2014-2019 Adobe Systems Incorporated, All Rights Reserved. © 2008–2019  フォント910\n"\
                      "© 2014 自家製フォント工房 by MM. © 2015 M+ FONTS PROJECT © 2019 転職サイト情報のLOGOTYPE.JP.```")
 
-      if nhour>int(shour):
+      '''if nhour>int(shour):
           await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")
       elif nhour==int(shour) and nmin>int(smin):
-          await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")
+          await ctx.send("仕様上予約は当日のみ行えます。\n画像のみ生成します、ごめんなさい。\nby作者")'''
+      
+      
+      #先に現在時刻を文字列に変換
+      nowstr = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y-%m-%d')
+      #予定時刻を追記
+      nowstr = nowstr+" "+str(shour)+":"+str(smin)+":00 +09:00:00"
+      print(nowstr)
+      stime = datetime.datetime.strptime(nowstr, '%Y-%m-%d %H:%M:%S %z')
+      
+      if (nhour>int(shour)) or (nhour==int(shour) and nmin>int(smin)):
+          stime + datetime.timedelta(days=1)
+      print(stime)
+      #予定と現在の差を計算
+
+      if bosyuflag==0:
+          bosyulist.append(ctx.author.id)
+          nusi = ctx.guild.get_member(ctx.author.id)
+          print(nusi.id)
+          bosyuflag = 1
       else:
-          #先に現在時刻を文字列に変換
-          nowstr = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y-%m-%d')
-          #予定時刻を追記
-          nowstr = nowstr+" "+str(shour)+":"+str(smin)+":00 +09:00:00"
-          print(nowstr)
-          stime = datetime.datetime.strptime(nowstr, '%Y-%m-%d %H:%M:%S %z')
-          print(stime)
-          #予定と現在の差を計算
+          await ctx.send("現在"+ctx.guild.get_member(nusi.id).display_name+"さんが募集しています。")
+          return
 
-          if bosyuflag==0:
-              bosyulist.append(ctx.author.id)
-              nusi = ctx.guild.get_member(ctx.author.id)
-              print(nusi.id)
-              bosyuflag = 1
-          else:
-              await ctx.send("現在"+ctx.guild.get_member(nusi.id).display_name+"さんが募集しています。")
-              return
+      sa = stime - nowobject
+      await asyncio.sleep(sa.total_seconds())
 
-          sa = stime - nowobject
-          await asyncio.sleep(sa.total_seconds())
+      if rule=="n":temprule="ナワバリバトル"
+      elif rule=="r":temprule="リーグマッチ"
+      elif rule=="p":temprule="プライベートマッチ"
+      else:temprule="サーモンラン"
 
-          if rule=="n":temprule="ナワバリバトル"
-          elif rule=="r":temprule="リーグマッチ"
-          elif rule=="p":temprule="プライベートマッチ"
-          else:temprule="サーモンラン"
+      await ctx.send("@everyone\n"+ctx.author.mention+"が"+optime+"から"+temprule+"を募集しています")
 
-          await ctx.send("@everyone\n"+ctx.author.mention+"が"+optime+"から"+temprule+"を募集しています")
+      newlist = []
+      for i in range(len(bosyulist)):
+          newlist.append(ctx.guild.get_member(bosyulist[i]).display_name)
 
-          newlist = []
-          for i in range(len(bosyulist)):
-              newlist.append(ctx.guild.get_member(bosyulist[i]).display_name)
+      newlist = list(set(newlist))
 
-          newlist = list(set(newlist))
+      await ctx.send("現在の参加者一覧\n```"+"\n".join(newlist)+"```合計："+str(len(newlist)))
 
-          await ctx.send("現在の参加者一覧\n```"+"\n".join(newlist)+"```合計："+str(len(newlist)))
-
-          bosyuflag=0
-          bosyulist = []
-          nusi = ""
-          newlist = []
+      bosyuflag=0
+      bosyulist = []
+      nusi = ""
+      newlist = []
 
 def mask_circle_solid(pil_img, background_color=(255,255,255), blur_radius=0, offset=0):
     background = Image.new(pil_img.mode, pil_img.size, background_color)
@@ -795,7 +799,7 @@ async def test(ctx,opt:str,*args):
             for i in range(len(bosyulist)):
               newlist.append(ctx.guild.get_member(bosyulist[i]).display_name)
             newlist = list(set(newlist))
-            await ctx.send("\n".join(newlist))
+            await ctx.send("```"+"\n".join(newlist)+"```")
             newlist = []
       if opt=="error":
             if len(args)>0:
