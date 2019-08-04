@@ -208,7 +208,7 @@ async def play(ctx):
                               "リーグマッチ","ぼっちプラべ","rootラジオ","あげパンラジオ","音楽室"))
       await bot.change_presence(activity=discord.Game(name=string))
 
-@bot.command()
+@bot.command( aliases=['join'] )
 async def summon(ctx):
       await ctx.send("廃止されちゃった・・・")
       
@@ -236,7 +236,7 @@ async def dc(ctx):
           #await bot.change_presence(activity=discord.Game(name="ウルタンアンチ"))
       
 
-@bot.command()
+@bot.command( aliases=['装飾'] )
 async def decore(ctx,target:str,cont:str):
       string=""
       if target=="b" or target=="bold" or target=="strong" or target=="太字" or target=="太い" or target=="ふとい" or target=="太め" or target=="太":string="**"
@@ -248,7 +248,7 @@ async def decore(ctx,target:str,cont:str):
       elif target=="隠す" or target=="マスク" or target=="mask":string="||"
       await ctx.send(string+cont+string)
       
-@bot.command()
+@bot.command( aliases=['埋め込み'] )
 async def umekomi(ctx,string1:str,string2:str):
       embed = discord.Embed(title=string1, description=string2,color=0x80ff00)
       embed.set_author(name=ctx.author.name,icon_url=ctx.author.avatar_url)
@@ -288,7 +288,7 @@ async def spla(ctx,string:str):
       else:
             await ctx.send(string+'は見つかりませんでした')
             
-@bot.command()
+@bot.command( aliases=['5000兆円'] )
 async def emo5000(ctx,string:str):
       if ctx.guild.id!=568427057076371457:
             await ctx.send('5000兆円絵文字未導入のサーバーです。')
@@ -395,7 +395,7 @@ async def team(ctx,num:int):
       
 
 
-@bot.command() #いらない
+@bot.command( aliases=['募集'] ) #いらない
 async def bosyu(ctx,*args):
 
       global nusi
@@ -649,7 +649,7 @@ async def urutalk(ctx,string:str):
     await ctx.send(member.mention+' '+ctx.author.name+'「'+string+'」')
 
         
-@bot.command() #フレンドコード一覧
+@bot.command( aliases=['フレコリスト','フレリス','フレンドリスト'] ) #フレンドコード一覧
 async def frlist(ctx):
     temp=[]
     for i in frdic:
@@ -657,7 +657,7 @@ async def frlist(ctx):
     string = "\n".join(temp)
     await ctx.send('--------------------------------------------\n'+'|Friend cords list for '+ctx.author.mention+'!|\n'+string+'\n--------------------------------------------')
         
-@bot.command() #フレンドコード検索
+@bot.command( aliases=['フレコ','フレンドコード'] ) #フレンドコード検索
 async def frc(ctx,cord:str):
     if cord.startswith("ウル"):cord="ウルタン"
     elif cord=="zeppurun":cord="ウルタン"
@@ -682,10 +682,8 @@ async def dcurutan(ctx):
     
 @bot.command() #デバッグ用ウルタンアンチ確認コマンド
 async def call(ctx):
-    global switch
     global urulv
     await ctx.send('現在のアンチレベル ： '+str(urulv))
-    await ctx.send('現在のswitch状態：'+switch)
       
 @bot.event #メンバーが入ったとき
 async def on_member_join(member):
