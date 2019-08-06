@@ -17,6 +17,7 @@ import aiohttp
 import textwrap
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
 from discord import opus
+import copy
 
 bot = commands.Bot(command_prefix='_',help_command=None)
 client = discord.Client()
@@ -58,29 +59,39 @@ async def on_ready():
     channel = bot.get_channel(572803866400391218)
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 
+    basestr = ["ウルタンは反社と関わりを持ったため無期限謹慎処分になったことがある",\
+                      "ウルタンはまさばより偏差値が高い",\
+                      "ウルタンは文の最後の文字を二回書いたり語尾に小文字を付けがちでそれが不評だったのでメンヘラ化したらしい",\
+                      "ウルタン㊙情報\nかっこいい（本人投稿）",\
+                      "あげパンはYouTubeで毎日動画を投稿しているが、彼の動画の下ネタシーン集を収集する「Agepan Mania」というアカウントがある。\n"\
+                      "「ウルタンは抜ける」「パンパンパンパンパン！パンパン！スーパーあげパンボム」"\
+                      "「ベバンダ、リア、ゥ」などが有名である。",\
+                      "くそ！","root-1は本来は存在しない数字なので彼の存在も幻覚である","誰がSSーM㊙情報じゃい！",
+                      "くそ！とはリアルくんの隠喩である","かろーらはノンケ向け淫夢動画からエロゲに目覚めた",\
+                      "I sue you for fraudulent charges and property damage charges!\nYou understand the reason, isn't it?"\
+                      "Because you beat everyone with such a trick and destroyed save data! Please ready to be prepared for it."\
+                      "Sue you before long. I also bring a trial. You must go the court whatever you say. Please be prepare the Palimony!"\
+                      "You are a criminal! Please look forward to being thrown into jail! Are you?!",\
+                      "【衝撃】ウルタンは引きこもり","【全米が涙】ウルタンはニート",\
+                      "**おちばシューターウルタン**\nサブはポイントセンサー、スペシャルはインクアーマーだ"]
+     
+    string = copy.copy(basestr) 
+
     await asyncio.sleep(timediff*60)
     print("ループ開始")
     nsyu = 0
     while 1:
             await asyncio.sleep(3600*2)
-            print("n週目")
-            string = random.choice(("ウルタンは反社と関わりを持ったため無期限謹慎処分になったことがある",\
-                                "ウルタンはまさばより偏差値が高い",\
-                                "ウルタンは文の最後の文字を二回書いたり語尾に小文字を付けがちでそれが不評だったのでメンヘラ化したらしい",\
-                                "ウルタン㊙情報\nかっこいい（本人投稿）",\
-                                "あげパンはYouTubeで毎日動画を投稿しているが、彼の動画の下ネタシーン集を収集する「Agepan Mania」というアカウントがある。\n"\
-                                "「ウルタンは抜ける」「パンパンパンパンパン！パンパン！スーパーあげパンボム」"\
-                                "「ベバンダ、リア、ゥ」などが有名である。",\
-                                "くそ！","root-1は本来は存在しない数字なので彼の存在も幻覚である","誰がSSーM㊙情報じゃい！",
-                                "くそ！とはリアルくんの隠喩である","かろーらはノンケ向け淫夢動画からエロゲに目覚めた",\
-                                "I sue you for fraudulent charges and property damage charges!\nYou understand the reason, isn't it?"\
-                                "Because you beat everyone with such a trick and destroyed save data! Please ready to be prepared for it."\
-                                "Sue you before long. I also bring a trial. You must go the court whatever you say. Please be prepare the Palimony!"\
-                                "You are a criminal! Please look forward to being thrown into jail! Are you?!",\
-                                "【衝撃】ウルタンは引きこもり","【全米が涙】ウルタンはニート",\
-                                "**おちばシューターウルタン**\nサブはポイントセンサー、スペシャルはインクアーマーだ"))
-            embed = discord.Embed(title="SSーM㊙情報",description=string)
+            print(str(nsyu)+"週目")
+            
+            stint = random.randrange(0,len(string))
+            
+            embed = discord.Embed(title="SSーM㊙情報",description=string.pop(stint))
             await channel.send(embed=embed)
+            
+            if len(string)==0:
+                  string = copy.copy(basestr)
+                  
             nsyu += 1
 
 
