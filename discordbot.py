@@ -54,7 +54,7 @@ async def on_ready():
 
     starttime = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).minute
     print("starttime:"+str(starttime))
-    timediff = 2-starttime
+    timediff = 60-starttime
 
     channel = bot.get_channel(572803866400391218)
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
@@ -85,7 +85,7 @@ async def on_ready():
     print("ループ開始")
     nsyu = 0
     while 1:
-            await asyncio.sleep(60)
+            await asyncio.sleep(3600*2)
             print(str(nsyu)+"週目")
             
             stint = random.randrange(0,len(string))
