@@ -60,20 +60,24 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
 
     basestr = ["ウルタンは反社と関わりを持ったため無期限謹慎処分になったことがある",\
-                      "ウルタンはまさばより偏差値が高い",\
-                      "ウルタンは文の最後の文字を二回書いたり語尾に小文字を付けがちでそれが不評だったのでメンヘラ化したらしい",\
-                      "ウルタン㊙情報\nかっこいい（本人投稿）",\
-                      "あげパンはYouTubeで毎日動画を投稿しているが、彼の動画の下ネタシーン集を収集する「Agepan Mania」というアカウントがある。\n"\
-                      "「ウルタンは抜ける」「パンパンパンパンパン！パンパン！スーパーあげパンボム」"\
-                      "「ベバンダ、リア、ゥ」などが有名である。",\
-                      "くそ！","root-1は本来は存在しない数字なので彼の存在も幻覚である","誰がSSーM㊙情報じゃい！",
-                      "くそ！とはリアルくんの隠喩である","かろーらはノンケ向け淫夢動画からエロゲに目覚めた",\
-                      "I sue you for fraudulent charges and property damage charges!\nYou understand the reason, isn't it?"\
-                      "Because you beat everyone with such a trick and destroyed save data! Please ready to be prepared for it."\
-                      "Sue you before long. I also bring a trial. You must go the court whatever you say. Please be prepare the Palimony!"\
-                      "You are a criminal! Please look forward to being thrown into jail! Are you?!",\
-                      "【衝撃】ウルタンは引きこもり","【全米が涙】ウルタンはニート",\
-                      "**おちばシューターウルタン**\nサブはポイントセンサー、スペシャルはインクアーマーだ"]
+               "ウルタンはまさばより偏差値が高い",\
+               "ウルタンは文の最後の文字を二回書いたり語尾に小文字を付けがちでそれが不評だったのでメンヘラ化したらしい",\
+               "ウルタン㊙情報\nかっこいい（本人投稿）",\
+               "あげパンはYouTubeで毎日動画を投稿しているが、彼の動画の下ネタシーン集を収集する「Agepan Mania」というアカウントがある。\n"\
+               "「ウルタンは抜ける」「パンパンパンパンパン！パンパン！スーパーあげパンボム」"\
+               "「ベバンダ、リア、ゥ」などが有名である。",\
+               "くそ！","root-1は本来は存在しない数字なので彼の存在も幻覚である","誰がSSーM㊙情報じゃい！",
+               "くそ！とはリアルくんの隠喩である","かろーらはノンケ向け淫夢動画からエロゲに目覚めた",\
+               "I sue you for fraudulent charges and property damage charges!\nYou understand the reason, isn't it?"\
+               "Because you beat everyone with such a trick and destroyed save data! Please ready to be prepared for it."\
+               "Sue you before long. I also bring a trial. You must go the court whatever you say. Please be prepare the Palimony!"\
+               "You are a criminal! Please look forward to being thrown into jail! Are you?!",\
+               "【衝撃】ウルタンは引きこもり","【全米が涙】ウルタンはニート",\
+               "**おちばシューターウルタン**\nサブはポイントセンサー、スペシャルはインクアーマーだ",
+               "ウルタンはたけのこが好きすぎて数学の質問をたけのこの仕送りと勘違いしたことがある",
+               "ウルタンの10分は20分である","まさばの偏差値は30代である","まさばはGoogleの回し者であり、ニコニコ動画のアンチである",\
+               "ゆどーふは誤字をすることで快感を得ている","葛飾北斎が住処を変えたようにシャルルは名前を変えているので葛飾北斎はシャルルである",\
+               "ウルタンはXになれないのでxvideosを目指している"]
      
     string = copy.copy(basestr) 
 
@@ -171,6 +175,9 @@ async def on_message(message):
         #dc反応（いちごおばけ）
         if message.guild.id==480522357467774976:
             await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
+            
+    if "㊙情報" in cont:
+        await message.add_reaction('㊙')
             
     if bot.user in message.mentions: # 話しかけられたかの判定
         global limit
