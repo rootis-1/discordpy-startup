@@ -58,6 +58,7 @@ async def on_ready():
 
     channel = bot.get_channel(572803866400391218)
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
+    await bot.change_nickname(bot.user,"ニックネーム変更テスト")
 
     basestr = ["ウルタンは反社と関わりを持ったため無期限謹慎処分になったことがある",\
                "ウルタンはまさばより偏差値が高い",\
@@ -834,7 +835,10 @@ async def test(ctx,opt:str,*args):
                   raise ValueError('エラー出してみた！')
       if opt=="status":
             await ctx.send(str(ctx.author.status))
-            
-      
-        
+      if opt=="rename":
+            if len(args)>0:
+                  await bot.change_nickname(bot.user,args[0])
+            else:
+                  await ctx.send("名前が未入力")
+                  return
 bot.run(token)
