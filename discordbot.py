@@ -832,6 +832,8 @@ async def test(ctx,opt:str,*args):
                   raise ValueError(str(args[0]))
             else:
                   raise ValueError('エラー出してみた！')
+      if opt=="status":
+            await ctx.send(str(ctx.author.Status))
             
       
         
