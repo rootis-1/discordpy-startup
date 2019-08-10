@@ -840,4 +840,14 @@ async def test(ctx,opt:str,*args):
             else:
                   await ctx.send("名前が未入力")
                   return
+      if opt=="dynoinfo":
+            import requests
+
+            headers = {
+                  'Accept': 'application/vnd.heroku+json; version=3',
+            }
+
+            response = requests.get('https://api.heroku.com/apps/botpratctice/dynos/discordbot', headers=headers).json()
+            print(response)
+
 bot.run(token)
