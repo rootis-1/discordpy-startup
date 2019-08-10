@@ -294,6 +294,7 @@ async def shutdown(ctx):
       }
 
       response = requests.post('https://api.heroku.com/apps/botpratctice/dynos/discordbot/actions/stop', headers=headers)
+      print(response)
 
       
 @bot.command() #画像表示 URL一覧は上記辞書
