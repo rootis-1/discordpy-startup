@@ -58,7 +58,6 @@ async def on_ready(self):
 
     channel = bot.get_channel(572803866400391218)
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
-    await discord.ClientUser.edit(username="名前変更テスト")
 
     basestr = ["ウルタンは反社と関わりを持ったため無期限謹慎処分になったことがある",\
                "ウルタンはまさばより偏差値が高い",\
@@ -283,22 +282,11 @@ async def botsw(ctx):
       elif switch=="OFF":switch="ON"
       str = random.choice(("妖怪ウォッチ4","スプラトゥーン2","ウルタンくさい","大学受験","ウルタン天気予報","ウルタンラジオ","ウルタン不審者","健康ミネラルウル茶","ウルタン語彙力ない"))
       await bot.change_presence(activity=discord.Game(name=switch+'-'+str))
-'''
-      
-@bot.command() #jsonファイルの読み書きテスト
-async def jsontest(ctx,name:str):
-      f = open('data1.json','r')
-      fdic = json.load(f)
-      await ctx.send(fdic[name]['twid'])
-      f.close()
-      
+'''      
 @bot.command()
-async def idwrite(ctx):
-      print("あなたのIDは"+str(ctx.author.id)+"です。")
-      with open('/tmp/data.txt','a') as f:
-            f.write(str(ctx.author.id)+"\n")
-      print("書き込みました。")
-
+async def shutdown(ctx):
+      await ctx.send("動作を終了します。")
+      await bot.close()
 @bot.command() #画像表示 URL一覧は上記辞書
 async def spla(ctx,string:str):
       temp = ""
