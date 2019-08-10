@@ -49,8 +49,6 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
 async def on_ready(self):
     print("動作を開始しました。")
     #opus.load_opus("libopus-dev")
-    if not discord.opus.is_loaded():
-            raise RunTimeError('Opus failed to load')
 
     starttime = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).minute
     print("starttime:"+str(starttime))
