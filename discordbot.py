@@ -52,8 +52,9 @@ async def on_ready():
 
     headers = {
             'Accept': 'application/vnd.heroku+json; version=3',
-            'Authorization': 'Basic 9d176079-caaf-40b3-8253-d0173928eff0',
+            'Authorization': 'Bearer 9d176079-caaf-40b3-8253-d0173928eff0',
             'Content-Type': 'application/json',
+            'User-Agent': 'SS-Mbot tw@shidoro_onn'
     }
 
     data  = '{"description":"sample authorization"}'
