@@ -46,7 +46,7 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
        "ショッツル鉱山":"DZbK2EDVAAAuvbI","フジツボスポーツクラブ":"C3K5Ou1VcAAG-2z","マンタマリア号":"DIEFuh-UIAAAz_w"}
 
 @bot.event
-async def on_ready(self):
+async def on_ready():
     print("動作を開始しました。")
     #opus.load_opus("libopus-dev")
 
