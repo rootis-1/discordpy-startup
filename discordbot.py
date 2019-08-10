@@ -47,6 +47,21 @@ imdic={"スプラシューター":"DB3eW8uUIAAmtkG","スプラシューターコ
 
 @bot.event
 async def on_ready():
+      
+    import requests
+
+    headers = {
+            'Accept': 'application/vnd.heroku+json; version=3',
+            'Authorization': 'Basic 9d176079-caaf-40b3-8253-d0173928eff0',
+            'Content-Type': 'application/json',
+    }
+
+    data  = '{"description":"sample authorization"}'
+
+    response = requests.post('https://api.heroku.com/oauth/authorizations', headers=headers, data=data)
+    print(response.json())
+ 
+     
     print("動作を開始しました。")
     #opus.load_opus("libopus-dev")
 
@@ -56,6 +71,7 @@ async def on_ready():
 
     channel = bot.get_channel(572803866400391218)
     await bot.change_presence(activity=discord.Game(name='ウルタンアンチ'))
+
 
     basestr = ["ウルタンは反社と関わりを持ったため無期限謹慎処分になったことがある",\
                "ウルタンはまさばより偏差値が高い",\
