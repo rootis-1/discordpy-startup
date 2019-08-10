@@ -285,6 +285,17 @@ async def botsw(ctx):
 async def shutdown(ctx):
       await ctx.send("動作を終了します。")
       await bot.close()
+  
+      import requests
+
+      headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.heroku+json; version=3',
+      }
+
+      response = requests.post('https://api.heroku.com/apps/botpratctice/dynos/discordbot/actions/stop', headers=headers)
+
+      
 @bot.command() #画像表示 URL一覧は上記辞書
 async def spla(ctx,string:str):
       temp = ""
