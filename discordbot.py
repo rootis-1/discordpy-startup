@@ -60,7 +60,7 @@ async def 経験値(ctx,lv:int):
     for i in range(8):
         l.append(str(i)+"\t"+explist[i])
         
-    await ctx.send("```"+str(lv)+"\n".join(l)+"```")
+    await ctx.send("【"+str(lv)+" Lv】\n```"+"\n".join(l)+"```")
     
 @bot.command()
 async def リサイクル(ctx,rare:int):
