@@ -15,11 +15,11 @@ ducount = 0
 starter = 0
 startname = ""
 
-
+'''
 @bot.event #FalseCommand
 async def on_command_error(ctx, error):
     await ctx.send('そんなコマンドないよ？出直してきな？')
- 
+''' 
 
 @bot.event
 async def on_ready():
