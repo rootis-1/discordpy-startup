@@ -48,9 +48,13 @@ async def いちごおばけ(ctx):
     
 @bot.command(aliases=['exp'])
 async def 経験値(ctx,lv:int):
+    import traceback
+    traceback.print_exc()
+    
     f = open("other/data.txt","r")
     items = f.readlines()
     target = items[lv]
+    f.close()
     
     explist = [str(math.floor(target*(1-i*0.01))) for i range(8)]
     l = []
