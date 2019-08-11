@@ -56,7 +56,7 @@ async def 経験値(ctx,lv:int):
     target = items[lv]
     f.close()
     
-    explist = [str(math.floor(target*(1-i*0.01))) for i range(8)]
+    explist = [str(math.floor(target*(1-i*0.01))) for i in range(8)]
     l = []
     
     for i in range(8):
