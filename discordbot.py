@@ -46,6 +46,20 @@ async def dc(ctx):
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
     
+@bot.command(aliases=['exp'])
+async def 経験値(ctx,lv:int):
+    f = open("other/data.txt","r")
+    items = f.readlines()
+    target = items[lv]
+    
+    explist = [str(math.floor(target*(1-i*0.01))) for i range(8)]
+    l = []
+    
+    for i in range(8):
+        l.append(str(i)+"\t"+explist[i])
+        
+    await ctx.send("```"+"\n".join(l)+"```")
+    
 @bot.command()
 async def リサイクル(ctx,rare:int):
     if rare>1 and rare<10:
