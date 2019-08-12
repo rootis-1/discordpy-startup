@@ -103,10 +103,17 @@ async def hp(ctx,an:str,lv:int):
         f = open("other/hp.txt","r")
         items = f.readlines()
              
-        await ctx.send(str(math.floor(n*int(items[lv-1]))))
+        #await ctx.send(str(math.floor(n*int(items[lv-1]))))
+        
+        i = 0
+        string = []
+        
+        for i in range(1,11):
+            string.append(str(math.floor(((1-0.067*(i-1))*n*int(items[lv-1])))))
+        
         f.close()
-    
-            
+        await ctx.send("```"+"\n".join(string)+"```")
+        #0.067を引いていく。HP2は((1-(0.067*(2-1)))*hp)
 
     
     
