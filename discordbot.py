@@ -87,7 +87,7 @@ async def hp(ctx,an:str,lv:int):
         return
     f.close()
     
-    f = open("other/hps.txt",r")
+    f = open("other/hps.txt","r")
     items = f.readlines()
     
     if items[p].startswith("ー"):
