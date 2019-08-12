@@ -74,7 +74,7 @@ async def 経験値(ctx,lv:int):
     await ctx.send("【"+str(lv)+" Lv】\n```"+"\n".join(l)+"```")
     
 @bot.command()
-async def hp(ctx,an:str,lv:int):
+async def hp(ctx,an:str,lv:int,*args):
     
     f = open("other/anhp.txt","r")
     items = f.readlines()
@@ -91,6 +91,11 @@ async def hp(ctx,an:str,lv:int):
     
     f = open("other/hps.txt","r")
     items = f.readlines()
+    
+    renga = 1
+    if len(args)>=1:
+        if args[0] == "+":
+            renga = 1.15
     
     if items[p].startswith("ー"):
         await ctx.send("そのアンテナのステータスは記録されていません。")
@@ -109,7 +114,7 @@ async def hp(ctx,an:str,lv:int):
         string = []
         
         for i in range(1,11):
-            string.append(str(i).ljust(5)+str(math.floor(((1-0.067*(i-1))*n*int(items[lv-1])))))
+            string.append(str(i).ljust(5)+str(math.floor(((1-0.067*(i-1))*n*int(items[lv-1])*renga))))
         
         f.close()
         await ctx.send("【アンテナ "+an+" の "+str(lv)+" Lvの体格ごとHP】\n"+"```"+"\n".join(string)+"```")
