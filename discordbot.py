@@ -103,7 +103,7 @@ async def hp(ctx,an:str,lv:int):
         f = open("other/hp.txt","r")
         items = f.readlines()
              
-        await ctx.send(str(n*int(items[lv-1])))
+        await ctx.send(str(math.floor(n*int(items[lv-1]))))
         f.close()
     
             
