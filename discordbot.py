@@ -69,10 +69,9 @@ async def 経験値(ctx,lv:int):
     embed.add_field(name="F", value="回避6 準大-1／中間-1／準速／最速", inline=False)
     embed.add_field(name="G", value="回避10 最大／中間／最速\n回避15 最大／中間", inline=False)
     embed.add_field(name="H", value="回避15 最速", inline=False)
-        
-    await ctx.send("【"+str(lv)+" Lv】\n```"+"\n".join(l)+"```")
     
     await ctx.send(embed=embed)
+    await ctx.send("【"+str(lv)+" Lv】\n```"+"\n".join(l)+"```")
     
     
 @bot.command()
