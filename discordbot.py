@@ -73,6 +73,40 @@ async def 経験値(ctx,lv:int):
     await ctx.send(embed=embed)
     await ctx.send("【"+str(lv)+" Lv】\n```"+"\n".join(l)+"```")
     
+@bot.command()
+async def hp(ctx,an:str,lv:int):
+    
+    f = open("other/anhp.txt","r")
+    items = f.readlines()
+    
+    if an in items:
+        p = items.index(an)
+    else:
+        await ctx.send("そのアンテナのステータスは記録されていません。")
+        f.close()
+        return
+    f.close()
+    
+    f = open("other/hps.txt",r")
+    items = f.readlines()
+    
+    if items[p].startswith("ー"):
+        await ctx.send("そのアンテナのステータスは記録されていません。")
+        f.close()
+        return
+    else:
+        target = int(items[p]) #そのアンテナのLv1最大型
+        n = target/40
+             
+        f = open("other/hp.txt","r")
+        items = f.readlines()
+             
+        await ctx.send(str(n*int(items[lv-1])))
+        f.close()
+    
+            
+
+    
     
 @bot.command()
 async def リサイクル(ctx,rare:int):
