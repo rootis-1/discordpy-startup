@@ -58,9 +58,22 @@ async def 経験値(ctx,lv:int):
     l = []
     
     for i in range(8):
-        l.append(str(i)+"\t"+explist[i])
+        l.append(chr((i+65))+"\t"+explist[i])
+        
+    embed=discord.Embed(title="経験値の一覧", description="各属に当てはまる可能性のある体格", color=0x80ffff)
+    embed.add_field(name="A", value="回避0 最大型", inline=False)
+    embed.add_field(name="B", value="回避0 準大／中間／準速／最速", inline=False)
+    embed.add_field(name="C", value="回避3 最大型／準大-1／準準大-1／準準速-2／準速-2", inline=False)
+    embed.add_field(name="D", value="回避3 準大-2／準準大2／準準速-1／準速-1／最速", inline=False)
+    embed.add_field(name="E", value="回避6 最大／準大-2／中間-2／中間-3", inline=False)
+    embed.add_field(name="F", value="回避6 準大-1／中間-1／準速／最速", inline=False)
+    embed.add_field(name="G", value="回避10 最大／中間／最速\n回避15 最大／中間", inline=False)
+    embed.add_field(name="H", value="回避15 最速", inline=False)
         
     await ctx.send("【"+str(lv)+" Lv】\n```"+"\n".join(l)+"```")
+    
+    await ctx.send(embed=embed)
+    
     
 @bot.command()
 async def リサイクル(ctx,rare:int):
