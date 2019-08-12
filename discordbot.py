@@ -109,10 +109,10 @@ async def hp(ctx,an:str,lv:int):
         string = []
         
         for i in range(1,11):
-            string.append(str(math.floor(((1-0.067*(i-1))*n*int(items[lv-1])))))
+            string.append(str(i)+"\t"+str(math.floor(((1-0.067*(i-1))*n*int(items[lv-1])))))
         
         f.close()
-        await ctx.send("```"+"\n".join(string)+"```")
+        await ctx.send("【アンテナ "+an+" の "+str(lv)+" Lvの体格ごとHP】\n"+"```"+"\n".join(string)+"```")
         #0.067を引いていく。HP2は((1-(0.067*(2-1)))*hp)
 
     
