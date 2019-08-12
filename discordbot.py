@@ -79,6 +79,8 @@ async def hp(ctx,an:str,lv:int):
     f = open("other/anhp.txt","r")
     items = f.readlines()
     
+    items = [i.replace("\n","") for i in items]
+    
     if an in items:
         p = items.index(an)
     else:
