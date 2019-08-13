@@ -127,18 +127,18 @@ async def リサイクル(ctx,rare:int):
     if rare>1 and rare<10:
         rand = random.randrange(0,10) #レア度の上下調整
         
-        if rand<=2:
+        if rand==1:
             rand=-1
-        elif rand>=8:
+        elif rand==9:
             rand=1
         else:rand=0
         
         rare += rand
     elif rare<=1:
         rare = 1
-        rand = random.randrange(0,4)
+        rand = random.randrange(0,10)
         
-        if rand!=3:
+        if rand<=4:
             rand=0
         else:
             rand=1
@@ -146,9 +146,9 @@ async def リサイクル(ctx,rare:int):
         rare += rand
     elif rare>=10:
         rare = 10
-        rand = random.randrange(0,4)
+        rand = random.randrange(0,10)
         
-        if rand!=4:
+        if rand<=4:
             rand=0
         else:
             rand=-1
