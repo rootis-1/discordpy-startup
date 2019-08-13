@@ -109,6 +109,7 @@ async def hp(ctx,an:str,lv:int,*args):
     else:
         target = int(items[p]) #そのアンテナのLv1最大型
         n = target/40
+        print(n)
              
         f = open("other/hp.txt","r")
         items = f.readlines()
