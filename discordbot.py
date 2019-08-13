@@ -47,16 +47,21 @@ async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
     
 @bot.command(aliases=['exp'])
-async def 経験値(ctx,lv:int):
+async def 経験値(ctx,lv:int,*args):
     
     f = open("other/data.txt","r")
     items = f.readlines()
     target = int(items[lv-1])
     f.close()
     
-    explist = [str(math.floor(target*(1-i*0.01))) for i in range(8)]
-    l = []
+    expdown = 0
     
+    if len(args)>0:
+        expdown = int(args[0])/100
+        
+    explist = [str(math.floor(target*(1-i*0.01)*(1-expdown))) for i in range(8)]
+    l = []
+   
     for i in range(8):
         l.append(chr((i+65))+"\t"+explist[i])
         
