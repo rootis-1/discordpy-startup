@@ -124,7 +124,9 @@ async def hp(ctx,an:str,lv:int,*args):
     
 @bot.command()
 async def リサイクル(ctx,rare:int):
-    if rare>1 and rare<10:
+    if rare==9:
+        rand=0
+    elif rare>1 and rare<10:
         rand = random.randrange(0,10) #レア度の上下調整
         
         if rand==1:
