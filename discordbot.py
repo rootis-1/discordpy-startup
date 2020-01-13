@@ -44,6 +44,11 @@ async def dc(ctx):
     await ctx.send('fuck')
     
 @bot.command()
+async def r(ctx):
+    await ctx.send('r')
+    
+    
+@bot.command()
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
     
