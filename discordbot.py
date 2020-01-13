@@ -294,7 +294,7 @@ async def on_message(message):
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
     if message.content.startswith('おやすみ'):
         await message.channel.send(message.author.name+' Gute Nacht, gute Träume')
-    if message.content.starywsith('〜'):
+    if message.content.startswith('〜'):
         await message.channel.send('〜')
     if message.content.startswith('おはよう'):
         await message.channel.send('言動には注意すべきだ。発言者本人は発せられたその言葉の意味や意図をよく考えないで使っているかもしれないが、あらゆる行動に意味を持つように、その言葉を発した意味も当然存在する筈だ。言葉の意味を失わない為に、また、今後は反射的な発言をしないように、今一度、その発言の意味を深く考えてみてはどうだろうか。')
