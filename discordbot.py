@@ -45,7 +45,7 @@ async def dc(ctx):
     
 @bot.command()
 async def r(ctx):
-    await ctx.send('r')
+    await ctx.send('(´・υ・｀)')
     
     
 @bot.command()
