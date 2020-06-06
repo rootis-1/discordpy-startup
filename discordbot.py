@@ -8,17 +8,18 @@ import json
 import math
 import base64
 import re
-gold = 0
+import asyncio
 
 bot = commands.Bot(command_prefix='/',help_command=None)
 token = os.environ['DISCORD_BOT_TOKEN']
-ducount = 0
-starter = 0
-startname = ""
 
 @bot.event #FalseCommand
 async def on_command_error(ctx, error):
-    await ctx.send('そんなコマンドないよ？出直してきな？')
+    print(error)
+    if isinstance(error,commands.CommandNotFound):
+        await ctx.send('そんなコマンドないよ？出直してきな？')
+    elif isinstance(eror,commands.UserInputError):
+        await ctx.send('コマンドの取得に失敗しました。')
 
 @bot.event
 async def on_ready():
