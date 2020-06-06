@@ -301,7 +301,7 @@ async def double_up(ctx):
 async def help(ctx):
     embed=discord.Embed(title="いちごおばけbot", description="いちごおばけbotについての説明です。", color=0x80ffff)
     embed.add_field(name="/help", value="この文章を送信します。まあこの文章を読めてる時点で/helpって打ってるんだよね君", inline=False)
-    embed.add_field(name="/(コマンド)で反応する単語一覧", value="dc、root、m、いちごおばけ、noxのどれかを打つと反応します。他にも反応する単語があるかも？", inline=False)
+    embed.add_field(name="/(コマンド)で反応する単語一覧", value="dc、root、m、いちごおばけ等の単語を打つと反応します。他にも反応する単語があるかも？", inline=False)
     embed.add_field(name="/リサイクル レア度", value="リサイクルをします。レア度には1~10の数字を入力してください。", inline=False)
     embed.add_field(name="/ダブルアップ", value="ダブルアップチャンスを開始します。", inline=False)
     embed.add_field(name="おはよう、おやすみ、まいにち過疎", value="特定の文章を返します", inline=False)
