@@ -182,6 +182,119 @@ async def リサイクル(ctx,rare:int):
     
     await ctx.send(ctx.author.mention + res1[(3+resrand+2*rand)-1] + " ☆" + str(rare) + "の\n**" + result + "**ができたわ。")
 
+@bot.command(name="ダブルアップ")
+async def double_up(ctx):
+    """
+    「ダブルアップチャンス！」を開始します。
+    """
+    depth = 1 # 現在の階層
+
+    HOLE = "\N{HOLE}\N{VARIATION SELECTOR-16}"
+    LEFT_ARROW = "\N{LEFTWARDS BLACK ARROW}\N{VARIATION SELECTOR-16}"
+    RIGHT_ARROW = "\N{BLACK RIGHTWARDS ARROW}\N{VARIATION SELECTOR-16}"
+    TOP_ARROW = "\N{UPWARDS BLACK ARROW}\N{VARIATION SELECTOR-16}"
+    emojis = [LEFT_ARROW,RIGHT_ARROW] # 通常の穴選択用絵文字リスト
+    final_emojis = [LEFT_ARROW,TOP_ARROW,RIGHT_ARROW] # 最後の穴選択用絵文字リスト
+
+
+    def gold_check(msg):
+        # 掛け金の入力チェック用
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.isdecimal()
+
+    embed = discord.Embed(title="ダブルアップ",description=f"{ctx.author.mention} 掛け金を入力してください。",color=0x0000ff)
+    await ctx.send(embed=embed)
+
+    try:
+        gold_msg = await bot.wait_for("message",check=gold_check,timeout=30.0)
+    except asyncio.TimeoutError:
+        embed = discord.Embed(title="エラー",
+            description=f"{ctx.author.mention} 掛け金の正常な入力が確認されませんでした。コマンドの処理を終了します。",
+            color=0xff0000)
+        await ctx.send(embed=embed)
+        return
+
+    gold = int(gold_msg.content)
+    embed = discord.Embed(title=f"どちらの穴に入るか選ぼう！（{depth}回目）",
+        description=f"{HOLE}\t{HOLE}\n{LEFT_ARROW}\t{RIGHT_ARROW}",color=0x00ff00)
+    embed.set_footer(text=f"掛け金：{gold * 2} G")
+
+    game_msg = await ctx.send(embed=embed) # ゲーム用メッセージ。以降はこれを編集してゲームを表現する。
+
+    while depth < 5:
+        await game_msg.edit(embed=embed)
+
+        for emoji in emojis:
+            await game_msg.add_reaction(emoji) # 穴選択用絵文字でリアクションする
+
+        def hole_check(reaction,user):
+            # 穴の入力チェック用
+            react_msg = reaction.message
+            are_same_msgs = react_msg.id == game_msg.id and react_msg.channel == game_msg.channel # メッセージの同一性
+            return are_same_msgs and user == ctx.author and str(reaction.emoji) in emojis
+
+        try:
+            hole_react,user = await bot.wait_for("reaction_add",check=hole_check,timeout=30.0)
+        except asyncio.TimeoutError:
+            embed = discord.Embed(title="エラー",
+                description=f"{ctx.author.mention} 穴の選択が正常に行われませんでした。コマンドの処理を終了します。",
+                color=0xff0000)
+            await ctx.send(embed=embed)
+            return
+        
+        if random.randrange(2) == 0:
+            # 2分の1の確率ではずれを引く
+            embed = discord.Embed(title=f"はずれー！！",
+                description=f"{ctx.author.mention} 懲りずに、また挑戦してみてね！",color=0x00ff00)
+            await ctx.send(embed=embed)
+            return
+
+        depth += 1
+        gold *= 2
+
+        await hole_react.remove(user)
+        embed = discord.Embed(title=f"当たり！次の穴を選んでね！（{depth}回目）",
+            description=f"{ctx.author.mention}\n{HOLE}\t{HOLE}\n{LEFT_ARROW}\t{RIGHT_ARROW}",
+            color=random.randrange(0xffffff))
+        embed.set_footer(text=f"次の掛け金：{gold * 2} G")
+        
+    embed = discord.Embed(title=f"当たり！次の穴が最後！（{depth}回目）",
+        description=f"{HOLE}\t{HOLE}\t{HOLE}\n{LEFT_ARROW}\t{TOP_ARROW}\t{RIGHT_ARROW}",
+        color=random.randrange(0xffffff))
+    embed.set_footer(text=f"掛け金：{gold * 2} G")
+    await game_msg.edit(embed=embed)
+    await game_msg.clear_reactions() # 最後は中間にもう一つ穴が追加されるので、全てのリアクションを削除しておく
+
+    for emoji in final_emojis:
+        await game_msg.add_reaction(emoji)
+
+    def hole_check_final(reaction,user):
+        # 最後の穴の入力チェック用
+        react_msg = reaction.message
+        are_same_msgs = react_msg.id == game_msg.id and react_msg.channel == game_msg.channel
+        return are_same_msgs and user == ctx.author and str(reaction.emoji) in final_emojis
+
+    try:
+        await bot.wait_for("reaction_add",check=hole_check_final,timeout=30.0)
+    except asyncio.TimeoutError:
+        embed = discord.Embed(title="エラー",
+            description=f"{ctx.author.mention} 穴の選択が正常に行われませんでした。コマンドの処理を終了します。",
+            color=0xff0000)
+        await ctx.send(embed=embed)
+        return
+
+    if random.randrange(3) != 2:
+        # 3分の2の確率ではずれを引く
+        embed = discord.Embed(title="はずれ。",
+            description=f"{ctx.author.mention} 君たちは一体今までにいくら貢いだんだろうね",color=0x00ff00)
+        await ctx.send(embed=embed)
+        return
+
+    gold *= 2
+
+    embed = discord.Embed(title="おめでとう！",
+        description=f"{ctx.author.mention} **{gold}** G入手したよ！\n達成できたのは今回で…何回目だったっけ",color=0x0000ff)
+    await ctx.send(embed=embed)
+
 
 @bot.command() #ヘルプ
 async def help(ctx):
@@ -189,9 +302,8 @@ async def help(ctx):
     embed.add_field(name="/help", value="この文章を送信します。まあこの文章を読めてる時点で/helpって打ってるんだよね君", inline=False)
     embed.add_field(name="/(コマンド)で反応する単語一覧", value="dc、root、m、いちごおばけ、noxのどれかを打つと反応します。他にも反応する単語があるかも？", inline=False)
     embed.add_field(name="/リサイクル レア度", value="リサイクルをします。レア度には1~10の数字を入力してください。", inline=False)
+    embed.add_field(name="/ダブルアップ", value="ダブルアップチャンスを開始します。", inline=False)
     embed.add_field(name="おはよう、おやすみ、まいにち過疎", value="特定の文章を返します", inline=False)
-    embed.add_field(name="ダブルアップ", value="ダブルアップチャンスを開始します。続いて表示される指示に従ってください", inline=False)
-    embed.add_field(name="リセット", value="ダブルアップチャンスの状態をリセットします", inline=False)
     
     dm_channel = await ctx.author.create_dm()
     await dm_channel.send(embed=embed)
@@ -199,94 +311,6 @@ async def help(ctx):
                
 @bot.event
 async def on_message(message):
-    '''
-    <ducountが>
-     0→スタート（１個目の穴を聞く）countを1に
-     1→1個目の穴の答えを受け取／２個目の穴を聞く countを2に
-     2→2個目の穴の答えを受け取／３個目の穴を聞く countを3に
-     3→3個目の穴の答えを受け取／４個目の穴を聞く countを4に
-     4→4個目の穴の答えを受け取／５個目の穴を聞く（！ここだけ三択！） countを5に
-     5→5個目の穴の答えを受け取／おめでとう
-    '''
-    global ducount
-    global starter
-    global startname
-    global gold
-    if message.content.startswith('口が悪いね、残念だがここでお別れだ'): 
-        await message.channel.send('もちろんy')
-        
-    if message.content.startswith('ダブルアップ'): #初回
-        if ducount>0:
-            await message.channel.send("もう始まってるよ")
-            return
-        if len(message.content.split())==1:
-            await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を指定してください。")
-            return
-        string = message.content.split()[1]
-        
-        if re.search("[0-9]",string):
-            gold = re.sub("\\D", "", string)
-            gold = int(gold)
-            gold *= 2
-        else:
-            await message.channel.send("```ダブルアップ 掛け金```\nと送信して掛け金を**半角数字で**指定してください。")
-            return
-        
-        if gold == 0:
-            await message.channel.send("1以上の金額を入力してください！")
-        starter = message.author.id
-        startname = message.author.name
-        ducount = 0 #リスタート
-        embed = discord.Embed(title="どちらの穴に入るか、「右」か「左」で決めよう！（１回目）\n次の掛け金："+str(gold)+"G", description="\n\t●\t●\n",color=0x80ff00)
-        await message.channel.send(content=None,embed=embed)
-        ducount = 1
-        
-    if (message.content.startswith('右')or message.content.startswith('左'))and ducount<5 and ducount!=0: #5回まで
-        
-        if starter != message.author.id:
-            await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
-            return
-        rand = random.randrange(2)
-        
-        if rand==0:
-            await message.channel.send("はずれー！！懲りずに、また挑戦してみてね！")
-            ducount = 0
-            return
-        if rand==1 and ducount!=4: #4回目以外
-            ducount += 1
-            gold *= 2
-            embed = discord.Embed(title="当たり！次の穴を選んでね！（"+str(ducount)+"回目）\n次の掛け金："+str(gold)+"G",description="\n\t●\t●\n",color=0x80ff00)
-            await message.channel.send(content=None,embed=embed)
-        elif rand==1 and ducount==4: #4回目のみ（穴数変更）
-            ducount += 1
-            gold *= 3
-            embed = discord.Embed(title="当たり！次の穴が最後！「左」「真ん中」「右」の中から選ぼう！（"+str(ducount)+"回目）\n次の掛け金："+str(gold)+"G",
-                                  description="\n\t●\t●\t●\n",color=0x80ff00)
-            await message.channel.send(content=None,embed=embed)
-     
-            
-    elif (message.content.startswith('真ん中')or message.content.startswith('右')or message.content.startswith('左'))and ducount==5: #最終回
-        if starter != message.author.id:
-            await message.channel.send("現在"+startname+"さんがプレイ中です。順番を待てないお子様なのかな？")
-            return
-        rand = random.randrange(3)
-        
-        if rand==0 or rand==1:
-            await message.channel.send("はずれ。君たちは一体今までにいくら貢いだんだろうね")
-            ducount = 0
-            return
-        if rand==2:
-            await message.channel.send(message.author.mention+"おめでとう **"+str(gold)+"** G入手したよ！\n達成できたのは今回で……何回目だったっけ")
-            ducount = 0
-            return
-    if (message.content.startswith('右')or message.content.startswith('左'))and ducount==0:	
-            await message.channel.send('今日も良い天気だね')
-        
-    if message.content=='リセット':
-        ducount = 0
-        starter = 0
-        startname = ""
-        await message.channel.send("リセットしたよ？後悔のないようにね？")
             
     if message.content.startswith('!dc'):
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
