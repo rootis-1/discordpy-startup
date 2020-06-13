@@ -18,8 +18,8 @@ async def on_command_error(ctx, error):
     print(error)
     if isinstance(error,commands.CommandNotFound):
         await ctx.send('そんなコマンドないよ？出直してきな？')
-    elif isinstance(eror,commands.UserInputError):
-        await ctx.send('コマンドの取得に失敗しました。')
+    elif isinstance(error,commands.UserInputError):
+        await ctx.send('コマンド情報の取得に失敗しました。')
 
 @bot.event
 async def on_ready():
