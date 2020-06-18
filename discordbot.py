@@ -317,6 +317,8 @@ async def on_message(message):
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
     if message.content.startswith('おやすみ'):
         await message.channel.send(message.author.name+'、おやすみ、だって？どうせまだ寝ないだろう？')
+    if message.content.startswith('|'):
+        await message.channel.send('これからもそうやって真実を隠し続けるんだろうね')
     if message.content.startswith('〜'):
         await message.channel.send('ー')
     if message.content.startswith('おはよう'):
