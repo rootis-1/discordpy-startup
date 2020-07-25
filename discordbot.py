@@ -325,5 +325,7 @@ async def on_message(message):
     if 564709839859744769 in message.raw_channel_mentions:
         await message.channel.send('まいにち過疎')
     await bot.process_commands(message)
+    if message.content.startswith('p'):
+        await message.channel.send('は？どちらが「上」か弁えろよ')
  
 bot.run(token)
