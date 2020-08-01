@@ -47,6 +47,10 @@ async def r(ctx):
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
     
+@bot.command()
+async def start(ctx):
+    await ctx.send('待たせたな！')
+    
 @bot.command(aliases=['exp'])
 async def 経験値(ctx,lv:int,*args):
     
