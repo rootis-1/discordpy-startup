@@ -49,7 +49,7 @@ async def いちごおばけ(ctx):
     
 @bot.command()
 async def わたる(ctx):
-    await ctx.send('わたるって誰の事アロ？')
+    await ctx.send('顔文字アローラ「伝説の天才の名ですね」')
     
 #@bot.command()
 #async def start(ctx):
