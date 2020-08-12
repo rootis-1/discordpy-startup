@@ -47,6 +47,10 @@ async def r(ctx):
 async def いちごおばけ(ctx):
     await ctx.send('さいつお！')
     
+@bot.command()
+async def わたる(ctx):
+    await ctx.send('@顔文字アローラ#1960')
+    
 #@bot.command()
 #async def start(ctx):
     #await ctx.send('待たせたな！')
