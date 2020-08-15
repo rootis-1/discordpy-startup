@@ -325,7 +325,7 @@ async def on_message(message):
 いいかい？運なんて所詮、心の拠り所に過ぎないのさ。例え君が何かに失敗したとき、君はそれを運のせいにする事ができる。
 さあ、受け取りたまえ。君の失敗を、このおみくじに全て押し付けるんだ。凶だよ。"""]
         choice = random.choice(uranai)
-        await message.channel.send(message.author.name+choice)
+        await message.channel.send(choice)
     if message.content.startswith('?slot'):
         await message.channel.send("""|:poop:|:laughing:|:poop:|
 Boo :weary:""")          
