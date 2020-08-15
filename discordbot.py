@@ -348,7 +348,6 @@ async def on_message(message):
     if message.content.startswith('?slot'):
         await message.channel.send("""|:poop:|:laughing:|:poop:|
 Boo :weary:""")
-await bot.process_commands(message)
   
  
 bot.run(token)
