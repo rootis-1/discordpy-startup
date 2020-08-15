@@ -336,18 +336,12 @@ async def on_message(message):
         await message.channel.send('わかる')
     if 564709839859744769 in message.raw_channel_mentions:
         await message.channel.send('まいにち過疎')
-    await bot.process_commands(message)
-    
-    
-
-@bot.event
-async def on_message(message):
-    
     if message.content.startswith('?uranai'):
         await message.channel.send('おみくじ？どーでもいいけど大吉っていう文字列出しとけば気が楽になるんでしょ？はい、大吉。')
     if message.content.startswith('?slot'):
         await message.channel.send("""|:poop:|:laughing:|:poop:|
 Boo :weary:""")
+    await bot.process_commands(message)
   
  
 bot.run(token)
