@@ -330,7 +330,7 @@ async def on_message(message):
         await message.channel.send("""|:poop:|:laughing:|:poop:|
 Boo :weary:""")          
     if message.content.startswith('!dc'):
-        await message.channel.send('❌ **I am not connected to a voice channel**, Use the summon command to get me in one')
+        await message.channel.send('❌ **I am not connected to a voice channel**, Use the join command to get me in one')
     if message.content.startswith('おやすみ'):
         await message.channel.send(message.author.name+'、おやすみ、だって？どうせまだ寝ないだろう？')
     if message.content.startswith('||'):
