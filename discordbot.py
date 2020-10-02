@@ -51,9 +51,9 @@ async def いちごおばけ(ctx):
 async def わたる(ctx):
     await ctx.send('わたる(わかる)')
     
-#@bot.command()
-#async def start(ctx):
-    #await ctx.send('待たせたな！')
+@bot.command()
+async def start(ctx):
+    await ctx.send('待たせたな！')
     
 @bot.command()
 async def wau(ctx):
