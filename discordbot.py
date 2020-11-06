@@ -348,6 +348,10 @@ async def on_message(message):
         yurusu = ["赦しましょう","赦しましょう","赦しません"]
         choice = random.choice(yurusu)
         await message.channel.send(choice)
+    if message.content.startswith('〆'):
+        simeru = ["勝手に〆ないで貰えるかな？","勝手に〆ないで貰えるかな？","勝手に〆ないで貰えるかな？","便乗して〆"]
+        choice = random.choice(simeru)
+        await message.channel.send(choice)
     if message.content.startswith('?slot'):
         await message.channel.send("""|:poop:|:laughing:|:poop:|
 Boo :weary:""")          
@@ -359,8 +363,6 @@ Boo :weary:""")
         await message.channel.send('これからもそうやって真実を隠し続けるんだろうね')
     if message.content.startswith('〜'):
         await message.channel.send('ー')
-    if message.content.startswith('〆'):
-        await message.channel.send('勝手に〆ないで貰えるかな？')
     if message.content.startswith('おはよう'):
         await message.channel.send('言動には注意すべきだ。発言者本人は発せられたその言葉の意味や意図をよく考えないで使っているかもしれないが、あらゆる行動に意味を持つように、その言葉を発した意味も当然存在する筈だ。言葉の意味を失わない為に、また、今後は反射的な発言をしないように、今一度、その発言の意味を深く考えてみてはどうだろうか。')
     if message.author.bot==True:return
