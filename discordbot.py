@@ -335,7 +335,7 @@ async def help(ctx):
 @bot.event
 async def on_message(message):
     
-    if message.content.startswith('?uranai'):
+    if message.content.startswith('?uranai'):  #botの書き方が下手糞！
         uranai = ["おみくじ？どーでもいいけど大吉っていう文字列出しとけば気が楽になるんでしょ？はい、大吉。","""大吉をあげたいところだけど…、仕方ない。
 本当はこんな事したくないんだけどね…？中吉だよ。""","""占って欲しいんだね？
 …君もわかっているはずさ。この占いがランダムに生成されるだけのシステムに過ぎない事を。それでも君たちは求める。何故だろうね。僕には理解できないよ。
