@@ -23,7 +23,7 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name='電波人間のRPG free'))
+    await bot.change_presence(activity=discord.Game(name='new電波人間のRPG'))
 
     
 @bot.command()
@@ -344,6 +344,10 @@ async def on_message(message):
 さあ、受け取りたまえ。君の失敗を、このおみくじに全て押し付けるんだ。凶だよ。"""]
         choice = random.choice(uranai)
         await message.channel.send(choice)
+    if message.content.startswith('ごめん'):
+        yurusu = ["赦しましょう","赦しましょう","赦しません"]
+        choice = random.choice(yurusu)
+        await message.channel.send(choice)
     if message.content.startswith('?slot'):
         await message.channel.send("""|:poop:|:laughing:|:poop:|
 Boo :weary:""")          
@@ -357,8 +361,6 @@ Boo :weary:""")
         await message.channel.send('ー')
     if message.content.startswith('〆'):
         await message.channel.send('勝手に〆ないで貰えるかな？')
-    if message.content.startswith('ごめん'):
-        await message.channel.send('赦しましょう')
     if message.content.startswith('おはよう'):
         await message.channel.send('言動には注意すべきだ。発言者本人は発せられたその言葉の意味や意図をよく考えないで使っているかもしれないが、あらゆる行動に意味を持つように、その言葉を発した意味も当然存在する筈だ。言葉の意味を失わない為に、また、今後は反射的な発言をしないように、今一度、その発言の意味を深く考えてみてはどうだろうか。')
     if message.author.bot==True:return
