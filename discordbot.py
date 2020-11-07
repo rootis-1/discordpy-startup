@@ -49,7 +49,9 @@ async def いちごおばけ(ctx):
     
 @bot.command()
 async def わたる(ctx):
-    await ctx.send('わたる(わかる)')
+    wataru = ["伊藤","安藤","黒船来","鴨浦","浅村","出雲","浅井","泉","藤原","斎藤","お前は俺の","喋れよ","出野"]
+    choice = random.choice(wataru)
+    await message.channel.send(choice"航")
     
 #@bot.command()
 #async def start(ctx):
