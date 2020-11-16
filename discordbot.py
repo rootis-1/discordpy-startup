@@ -239,7 +239,7 @@ async def double_up(ctx):
         return
 
     gold = int(gold_msg.content)
-    embed = discord.Embed(title=f"どちらの穴に入るか選ぼう！（{depth}回目）",
+    embed = discord.Embed(title=f"どちらの穴に入るか選ぼう！(このテキストのリアクションをタッチして選択)（{depth}回目）",
         description=f"{HOLE}\t{HOLE}\n{LEFT_ARROW}\t{RIGHT_ARROW}",color=0x00ff00)
     embed.set_footer(text=f"掛け金：{gold * 2} G")
 
@@ -326,8 +326,8 @@ async def help(ctx):
     embed=discord.Embed(title="いちごおばけbot", description="いちごおばけbotについての説明です。", color=0x80ffff)
     embed.add_field(name="/help", value="この文章を送信します。まあこの文章を読めてる時点で/helpって打ってるんだよね君", inline=False)
     embed.add_field(name="/(コマンド)で反応する単語一覧", value="dc、root、m、いちごおばけ等の単語を打つと反応します。他にも反応する単語があるかも？", inline=False)
-    embed.add_field(name="/リサイクル レア度", value="リサイクルをします。レア度には1~10の数字を入力してください。", inline=False)
-    embed.add_field(name="/ダブルアップ", value="ダブルアップチャンスを開始します。", inline=False)
+    embed.add_field(name="/リサイクル レア度", value="リサイクルをします。レア度には1~10の数字を入力してください。例) 「/リサイクル 7」", inline=False)
+    embed.add_field(name="/ダブルアップ", value="ダブルアップチャンスを開始します。後に続く指示に従いましょう。", inline=False)
     embed.add_field(name="おはよう、おやすみ、まいにち過疎", value="特定の文章を返します", inline=False)
     
     dm_channel = await ctx.author.create_dm()
@@ -360,13 +360,11 @@ Boo :weary:""")
     if message.content.startswith('!dc'):
         await message.channel.send('❌ **I am not connected to a voice channel**, Use the join command to get me in one')
     if message.content.startswith('おやすみ'):
-        await message.channel.send(message.author.name+'、おやすみ、だって？どうせまだ寝ないだろう？')
+        await message.channel.send(message.author.name+'、おやすみ〜')
     if message.content.startswith('||'):
         await message.channel.send('これからもそうやって真実を隠し続けるんだろうね')
     if message.content.startswith('〜'):
         await message.channel.send('ー')
-    if message.content.startswith('おはよう'):
-        await message.channel.send('言動には注意すべきだ。発言者本人は発せられたその言葉の意味や意図をよく考えないで使っているかもしれないが、あらゆる行動に意味を持つように、その言葉を発した意味も当然存在する筈だ。言葉の意味を失わない為に、また、今後は反射的な発言をしないように、今一度、その発言の意味を深く考えてみてはどうだろうか。')
     if message.author.bot==True:return
     if message.content.startswith('まいにち過疎'):
         await message.channel.send('わかる')
