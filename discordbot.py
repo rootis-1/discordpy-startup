@@ -76,33 +76,19 @@ Lv1、HPは8(乱数で前後)、弱点属性は土水光。そして闇属性に
 以上、いちごおばけについての解説を終わる。""")
    
 
-@bot.command(aliases=["connect","summon"]) #connectやsummonでも呼び出せる
-     async def join(ctx):
+ @bot.command() 
+async def join(ctx):
     """Botをボイスチャンネルに入室させます。"""
     voice_state = ctx.author.voice
 
     if (not voice_state) or (not voice_state.channel):
+        #もし送信者がどこのチャンネルにも入っていないなら
         await ctx.send("うるせぇ！")
         return
 
-    channel = voice_state.channel
+    channel = voice_state.channel #送信者のチャンネル
 
-    await channel.connect()
-    print("connected to:",channel.name)
-
-
-@bot.command(aliases=["disconnect","bye"])
-async def leave(ctx):
-    """Botをボイスチャンネルから切断します。"""
-    voice_client = ctx.message.guild.voice_client
-
-    if not voice_client:
-        await ctx.send("うるせぇ！")
-        return
-
-    await voice_client.disconnect()
-    await ctx.send("さらばじゃ。")
-    
+    await channel.connect() #VoiceChannel.connect()を使用   
     
     
     
