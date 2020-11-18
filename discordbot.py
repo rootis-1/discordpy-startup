@@ -74,24 +74,6 @@ Lv1、HPは8(乱数で前後)、弱点属性は土水光。そして闇属性に
 ドロップ品は2Gとたまにキズぐすり、稀にぜんかいキズぐすりを落とす。
 アンテナ「捕まえる」で使用する場合はAP1で「ひっかく」を使う
 以上、いちごおばけについての解説を終わる。""")
-   
-
- @bot.command() 
-async def join(ctx):
-    """Botをボイスチャンネルに入室させます。"""
-    voice_state = ctx.author.voice
-
-    if (not voice_state) or (not voice_state.channel):
-        #もし送信者がどこのチャンネルにも入っていないなら
-        await ctx.send("うるせぇ！")
-        return
-
-    channel = voice_state.channel #送信者のチャンネル
-
-    await channel.connect() #VoiceChannel.connect()を使用   
-    
-    
-    
     
     
 @bot.command(aliases=['exp'])
