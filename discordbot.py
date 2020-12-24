@@ -25,9 +25,9 @@ async def on_command_error(ctx, error):
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name='new電波人間のRPG'))
 
-@bot.command()
-async def t(ctx):
-    await ctx.send('やりたくないよ')
+#@bot.command()
+#async def t(ctx):
+    #await ctx.send('やりたくないよ')
 
 
 @bot.command()
